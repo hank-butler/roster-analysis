@@ -132,72 +132,97 @@ class PlayerValuationModel:
 
         return max(adjusted_value, 0) # ensures number won't be negative
     
-def calculate_risk_score(self, player: PlayerAsset) -> float:
-    """
-    Quantifying risk based on age, injury history, and position.
+    def calculate_risk_score(self, player: PlayerAsset) -> float:
+        """
+        Quantifying risk based on age, injury history, and position.
 
-    Simplifying assumptions made, can be adjusted.
+        Simplifying assumptions made, can be adjusted.
 
-    =========
-    ARGUMENTS
-    =========
-    player: PlayerAsset, the player getting the risk calculation
+        =========
+        ARGUMENTS
+        =========
+        player: PlayerAsset, the player getting the risk calculation
 
-    =======
-    RETURNS
-    =======
-    float: player's risk score
+        =======
+        RETURNS
+        =======
+        float: player's risk score
 
-    ======
-    RAISES
-    ======
+        ======
+        RAISES
+        ======
 
-    
-    """
-    risk_components = []
+        
+        """
+        risk_components = []
 
-    injury_risk = min(player.games_missed / 51, 0.5) # 51 for 3 full regular seasons
-    risk_components.append(injury_risk)
+        injury_risk = min(player.games_missed / 51, 0.5) # 51 for 3 full regular seasons
+        risk_components.append(injury_risk)
 
-    peak_age = self.peak_ages.get(player.position, 27) # simplifying assumption of player peak at 27 years due to avg NFL career being ~5 seasons
-    age_diff = player.age - peak_age
+        peak_age = self.peak_ages.get(player.position, 27) # simplifying assumption of player peak at 27 years due to avg NFL career being ~5 seasons
+        age_diff = player.age - peak_age
 
-    if age_diff <= 0:
-        age_risk = 0.0
-    elif age_diff <= 2:
-        age_risk = 0.1
-    elif age_diff <= 4:
-        age_risk = 0.3
-    else:
-        age_risk = 0.5
+        if age_diff <= 0:
+            age_risk = 0.0
+        elif age_diff <= 2:
+            age_risk = 0.1
+        elif age_diff <= 4:
+            age_risk = 0.3
+        else:
+            age_risk = 0.5
 
-    risk_components.append(age_risk)
+        risk_components.append(age_risk)
 
-    position_risk = {
-        "QB": 0.1,
-        "WR": 0.2,
-        "RB": 0.4,
-        "TE": 0.2,
-        "OT": 0.15,
-        "OG": 0.15,
-        "C": 0.15,
-        "EDGE": 0.25,
-        "DL": 0.25,
-        "LB": 0.2,
-        "CB": 0.2,
-        "S": 0.2,
-        "K": 0.1,
-        "P": 0.1,
-        "LS": 0.1
-    }
+        position_risk = {
+            "QB": 0.1,
+            "WR": 0.2,
+            "RB": 0.4,
+            "TE": 0.2,
+            "OT": 0.15,
+            "OG": 0.15,
+            "C": 0.15,
+            "EDGE": 0.25,
+            "DL": 0.25,
+            "LB": 0.2,
+            "CB": 0.2,
+            "S": 0.2,
+            "K": 0.1,
+            "P": 0.1,
+            "LS": 0.1
+        }
 
-    risk_components.append(position_risk)
+        risk_components.append(position_risk)
 
-    # combined risk scores 
-    total_risk = (
-        0.4*risk_components[0] +
-        0.4*risk_components[1] +
-        0.2*risk_components[2]
-    )
+        # combined risk scores 
+        total_risk = (
+            0.4*risk_components[0] +
+            0.4*risk_components[1] +
+            0.2*risk_components[2]
+        )
 
-    return total_risk
+        return total_risk
+
+    def calculate_npv(self, player: PlayerAsset) -> float:
+        """
+        Docstring for calculate_npv
+        
+        :param self: Description
+        :param player: Description
+        :type player: PlayerAsset
+        :return: Description
+        :rtype: float
+        """
+
+        risk_premium = player.risk_score *.10
+        discount_rate = self.risk_free_rate + risk_premium
+
+        annual_value = player.expected_value / max(player.years_remaining, 1)
+        annual_cost = player.cap_hit_2026
+        annual_net = annual_value-annual_cost
+
+        npv = 0
+
+        for year in range(player.years_remaining):
+            npv += annual_net / ((1 + discount_rate) ** year)
+
+        return npv
