@@ -226,3 +226,81 @@ class PlayerValuationModel:
             npv += annual_net / ((1 + discount_rate) ** year)
 
         return npv
+
+    def calculate_fair_value(self, player: PlayerAsset) -> float:
+        """
+        Docstring for calculate_fair_value
+        
+        :param self: Description
+        :param player: Description
+        :type player: PlayerAsset
+        :return: Description
+        :rtype: float
+        """
+
+        expected_value = player.expected_value
+        risk_multiplier = 1 - player.risk_score
+
+        fair_value = expected_value * risk_multiplier
+
+        return fair_value
+    
+    def calculate_efficiency_ratio(self, player:PlayerAsset) -> float:
+        """
+        Docstring for calculate_efficiency_ratio
+        
+        :param self: Description
+        :param player: Description
+        :type player: PlayerAsset
+        :return: Description
+        :rtype: float
+        
+        Value per dollar (similar idea to bond yield)
+        """
+        if player.cap_hit_2026 <= 0:
+            return 0.0
+        
+        return player.expected_value / player.cap_hit_2026
+    
+    def calculate_sharpe_ratio(self, player:PlayerAsset) -> float:
+        """
+        Risk-adjusted return
+        (expected return - risk-free rate) / risk
+        
+        :param self: Description
+        :param player: Description
+        :type player: PlayerAsset
+        :return: Description
+        :rtype: float
+        """
+
+        if player.risk_score <= 0:
+            return 0.0
+        
+        excess_return = (player.expected_value - player.cap_hit_2026)
+
+        return excess_return / (player.risk_score * player.cap_hit_2026)
+    
+    def value_player(self, player: PlayerAsset) -> PlayerAsset:
+        """
+        Complete valuation of a player from previous methods
+        """
+        player.expected_value = self.calculate_expected_value(player)
+        player.risk_score = self.calculate_risk_score(player)
+        player.fair_value = self.calculate_fair_value(player)
+        player.efficiency_ratio = self.calculate_efficiency_ratio(player)
+        player.sharpe_ratio = self.calculate_sharpe_ratio(player)
+
+        return player
+    
+    def value_roster(self, players: List[PlayerAsset]) -> List[PlayerAsset]:
+        """
+        Values an entire roster of inputs
+
+        Output is a list of player assets
+        """
+
+        return [self.value_player(p) for p in players]
+    
+    
+
