@@ -334,7 +334,118 @@ class PortfolioAnalyzer:
 
         return pd.DataFrame(data)
     
+    def total_value(self) -> float:
+        """
+        Total value of a roster
+        """
+        return self.df["expected_value"].sum()
     
+    def total_cost(self) -> float:
+        """
+        Total salary cap hit for a roster
+        """
+        return self.df["cap_hit"].sum()
+
+    def portfolio_efficiency(self) -> float:
+        """
+        Overall efficiency ratio
+        """
+        return self.total_value() / self.total_cost() if self.total_cost() > 0 else 0
+    
+    def portfolio_risk(self) -> float:
+        """
+        Weighted average risk
+        """
+        total_cap = self.total_cost()
+
+        if total_cap == 0:
+            return 0
+        
+        weighted_risk = sum(
+            p.risk_score * (p.cap_hit_2026 / total_cap) for p in self.players
+        )
+
+        return weighted_risk
+    
+    def portfolio_sharpe(self) -> float:
+        """
+        Sharpe ratio for roster portfolio
+        """
+        excess_return = self.total_value() - self.total_cost()
+        risk = self.portfolio_risk()
+
+        if risk == 0:
+            return 0
+        
+        return excess_return / (risk * self.total_cost())
+    
+    def position_allocation(self) -> Dict[str, float]:
+        """
+        % of cap allocated to each position
+
+        
+        """
+        total_cap = self.total_cost()
+
+        position_spending = self.df.groupby("position")['cap_hit'].sum()
+
+        return (position_spending / total_cap * 100).to_dict()
+    
+    def identify_overvalued(self, threshold: float=1.15, desc=True) -> pd.DataFrame:
+        """
+        Find overvalued players (cap hit > fair value * threshold)
+
+        Threshold defaulted to 1.15, but can be overwritten with specified value.
+        """
+        overvalued = self.df[self.df["cap_hit"] > self.df["fair_value"]*threshold].copy() # make a copy to not impact underlying df
+
+        overvalued['overvalued_by'] = overvalued["cap_hit"] - overvalued["fair_value"]
+        overvalued["pct_overvalued"] = (
+            (overvalued["cap_hit"] / overvalued["fair_value"] - 1) * 100
+        )
+
+        return overvalued.sort_values(by="overvalued_by", ascending=not desc)
+    
+    def identify_undervalued(self, threshold: float=0.85, desc=True) -> pd.DataFrame:
+        """
+        Find undervalued players (cap hit < fair_value * threshold)
+
+        Threshold defaulted to 0.85
+        """
+
+        undervalued = self.df[self.df['cap_hit'] < self.df['fair_value']*threshold].copy()
+
+        undervalued['undervalued_by'] = undervalued['fair_value'] - undervalued['cap_hit'] 
+
+        undervalued['pct_undervalued'] = (
+            (1 - undervalued['cap_hit'] / undervalued['fair_value']) * 100
+        )
+
+        return undervalued.sort_values(by='undervalued_by', ascending=not desc)
+    
+    def summary_report(self) -> Dict:
+        """
+        Complete summary report of portfolio
+        """
+        return {
+            "total_value": self.total_value(),
+            "total_cost": self.total_cost(),
+            "efficiency": self.portfolio_efficiency(),
+            "risk": self.portfolio_risk(),
+            "sharpe_ratio": self.portfolio_sharpe(),
+            "position_allocation": self.position_allocation(),
+            "num_overvalued": len(self.identify_overvalued()),
+            "num_undervalued": len(self.identify_undervalued()),
+            "avg_roster_age": self.df["age"].mean(),
+            "total_players": len(self.players)
+        }
+
+
+        
+
+
+
+
 
 
 
