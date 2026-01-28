@@ -302,5 +302,39 @@ class PlayerValuationModel:
 
         return [self.value_player(p) for p in players]
     
+
+class PortfolioAnalyzer:
+    """
+    Analyzes entire roster as asset portfolio
+    """
+
+    def __init__(self, players: List[PlayerAsset]):
+        self.players = players
+        self.df = self._to_dataframe()
+
+    def _to_dataframe(self) -> pd.DataFrame:
+        """
+        Convert players list to Pandas DataFrame
+        """
+        data = []
+
+        for p in self.players:
+            data.append({
+                'name': p.name,
+                'position': p.position,
+                'age': p.age,
+                'cap_hit': p.cap_hit_2026,
+                'expected_value': p.expected_value,
+                'fair_value': p.fair_value,
+                'risk_score': p.risk_score,
+                'efficiency_ratio': p.efficiency_ratio,
+                'sharpe_ratio': p.sharpe_ratio,
+                'npv': p.expected_value - p.cap_hit_2026
+            })
+
+        return pd.DataFrame(data)
     
+    
+
+
 
