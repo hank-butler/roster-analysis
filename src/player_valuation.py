@@ -191,7 +191,7 @@ class PlayerValuationModel:
             "LS": 0.1
         }
 
-        risk_components.append(position_risk)
+        risk_components.append(position_risk.get(player.position, 0.2))
 
         # combined risk scores 
         total_risk = (
