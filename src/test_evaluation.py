@@ -65,3 +65,43 @@ print("IND COLTS - Sample Roster Valuation")
 for player in valued_roster:
     # print(player)
     print(f"\n{player.name} ({player.position}, Age: {player.age})")
+    print(f"\nCap Hit: ${player.cap_hit_2026:>12,.0f}")
+    print(f"\nFair Value: ${player.fair_value:>12,.0f}")
+    print(f"\nDifference: ${player.cap_hit_2026 - player.fair_value:>12,.0f}")
+    print(f"\nEfficiency: {player.efficiency_ratio:>12.2f}")
+    print(f"\nRisk Score: {player.risk_score:>12.2f}")
+
+    if player.cap_hit_2026 > player.fair_value * 1.15:
+        pct_over = ((player.cap_hit_2026 / player.fair_value) - 1) * 100
+        print(f"Overvalued by: {pct_over:.1f}%")
+    elif player.cap_hit_2026 < player.fair_value * 0.85:
+        pct_under = ((player.fair_value / player.cap_hit_2026) - 1) * 100
+        print(f"Undervalued by: {pct_under:.1f}%")
+
+print("\n" + "="*50)
+print("PORTFOLIO SUMMARY")
+print("="*50)
+
+summary = analyzer.summary_report()
+
+print(f"\nTotal Value: ${summary['total_value']:>12,.0f}")
+print(f"\nTotal Cost: ${summary['total_cost']:>12,.0f}")
+print(f"\nEfficiency: {summary['efficiency']:>12.2%}")
+print(f"\nPorfolio Risk: {summary['risk']:>12.2f}")
+print(f"\nSharpe Ratio: {summary['sharpe_ratio']:>12.2f}")
+
+print("\nPosition Allocation")
+for pos, pct in sorted(summary['position_allocation'].items()):
+    print(f"{pos:>6}: {pct:>6.1f}%")
+
+print("\n"+"="*50)
+print("OVERVALUED PLAYERS")
+print("="*50)
+
+overvalued = analyzer.identify_overvalued()
+
+if len(overvalued) > 0:
+    print(overvalued[['name', 'position', 'cap_hit', 'fair_value', 'overvalued_by', 'pct_overvalued']])
+else:
+    print("No significantly overvalued players")
+
