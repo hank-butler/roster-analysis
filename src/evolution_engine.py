@@ -103,3 +103,89 @@ class Chromosome:
                 return False
         
         return True
+    
+    def clone(self) -> 'Chromosome':
+        """
+        Creates a deep copy of the Chromosome instance
+        """
+        return Chromosome([deepcopy(p) for p in self.players])
+
+class EvolutionEngine:
+    """
+    Genetic algorithm for roster optimization
+    
+    """
+    def __init__(self,
+                 current_roster: List[PlayerAsset],
+                 available_players: List[PlayerAsset],
+                 constraints: RosterConstraints,
+                 valuation_model: PlayerValuationModel):
+        
+        self.current_roster = current_roster
+        self.available_players = available_players
+        self.constraints = constraints
+        self.valuation_model = valuation_model
+
+        # Evolutionary Parameters, generic for now to test out evo engine
+        self.population_size = 100
+        self.generations = 100
+        self.mutation_rate = 0.15
+        self.crossover_rate = 0.8
+        self.tournament_size = 5
+        self.elitism_count = 5
+
+        # History Tracking
+        self.history = []
+        self.best_ever = None
+        self.best_fitness_ever = -float('inf')
+
+    def fitness_function(self, chromosome: Chromosome) -> float:
+        """
+        multi-objective fitness function
+
+        Objectives:
+        1. Maximize portfolio efficiency (40%)
+        2. Minimize portfolio risk (25%)
+        3. Maximize position balance (20%)
+        4. Minimize wasted cap space (15%)
+        """
+
+        if not chromosome.is_valid(self.constraints):
+            return -1000 # invalid rosters are definitionally not evolutionary fit
+        
+        analyzer = chromosome.analyzer
+
+        # 1. Portfolio Efficiency (value per dollar)
+        efficiency = analyzer.portfolio_efficiency()
+        efficiency_score = min(efficiency / 1.5, 1.0)
+
+        # 2. Risk score (lower is better)
+        risk = analyzer.portfolio_risk()
+        risk_score = 1 - risk # invert to make higher better
+
+        # 3. Position balance (ensures not optimizing for single position, eg. 10 WR's')
+        position_balance = self._calculate_position_balance(chromosome)
+
+        # 4. Cap space utilization (use cap efficiently, but leave some breathing room)
+        cap_used = chromosome.total_cap()
+        cap_available = self.constraints.salary_cap
+        utilization = cap_used / cap_available
+
+        if 0.90 <= utilization <= 0.95:
+            cap_score = 1.0
+        elif utilization <= 0.90:
+            cap_score = utilization / 0.90 # penalize for underutilization
+        else:
+            cap_score = max(0, 2 - utilization / 0.95) # penalize for overutilization
+
+        # weighted combination based on calculations in method and arbitrary weights in objectives
+        fitness = (
+            0.40 * efficiency_score +
+            0.25 * risk_score +
+            0.20 * position_balance +
+            0.15 * cap_score
+        )
+
+        return fitness
+
+    
