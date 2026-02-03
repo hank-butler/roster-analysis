@@ -206,7 +206,7 @@ class EvolutionEngine:
             ideal_count = (min_count + max_count) / 2
 
             # score based on distance from ideal
-            if count < mid_count:
+            if count < min_count:
                 score = 0 # below minimum is bad situation
             elif count > max_count:
                 score = 0 # above maximum bad as well
@@ -223,5 +223,66 @@ class EvolutionEngine:
 
         return total_score / total_positions if total_positions > 0 else 0
     
+    def initialize_population(self) -> List[Chromosome]:
+        """
+        Create initial population of random valid rosters
+        
+        """
+
+        population = []
+
+        # including current roster
+        population.append(Chromosome(self.current_roster))
+
+        # Generate random rosters
+        attempts = 0
+        max_attempts = 10_000
+
+        with tqdm(total=self.population_size, desc="Initializing population") as pbar:
+            while len(population) < self.population_size and attempts < max_attempts:
+                roster = self._generate_random_roster()
+                chromosome = Chromosome(roster)
+
+                if chromosome.is_valid(self.constraints):
+                    population.append(chromosome)
+                    pbar.update(1)
+
+                attemps += 1
+
+        if len(population) < self.population_size:
+            print(f"Warning: generated {len(population)} valid rosters")
+
+        return population
     
+    def _generate_random_roster(self) -> List[PlayerAsset]:
+        """
+        Generate one random valid roster
+
+        Returns a list of PlayerAssets
+        """
+        roster = []
+        positions_filled = {
+            pos: 0 for pos in self.constraints.position_limits.keys()
+        }
+        cap_used = 0
+
+        available = self.available_players.copy()
+        random.shuffle(available)
+
+        for player in available:
+            pos = player.position
+            min_count, max_count = self.constraints.position_limits.get(pos, (0, 10))
+
+            can_add = (
+                positions_filled[pos] < max_count and
+                cap_used + player.cap_hit_2026 <= self.constraints.salary_cap and
+                len(roster) < self.constraints.max_roster_size
+            )
+
+            if can_add:
+                roster.append(player)
+                positions_filled[pos] += 1
+                cap_used += player.cap_hit_2026
+
+        
 
