@@ -188,4 +188,40 @@ class EvolutionEngine:
 
         return fitness
 
+    def _calculate_position_balance(self, chromosome: Chromosome) -> float:
+        """
+        How well does a roster meet positional needs?
+
+        Scored between 0.0-1.0, higher being better.
+        """
+        pos_counts = chromosome.position_counts()
+
+        total_score = 0
+        total_positions = 0
+
+        for position, (min_count, max_count) in self.constraints.position_limits.items():
+            count = pos_counts.get(position, 0)
+
+            # ideal count is midpoint
+            ideal_count = (min_count + max_count) / 2
+
+            # score based on distance from ideal
+            if count < mid_count:
+                score = 0 # below minimum is bad situation
+            elif count > max_count:
+                score = 0 # above maximum bad as well
+            else:
+                # linear score: 1.0 at ideal, 0.5 at min/max
+                distance_from_ideal = abs(count - ideal_count)
+                max_distance = ideal_count - min_count
+                if max_distance > 0:
+                    score = 1 - (distance_from_ideal / max_distance) *0.5
+                else:
+                    score = 1.0
+            total_score += score
+            total_positions += 1
+
+        return total_score / total_positions if total_positions > 0 else 0
     
+    
+
