@@ -284,5 +284,35 @@ class EvolutionEngine:
                 positions_filled[pos] += 1
                 cap_used += player.cap_hit_2026
 
-        
+        # fill missing positions with cheap options
+        for pos, (min_count, _) in self.constraints.position_limits.items():
+            while positions_filled[pos] < min_count:
+                # find cheapest players to fill until min count satisfied
+                candidates = [p for p in available if p.position == p and p not in roster]
+                if candidates:
+                    cheapest = min(candidates, key=lambda p: p.cap_hit_2026)
+                    if cap_used + cheapest.cap_hit_2026 <= self.constraints.salary_cap:
+                        roster.append(cheapest)
+                        positions_filled[pos] += 1
+                        cap_used += cheapest.cap_hit_2026
+                    else:
+                        break
+                else:
+                    break
+
+        return roster
+    
+    def tournament_selection(self, population: List[Chromosome], fitness_scores: List[float]) -> Chromosome:
+        """
+        Select parent using tournament selection
+
+        args:
+        population: List[Chromosome]'
+        fitness_scores: List[floats]
+
+        returns:
+        Chromosome
+        """
+        pass
+
 
