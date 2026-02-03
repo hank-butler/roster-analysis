@@ -353,7 +353,81 @@ class EvolutionEngine:
 
         return Chromosome(child1_players), Chromosome(child2_players)
     
+    def mutate(self, chromosome: Chromosome) -> Chromosome:
+        """
+        Randomly mutate roster
+
+        args:
+        Chromosome
+
+        returns:
+        Chromosome
+        """
+        if random.random() > self.mutation_rate:
+            return chromosome
+        
+        mutated = chromosome.clone()
+
+        # choose mutation type
+        mutation_type = random.choice(['swap', 'replace', 'upgrade'])
+
+        if mutation_type == 'swap' and len(mutated.players) >= 2:
+            positions = list(set(p.position for p in mutated.players))
+            if positions:
+                pos = random.choice(positions)
+                players_at_pos = [i for i, p in enumerate(mutated.players) if p.position == pos]
+
+                if len(players_at_pos) >= 2:
+                    idx1, idx2 = random.sample(players_at_pos, 2)
+                    mutated.players[idx1], mutated.players[idx2] = mutated.players[idx2], mutated.players[idx1]
+        elif mutation_type == 'replace' and len(mutated.players) > 0:
+            idx = random.randint(0, len(mutated.players)-1)
+            old_player = mutated.player[idx]
+
+            # find replacements
+            candidates = [p for p in self.available_players
+                          if p.position == old_player.position
+                          and p.player_id != old_player.player_id
+                          and p not in mutated.players]
+
+            if candidates:
+                new_player = random.choice(candidates)
+
+                # checking if swap maintains cap compliance
+                cap_diff = new_player.cap_hit_2026 - old_player.cap_hit_2026
+                if mutated.total_cap() + cap_diff <= self.constraints.salary_cap:
+                    mutated.players[idx] = new_player
+        elif mutation_type == 'upgrade' and len(mutated.players) > 0:
+            # Try to upgrade a player (higher value, but similar cost)
+            idx = random.randint(0, len(mutated.players) - 1)
+            old_player = mutated.players[idx]
+
+            # Find better players at position w/in +20% cap hit
+            max_cap = old_player.cap_hit_2026 * 1.2
+            candidates = [
+                p for p in self.available_players
+                if p.position == old_player.position
+                and p.player_id != old_player.player_id
+                and p not in mutated.players
+                and p.cap_hit_2026 <= max_cap
+                and p.expected_value > old_player.expected_value
+            ]
+
+            if candidates:
+                new_player = max(candidates, key=lambda p: p.expected_value)
+                cap_diff = new_player.cap_hit_2026 - old_player.cap_hit_2026
+
+                if mutated.total_cap() + cap_diff <= self.constraints.salary_cap:
+                    mutated.players[idx] = new_player
+
+        return mutated
     
-                
+    def evolve(self) -> Tuple[Chromosome, List[Dict]]:
+        """
+        Main evolution process.
+        """
+        pass
+            
+
 
 
