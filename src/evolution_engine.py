@@ -313,6 +313,47 @@ class EvolutionEngine:
         returns:
         Chromosome
         """
-        pass
+        tournament_indices = random.sample(range(len(population)), min(self.tournament_size, len(population)))
+
+        best_idx = max(tournament_indices, key=lambda i: fitness_scores[i])
+
+        return population[best_idx]
+    
+    def crossover(self, parent1: Chromosome, parent2: Chromosome) -> Tuple[Chromosome, Chromosome]:
+        """
+        Creates two offspring by combining parents.
+
+        Args:
+        parent1: Chromosome
+        parent2: Chromosome
+
+        Returns:
+        Tuple of Chromosomes
+        """
+        if random.random() > self.crossover_rate:
+            # no crossover, return clones
+            return parent1.clone(), parent2.clone()
+        
+        # position aware crossover. For each position, randomly choose which parent to take player from
+        child1_players = []
+        child2_players = []
+
+        all_positions = set(self.constraints.position_limits.keys())
+
+        for position in all_positions:
+            p1_at_pos = [p for p in parent1.players if p.position == position]
+            p2_at_pos = [p for p in parent2.players if p.position == position]
+
+            if random.random() < 0.5:
+                child1_players.extend(p1_at_pos)
+                child2_players.extend(p2_at_pos)
+            else:
+                child1_players.extend(p2_at_pos)
+                child2_players.extend(p1_at_pos)
+
+        return Chromosome(child1_players), Chromosome(child2_players)
+    
+    
+                
 
 
