@@ -426,7 +426,76 @@ class EvolutionEngine:
         """
         Main evolution process.
         """
-        pass
+        print("="*50)
+        print("\nHarnessing the spirit of Charles Darwin...")
+        print(f"Population Size: {self.population_size}")
+        print(f"Generations: {self.generations}")
+        print(f"Mutation Rate: {self.mutation_rate}")
+        print(f"Crossover Rate: {self.crossover_rate}")
+
+        # initialize population
+        population = self.initialize_population()
+
+        # evolution loop
+        for gen in range(self.generations):
+            # evaluate fitness
+            fitness_scores = []
+            for chromosome in population:
+                fitness = self.fitness_function(chromosome)
+                chromosome.fitness = fitness
+                fitness_scores.append(fitness)
+
+            gen_best_idx = np.argmax(fitness_scores)
+            gen_best_fitness = fitness_scores[gen_best_idx]
+            gen_best = population[gen_best_idx]
+
+            if gen_best_fitness > self.best_fitness_ever:
+                self.best_fitness_ever = gen_best_fitness
+                self.best_ever = gen_best.clone()
+
+            self.history.append({
+                'generation': gen,
+                'best_fitness': gen_best_fitness,
+                'avg_fitness': np.mean(fitness_scores),
+                'best_roster': gen_best,
+                'diversity': np.std(fitness_scores)
+            })
+
+            if gen % 10 == 0 or gen == self.generations - 1:
+                print(f"Gen {gen:3d}: Best={gen_best_fitness:.4f},"
+                      f"Avg={np.mean(fitness_scores):.4f},"
+                      f"Diversity={np.std(fitness_scores):.4f}")
+                
+            # create next population
+            next_population = []
+
+            # Keep best individuals
+            sorted_indices = np.argsort(fitness_scores)[::-1]
+            for i in range(self.elitism_count):
+                next_population.append(population[sorted_indices[i]].clone())
+
+            while len(next_population) < self.population_size:
+                parent1 = self.tournament_selection(population, fitness_scores)
+                parent2 = self.tournament_selection(population, fitness_scores)
+
+                # crossover
+                child1, child2 = self.crossover(parent1, parent2)
+
+                child1 = self.mutate(child1)
+                child2 = self.mutate(child2)
+
+                # check validity and then add to next generation if valid
+                if child1.is_valid(self.constraints):
+                    next_population.append(child1)
+                if len(next_population) < self.population_size and child2.is_valid(self.constraints):
+                    next_population.append(child2)
+
+            population = next_population[:self.population_size]
+
+            print(f"Praise Darwin! Evolution Complete")
+            print(f"Best fitness achieved: {self.best_fitness_ever:.4f}")
+
+            return self.best_ever, self.history
             
 
 
