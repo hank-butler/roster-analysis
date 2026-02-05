@@ -39,4 +39,29 @@ while len(colts_roster) < 53:
         games_missed=random.randint(0, 8)
     ))
 
-print("Finished")
+# print("Finished")
+
+free_agents = [
+    PlayerAsset(
+        player_id=f"fa_{i}",
+        name=f"Free Agent {i}",
+        position=random.choice(['QB', 'RB', 'WR', 'TE', 'OT', 'OG', 'C', 'EDGE', 'DL', 'LB', 'CB', 'S', 'K', 'P', 'LS']),
+        team="FA",
+        age=random.randint(23, 31),
+        cap_hit_2026=random.uniform(1_000_000, 22_000_000),
+        years_remaining=random.randint(2, 4),
+        guaranteed_money=random.uniform(0, 12_000_000),
+        total_contract_value=random.uniform(5_000_000, 70_000_000),
+        epa_total=random.uniform(-2, 18),
+        snaps_played=random.randint(400, 1100),
+        games_missed=random.randint(0, 4)
+    )
+    for i in range(150)
+]
+
+all_available = colts_roster + free_agents
+
+print("Valuing all players...")
+model = PlayerValuationModel()
+valued_colts = model.value_roster(colts_roster)
+# valued_available = model.value_roster(free_agents)
