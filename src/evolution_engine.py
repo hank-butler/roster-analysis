@@ -97,7 +97,7 @@ class Chromosome:
         
         # Check position requirements
         pos_counts = self.position_counts()
-        for positition, (min_count, max_count) in constraints.position_limits.items():
+        for position, (min_count, max_count) in constraints.position_limits.items():
             count = pos_counts.get(position, 0)
             if count < min_count or count > max_count:
                 return False
@@ -247,7 +247,7 @@ class EvolutionEngine:
                     population.append(chromosome)
                     pbar.update(1)
 
-                attemps += 1
+                attempts += 1
 
         if len(population) < self.population_size:
             print(f"Warning: generated {len(population)} valid rosters")
@@ -288,7 +288,7 @@ class EvolutionEngine:
         for pos, (min_count, _) in self.constraints.position_limits.items():
             while positions_filled[pos] < min_count:
                 # find cheapest players to fill until min count satisfied
-                candidates = [p for p in available if p.position == p and p not in roster]
+                candidates = [p for p in available if p.position == pos and p not in roster]
                 if candidates:
                     cheapest = min(candidates, key=lambda p: p.cap_hit_2026)
                     if cap_used + cheapest.cap_hit_2026 <= self.constraints.salary_cap:
@@ -382,7 +382,7 @@ class EvolutionEngine:
                     mutated.players[idx1], mutated.players[idx2] = mutated.players[idx2], mutated.players[idx1]
         elif mutation_type == 'replace' and len(mutated.players) > 0:
             idx = random.randint(0, len(mutated.players)-1)
-            old_player = mutated.player[idx]
+            old_player = mutated.players[idx]
 
             # find replacements
             candidates = [p for p in self.available_players
@@ -492,10 +492,10 @@ class EvolutionEngine:
 
             population = next_population[:self.population_size]
 
-            print(f"Praise Darwin! Evolution Complete")
-            print(f"Best fitness achieved: {self.best_fitness_ever:.4f}")
+        print(f"Praise Darwin! Evolution Complete")
+        print(f"Best fitness achieved: {self.best_fitness_ever:.4f}")
 
-            return self.best_ever, self.history
+        return self.best_ever, self.history
             
 
 
