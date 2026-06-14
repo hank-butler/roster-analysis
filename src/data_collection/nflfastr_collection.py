@@ -50,7 +50,21 @@ class NFLDataCollector:
         """
         logger.info(f"Collecting player stats for {years}")
 
-        stats = nfl.import_seasonal_data(years)
+        # Some years may not yet have seasonal data published (e.g. current/future
+        # seasons). Collect available years and skip those that return 404.
+        frames = []
+        for year in years:
+            try:
+                df = nfl.import_seasonal_data([year])
+                frames.append(df)
+                logger.info(f"  Collected stats for {year}: {len(df):,} player-seasons")
+            except Exception as e:
+                logger.warning(f"  Skipping {year} seasonal stats (not yet available): {e}")
+
+        if not frames:
+            raise RuntimeError(f"No seasonal stats available for any of {years}")
+
+        stats = pd.concat(frames, ignore_index=True)
 
         # Save
         output_path = self.output_dir / f"player_stats_{min(years)}_{max(years)}.csv"
@@ -135,7 +149,7 @@ if __name__ == "__main__":
     print("\n" + "="*50)
     print("COLLECTION SUMMARY")
     print("="*50)
-    print(f"Play-by-play records: {len(data['pbp']):, }")
+    print(f"Play-by-play records: {len(data['pbp']):,}")
     print(f"Player stat records: {len(data['stats']):,}")
     print(f"Player Injury records: {len(data['injuries']):,}")
     print(f"Roster records: {len(data['rosters']):,}")
