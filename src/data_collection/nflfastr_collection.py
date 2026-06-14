@@ -1,5 +1,6 @@
 import nfl_data_py as nfl
 import pandas as pd
+import requests
 from pathlib import Path
 from typing import List
 import logging
@@ -29,7 +30,19 @@ class NFLDataCollector:
 
         logger.info(f"Collecting play-by-play data for {years}")
 
-        pbp = nfl.import_pbp_data(years)
+        frames = []
+        for year in years:
+            try:
+                df = nfl.import_pbp_data([year])
+                frames.append(df)
+                logger.info(f"  Collected play-by-play for {year}: {len(df):,} plays")
+            except (KeyError, ValueError, requests.exceptions.HTTPError) as e:
+                logger.warning(f"  Skipping {year} play-by-play data (not yet available): {e}")
+
+        if not frames:
+            raise RuntimeError(f"No play-by-play data available for any of {years}")
+
+        pbp = pd.concat(frames, ignore_index=True)
 
         # save the data files to the data folder
         output_path = self.output_dir / f"pbp_{min(years)}_{max(years)}.parquet"
@@ -58,7 +71,7 @@ class NFLDataCollector:
                 df = nfl.import_seasonal_data([year])
                 frames.append(df)
                 logger.info(f"  Collected stats for {year}: {len(df):,} player-seasons")
-            except Exception as e:
+            except (KeyError, ValueError, requests.exceptions.HTTPError) as e:
                 logger.warning(f"  Skipping {year} seasonal stats (not yet available): {e}")
 
         if not frames:
@@ -81,11 +94,23 @@ class NFLDataCollector:
         years: List of int
 
         RETURNS:
-        pandas DataFrame 
+        pandas DataFrame
         """
         logger.info(f"Collecting roster data for {years}...")
 
-        rosters = nfl.import_seasonal_rosters(years)
+        frames = []
+        for year in years:
+            try:
+                df = nfl.import_seasonal_rosters([year])
+                frames.append(df)
+                logger.info(f"  Collected rosters for {year}: {len(df):,} entries")
+            except (KeyError, ValueError, requests.exceptions.HTTPError) as e:
+                logger.warning(f"  Skipping {year} roster data (not yet available): {e}")
+
+        if not frames:
+            raise RuntimeError(f"No roster data available for any of {years}")
+
+        rosters = pd.concat(frames, ignore_index=True)
 
         # Save, specify output path
         output_path = self.output_dir / f"rosters_{min(years)}_{max(years)}.csv"
@@ -107,7 +132,19 @@ class NFLDataCollector:
 
         logger.info(f"Collecting injury data for {years}...")
 
-        injuries = nfl.import_injuries(years)
+        frames = []
+        for year in years:
+            try:
+                df = nfl.import_injuries([year])
+                frames.append(df)
+                logger.info(f"  Collected injury data for {year}: {len(df):,} reports")
+            except (KeyError, ValueError, requests.exceptions.HTTPError) as e:
+                logger.warning(f"  Skipping {year} injury data (not yet available): {e}")
+
+        if not frames:
+            raise RuntimeError(f"No injury data available for any of {years}")
+
+        injuries = pd.concat(frames, ignore_index=True)
 
         # Save and export
         output_path = self.output_dir / f"injuries_{min(years)}_{max(years)}.csv"
