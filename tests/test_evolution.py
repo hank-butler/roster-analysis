@@ -1,6 +1,6 @@
 import random
-from player_valuation import PlayerAsset, PlayerValuationModel, PortfolioAnalyzer
-from evolution_engine import RosterConstraints, EvolutionEngine, Chromosome
+from src.player_valuation import PlayerAsset, PlayerValuationModel, PortfolioAnalyzer
+from src.evolution_engine import RosterConstraints, EvolutionEngine, Chromosome
 
 colts_roster = [
     PlayerAsset(
@@ -113,7 +113,6 @@ constraints = RosterConstraints()
 print(f"Salary cap: ${constraints.salary_cap:>12,.0f}")
 print(f"Roster size: {constraints.min_roster_size}-{constraints.max_roster_size}")
 
-# 53-man roster with random positions won't meet position minimums, but test the method
 is_valid = chrom.is_valid(constraints)
 print(f"Is 53-man Colts roster valid? {is_valid}")
 
@@ -161,7 +160,6 @@ print("="*50)
 fitness = engine.fitness_function(chrom)
 print(f"Colts roster fitness: {fitness:.4f}")
 
-# Test with a tiny invalid roster
 tiny_chrom = Chromosome(valued_colts[:5])
 tiny_fitness = engine.fitness_function(tiny_chrom)
 print(f"Invalid (5 player) roster fitness: {tiny_fitness:.4f}")
@@ -183,7 +181,6 @@ print("\n" + "="*50)
 print("TEST 7: Population Initialization")
 print("="*50)
 
-# Use smaller population for testing speed
 engine.population_size = 10
 population = engine.initialize_population()
 print(f"Population generated: {len(population)} chromosomes")
@@ -212,7 +209,6 @@ print("\n" + "="*50)
 print("TEST 9: Crossover")
 print("="*50)
 
-# Find two valid parents from population
 valid_parents = [p for p, f in zip(population, fitness_scores) if f > -1000]
 if len(valid_parents) >= 2:
     parent1, parent2 = valid_parents[0], valid_parents[1]
@@ -234,7 +230,6 @@ print("="*50)
 
 if valid_parents:
     original = valid_parents[0]
-    # Force mutation by temporarily setting rate to 1.0
     original_rate = engine.mutation_rate
     engine.mutation_rate = 1.0
 
@@ -243,7 +238,6 @@ if valid_parents:
     print(f"Mutated:  {len(mutated)} players, cap=${mutated.total_cap():>12,.0f}")
     print(f"Same object? {original is mutated}")
 
-    # Check how many players differ
     original_ids = set(p.player_id for p in original.players)
     mutated_ids = set(p.player_id for p in mutated.players)
     diff = original_ids.symmetric_difference(mutated_ids)
@@ -267,7 +261,6 @@ engine_full = EvolutionEngine(
     valuation_model=model
 )
 
-# Small parameters for a test run
 engine_full.population_size = 20
 engine_full.generations = 10
 
@@ -290,7 +283,6 @@ for gen_data in history:
           f"Avg={gen_data['avg_fitness']:.4f}, "
           f"Diversity={gen_data['diversity']:.4f}")
 
-# Portfolio analysis of best roster
 print("\n" + "="*50)
 print("BEST ROSTER PORTFOLIO ANALYSIS")
 print("="*50)

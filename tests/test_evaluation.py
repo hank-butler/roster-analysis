@@ -1,7 +1,4 @@
-import player_valuation as pev
-
-# if pev.PlayerAsset:
-    # print("Successfully imported: {pev.PlayerAsset}")
+from src import player_valuation as pev
 
 '''
 Creating test roster with 3 IND Colts players
@@ -63,7 +60,6 @@ analyzer = pev.PortfolioAnalyzer(valued_roster)
 print("IND COLTS - Sample Roster Valuation")
 
 for player in valued_roster:
-    # print(player)
     print(f"\n{player.name} ({player.position}, Age: {player.age})")
     print(f"\nCap Hit: ${player.cap_hit_2026:>12,.0f}")
     print(f"\nFair Value: ${player.fair_value:>12,.0f}")
@@ -104,4 +100,3 @@ if len(overvalued) > 0:
     print(overvalued[['name', 'position', 'cap_hit', 'fair_value', 'overvalued_by', 'pct_overvalued']])
 else:
     print("No significantly overvalued players")
-

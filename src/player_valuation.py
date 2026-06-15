@@ -43,6 +43,7 @@ class PlayerValuationModel:
         """
         Risk free rate assumption of 0.03 set as default value, can be overwritten when creating new instance
         """
+        self.risk_free_rate = risk_free_rate
 
         self.position_baselines = {
             "QB": 35_000_000,
@@ -442,7 +443,7 @@ class PortfolioAnalyzer:
 
 
 if __name__ == "__main__":
-    main()
+    pass
 
 
 

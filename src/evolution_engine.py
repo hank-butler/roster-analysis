@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 from tqdm import tqdm
 
-from player_valuation import PlayerAsset, PlayerValuationModel, PortfolioAnalyzer
+from src.player_valuation import PlayerAsset, PlayerValuationModel, PortfolioAnalyzer
 
 @dataclass
 class RosterConstraints:
