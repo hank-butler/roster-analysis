@@ -189,6 +189,7 @@ class SuperBowlTemplateAnalyzer:
 
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO)
     from src.player_valuation import PlayerValuationModel
 
     demo_roster = [
@@ -206,10 +207,10 @@ if __name__ == "__main__":
     valued = model.value_roster(demo_roster)
     analyzer = SuperBowlTemplateAnalyzer()
 
-    print("Position allocation:", analyzer.calculate_position_allocation(valued))
-    print("Age distribution:", analyzer.calculate_age_distribution(valued))
-    print("Star concentration:", analyzer.calculate_star_concentration(valued))
+    logger.info("Position allocation: %s", analyzer.calculate_position_allocation(valued))
+    logger.info("Age distribution: %s", analyzer.calculate_age_distribution(valued))
+    logger.info("Star concentration: %s", analyzer.calculate_star_concentration(valued))
     score = analyzer.calculate_similarity_score(valued)
-    print(f"Similarity: {score['overall_similarity']:.1f}/100")
+    logger.info("Similarity: %.1f/100", score['overall_similarity'])
     for gap in score["gaps"]:
-        print(f"  {gap}")
+        logger.info("  %s", gap)
