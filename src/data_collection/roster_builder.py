@@ -218,6 +218,31 @@ class RosterBuilder:
             )
         return pd.concat(frames, ignore_index=True)
 
+    def _build_position_lookup(self) -> dict:
+        """Build a (norm_name, norm_team) → position lookup from full roster data.
+
+        The roster CSV from nfl_data_py contains ALL players (including OL, DL, LB,
+        S, CB, K, P) with their positions — unlike the stats join which only covers
+        skill positions with EPA data.
+
+        Returns:
+            Dict mapping (normalized_name, normalized_team) → uppercase position string.
+        """
+        rosters_path = self.perf_dir / "rosters_2023_2025.csv"
+        if not rosters_path.exists():
+            logger.warning(f"Roster file not found for position lookup: {rosters_path}")
+            return {}
+        rosters_df = pd.read_csv(rosters_path, usecols=["player_name", "team", "position"])
+        lookup: dict = {}
+        for _, row in rosters_df.iterrows():
+            pos = str(row.get("position", "")).strip()
+            if pos and pos.upper() != "NAN":
+                key = (_normalize_name(str(row["player_name"])), _normalize_team(str(row["team"])))
+                # Prefer the most recent / non-empty entry; last-write wins
+                lookup[key] = pos.upper()
+        logger.info(f"Built position lookup with {len(lookup)} entries from rosters data")
+        return lookup
+
     def merge(
         self, perf_df: pd.DataFrame, contract_df: pd.DataFrame
     ) -> pd.DataFrame:
@@ -249,6 +274,10 @@ class RosterBuilder:
         matched_rows = []
         unmatched_rows = []
 
+        # Position lookup covers ALL roster players (OL, DL, LB, S, CB, K, P)
+        # whereas perf_df only has skill-position players with EPA data.
+        pos_lookup = self._build_position_lookup()
+
         for _, otc_row in contracts.iterrows():
             otc_name = otc_row["_norm_name"]
             otc_team = otc_row["_norm_team"]
@@ -267,9 +296,12 @@ class RosterBuilder:
             if best_match is not None and best_score >= FUZZY_THRESHOLD:
                 for col in perf_cols:
                     row_dict[col] = best_match[col]
-                # Backfill position from nfl_data_py if OTC position is null
-                if pd.isna(row_dict.get("position")):
+                # Backfill position from nfl_data_py perf match if OTC position is null
+                if pd.isna(row_dict.get("position")) or str(row_dict.get("position", "")).strip() == "":
                     row_dict["position"] = best_match.get("position", "")
+                # If still empty, fall back to full-roster position lookup
+                if pd.isna(row_dict.get("position")) or str(row_dict.get("position", "")).strip() == "":
+                    row_dict["position"] = pos_lookup.get((otc_name, otc_team), "")
             else:
                 for col in base_perf_cols:
                     row_dict[col] = np.nan
@@ -278,6 +310,9 @@ class RosterBuilder:
                     looked_up_age = self._age_lookup.get((otc_name, otc_team))
                     if looked_up_age is not None:
                         row_dict["age"] = looked_up_age
+                # Backfill position from full roster data for unmatched players
+                if pd.isna(row_dict.get("position")) or str(row_dict.get("position", "")).strip() == "":
+                    row_dict["position"] = pos_lookup.get((otc_name, otc_team), "")
                 unmatched_rows.append({
                     "otc_name": otc_row["player_name"],
                     "otc_team": otc_row.get("team", ""),
