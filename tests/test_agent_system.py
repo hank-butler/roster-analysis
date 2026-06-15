@@ -126,3 +126,50 @@ def test_contract_agent_query_echoed_in_result(sf_players):
     agent = ContractAgent(client=_mock_client("ok"))
     result = agent.run("Who is the most overvalued?", sf_players)
     assert result["query"] == "Who is the most overvalued?"
+
+
+# ---- ScoutingAgent --------------------------------------------------------
+
+from src.agents.scouting_agent import ScoutingAgent
+
+
+def test_scouting_agent_returns_required_keys(sf_players):
+    agent = ScoutingAgent(client=_mock_client("Kittle is elite."))
+    result = agent.run("Scouting report on George Kittle", sf_players)
+    assert set(result.keys()) == {"query", "agent", "response", "data_used"}
+
+
+def test_scouting_agent_sets_agent_name(sf_players):
+    agent = ScoutingAgent(client=_mock_client("Report."))
+    result = agent.run("any", sf_players)
+    assert result["agent"] == "scouting"
+
+
+def test_scouting_agent_data_used_is_list_of_strings(sf_players):
+    agent = ScoutingAgent(client=_mock_client("ok"))
+    result = agent.run("any", sf_players)
+    assert isinstance(result["data_used"], list)
+    assert all(isinstance(n, str) for n in result["data_used"])
+
+
+def test_scouting_agent_prioritises_name_match(sf_players):
+    """When query mentions a player name, that player should appear in data_used."""
+    agent = ScoutingAgent(client=_mock_client("ok"))
+    result = agent.run("Tell me about George Kittle", sf_players)
+    assert "George Kittle" in result["data_used"]
+
+
+def test_scouting_agent_caps_at_30_players():
+    players = [
+        _make_valued_player(f"Player {i}", "WR", 5_000_000, 25)
+        for i in range(50)
+    ]
+    agent = ScoutingAgent(client=_mock_client("ok"))
+    result = agent.run("any", players)
+    assert len(result["data_used"]) <= 30
+
+
+def test_scouting_agent_query_echoed(sf_players):
+    agent = ScoutingAgent(client=_mock_client("ok"))
+    result = agent.run("Is Bosa injury-prone?", sf_players)
+    assert result["query"] == "Is Bosa injury-prone?"
