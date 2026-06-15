@@ -75,6 +75,11 @@ class RosterBuilder:
         ].drop_duplicates(subset=["player_id", "season"])
 
         df = stats_df.merge(rosters_slim, on=["player_id", "season"], how="inner")
+        if df.empty:
+            raise ValueError(
+                "Performance/roster join produced 0 rows. Verify that player_id and season "
+                "columns exist in both inputs and cover overlapping seasons."
+            )
         df["team"] = df["team"].apply(_normalize_team)
 
         # Total EPA per player-season
@@ -93,7 +98,7 @@ class RosterBuilder:
             df["season_snaps"] = df.get("games", pd.Series(0, index=df.index)).fillna(0) * 65
             logger.warning("No snap columns found — using games * 65 as proxy")
 
-        df["season_games_missed"] = GAMES_PER_SEASON - df["games"].fillna(0)
+        df["season_games_missed"] = (GAMES_PER_SEASON - df["games"].fillna(0)).clip(lower=0)
 
         records = []
         for (player_name, team, position), group in df.groupby(
@@ -241,6 +246,16 @@ class RosterBuilder:
             matched_rows.append(row_dict)
 
         merged_df = pd.DataFrame(matched_rows)
+
+        total = len(contracts)
+        matched_count = total - len(unmatched_rows)
+        match_pct = matched_count / total * 100 if total > 0 else 0
+        logger.info(f"Fuzzy match rate: {matched_count}/{total} ({match_pct:.1f}%)")
+        if match_pct < 50:
+            logger.warning(
+                f"Match rate below 50% — check team normalization and name formats. "
+                f"Top unmatched scores: {sorted([r['match_score'] for r in unmatched_rows], reverse=True)[:5]}"
+            )
 
         unmatched_path = self.output_dir / "unmatched_players.csv"
         unmatched_frame = pd.DataFrame(
