@@ -111,6 +111,6 @@ class StrategyAgent:
         return {
             "query": query,
             "agent": "strategy",
-            "response": response.content[0].text,
+            "response": response.content[0].text if response.content else "",
             "data_used": teams,
         }

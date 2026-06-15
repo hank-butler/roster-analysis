@@ -90,6 +90,6 @@ class ContractAgent:
         return {
             "query": query,
             "agent": "contract",
-            "response": response.content[0].text,
+            "response": response.content[0].text if response.content else "",
             "data_used": [p.name for p in selected],
         }

@@ -94,6 +94,6 @@ class ScoutingAgent:
         return {
             "query": query,
             "agent": "scouting",
-            "response": response.content[0].text,
+            "response": response.content[0].text if response.content else "",
             "data_used": [p.name for p in selected],
         }

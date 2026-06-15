@@ -14,7 +14,7 @@ from src.player_valuation import PlayerAsset, PlayerValuationModel
 
 logger = logging.getLogger(__name__)
 
-_CSV_PATH = "data/processed/player_assets_ready.csv"
+_CSV_PATH = str(Path(__file__).parent.parent.parent / "data" / "processed" / "player_assets_ready.csv")
 
 
 def _load_players_from_csv(path: str) -> List[PlayerAsset]:
@@ -96,6 +96,12 @@ class AgentSystem:
             players if players is not None
             else _load_players_from_csv(_CSV_PATH)
         )
+
+        if not self._players:
+            logger.warning(
+                "AgentSystem initialised with 0 players — "
+                "agent responses will lack grounding data"
+            )
 
         client = anthropic.Anthropic(api_key=resolved_key)
         self._coordinator = CoordinatorAgent(client=client)
