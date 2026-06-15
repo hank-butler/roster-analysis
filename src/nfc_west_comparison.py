@@ -79,13 +79,17 @@ class DivisionAnalyzer:
             rows.append(row)
         return pd.DataFrame(rows).set_index("team")
 
-    def rank_teams(self, metric: str = "efficiency") -> pd.DataFrame:
+    def rank_teams(
+        self, metric: str = "efficiency", _metrics_df: pd.DataFrame = None
+    ) -> pd.DataFrame:
         """Rank all teams by a given metric.
 
         Args:
             metric: One of 'efficiency', 'risk', 'sharpe_ratio', 'sb_similarity'.
                 For 'risk', lower is better (ranks ascending).
                 All others rank descending.
+            _metrics_df: Optional pre-computed DataFrame from compare_portfolio_metrics().
+                If None, compare_portfolio_metrics() is called internally.
 
         Returns:
             DataFrame with columns: team, <metric>, rank.
@@ -106,7 +110,7 @@ class DivisionAnalyzer:
             ])
             df = df.sort_values("sb_similarity", ascending=False).reset_index(drop=True)
         else:
-            metrics_df = self.compare_portfolio_metrics()
+            metrics_df = _metrics_df if _metrics_df is not None else self.compare_portfolio_metrics()
             df = metrics_df[["team", metric]].copy()
             ascending = metric == "risk"
             df = df.sort_values(metric, ascending=ascending).reset_index(drop=True)
@@ -149,7 +153,7 @@ class DivisionAnalyzer:
             elif primary_pct < avg_pct:
                 weaknesses.append(group)
                 group_series = alloc_df[group].sort_values(ascending=False)
-                rank = list(group_series.index).index(primary_team) + 1
+                rank = int(group_series.index.get_loc(primary_team)) + 1
                 if rank >= 3:
                     opportunities.append(group)
 
@@ -173,14 +177,28 @@ class DivisionAnalyzer:
             Dict with keys: metrics_df, allocation_df, rankings, advantages,
             sb_similarity, figures.
         """
+        # Pre-compute expensive results once; reuse in rankings and figures
         metrics_df = self.compare_portfolio_metrics()
         allocation_df = self.compare_position_allocation()
         advantages = self.identify_division_advantages(primary_team)
-        rankings = {m: self.rank_teams(m) for m in _VALID_METRICS}
+
         sb_similarity = {
             team: self._sb_analyzer.calculate_similarity_score(roster)
             for team, roster in self._valued_rosters.items()
         }
+        sb_ranking_df = pd.DataFrame([
+            {"team": t, "sb_similarity": v["overall_similarity"]}
+            for t, v in sb_similarity.items()
+        ]).sort_values("sb_similarity", ascending=False).reset_index(drop=True)
+        sb_ranking_df["rank"] = range(1, len(sb_ranking_df) + 1)
+
+        rankings = {
+            "efficiency":    self.rank_teams("efficiency", _metrics_df=metrics_df),
+            "risk":          self.rank_teams("risk", _metrics_df=metrics_df),
+            "sharpe_ratio":  self.rank_teams("sharpe_ratio", _metrics_df=metrics_df),
+            "sb_similarity": sb_ranking_df,
+        }
+
         primary_roster = self._valued_rosters.get(primary_team, [])
         figures = {
             "efficiency_scatter": plot_roster_efficiency_scatter(self._valued_rosters),
