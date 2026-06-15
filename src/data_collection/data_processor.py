@@ -29,10 +29,11 @@ REQUIRED_ASSET_FIELDS = [
 
 
 def _make_player_id(row: pd.Series) -> str:
-    """Generate a deterministic player_id from team + normalized name."""
+    """Generate a deterministic player_id from team + position + normalized name."""
     name_slug = re.sub(r"[^a-z0-9]", "_", str(row.get("name", "")).lower())
     team = str(row.get("team", "unk")).lower()
-    return f"{team}_{name_slug}"
+    pos = str(row.get("position", "unk")).lower()
+    return f"{team}_{pos}_{name_slug}"
 
 
 class DataProcessor:
@@ -154,6 +155,7 @@ class DataProcessor:
             List of PlayerAsset instances ready for PlayerValuationModel.value_roster().
         """
         assets = []
+        skip_count = 0
         for _, row in df.iterrows():
             try:
                 assets.append(PlayerAsset(
@@ -171,7 +173,12 @@ class DataProcessor:
                     games_missed=int(row["games_missed"]),
                 ))
             except Exception as e:
-                logger.warning(f"Skipping player {row.get('name', '?')}: {e}")
+                skip_count += 1
+                logger.warning(
+                    f"Skipping player {row.get('name', '?')}: {e}", exc_info=True
+                )
+        if skip_count > 0:
+            logger.warning(f"Skipped {skip_count} of {len(df)} players due to conversion errors")
         return assets
 
     def process(self, merged_path: str) -> pd.DataFrame:
