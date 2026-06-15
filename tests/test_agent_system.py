@@ -222,3 +222,133 @@ def test_strategy_agent_handles_single_team_data():
     result = agent.run("what should we do?", sf_only)
     assert result["agent"] == "strategy"
     assert "response" in result
+
+
+import os
+from unittest.mock import MagicMock, patch
+
+from src.agents.agent_system import AgentSystem
+
+
+# ---- AgentSystem: constructor ---------------------------------------------
+
+def test_agent_system_raises_if_no_api_key(sf_players, monkeypatch):
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    with pytest.raises(ValueError, match="ANTHROPIC_API_KEY"):
+        AgentSystem(players=sf_players, api_key=None)
+
+
+def _make_simple_client(response_text: str) -> MagicMock:
+    """Return a simple mock client (no spec) safe to use inside patch blocks."""
+    client = MagicMock()
+    msg = MagicMock()
+    msg.content = [MagicMock(text=response_text)]
+    client.messages.create.return_value = msg
+    return client
+
+
+def test_agent_system_accepts_api_key_param(sf_players):
+    with patch("src.agents.agent_system.anthropic.Anthropic") as mock_cls:
+        mock_cls.return_value = _make_simple_client("contract")
+        system = AgentSystem(players=sf_players, api_key="sk-test-key")
+    assert system is not None
+
+
+def test_agent_system_accepts_pre_loaded_players(sf_players):
+    with patch("src.agents.agent_system.anthropic.Anthropic") as mock_cls:
+        mock_cls.return_value = _make_simple_client("contract")
+        system = AgentSystem(players=sf_players, api_key="sk-test")
+    assert system._players is not None
+    assert len(system._players) == len(sf_players)
+
+
+def test_agent_system_loads_from_csv_when_no_players(tmp_path, monkeypatch):
+    """When players=None, AgentSystem loads from player_assets_ready.csv."""
+    import pandas as pd
+
+    csv_path = tmp_path / "player_assets_ready.csv"
+    pd.DataFrame([{
+        "player_id": "sf_qb_test", "name": "Test QB", "position": "QB",
+        "team": "SF", "age": 27, "cap_hit_2026": 20_000_000,
+        "years_remaining": 3, "guaranteed_money": 10_000_000,
+        "total_contract_value": 60_000_000, "epa_total": 30.0,
+        "snaps_played": 1000, "games_missed": 0,
+    }]).to_csv(csv_path, index=False)
+
+    with patch("src.agents.agent_system.anthropic.Anthropic") as mock_cls:
+        mock_cls.return_value = _make_simple_client("contract")
+        with patch("src.agents.agent_system._CSV_PATH", str(csv_path)):
+            system = AgentSystem(players=None, api_key="sk-test")
+
+    assert len(system._players) == 1
+    assert system._players[0].name == "Test QB"
+
+
+# ---- AgentSystem: ask() ---------------------------------------------------
+
+def _make_system_with_mock(players, route_response: str, agent_response: str):
+    """Helper: AgentSystem with two sequential mocked API responses."""
+    call_count = 0
+
+    def side_effect(**kwargs):
+        nonlocal call_count
+        call_count += 1
+        text = route_response if call_count == 1 else agent_response
+        msg = MagicMock()
+        msg.content = [MagicMock(text=text)]
+        return msg
+
+    client = MagicMock(spec=anthropic.Anthropic)
+    client.messages.create.side_effect = side_effect
+
+    with patch("src.agents.agent_system.anthropic.Anthropic") as mock_cls:
+        mock_cls.return_value = client
+        system = AgentSystem(players=players, api_key="sk-test")
+
+    return system
+
+
+def test_ask_returns_required_keys(sf_players):
+    system = _make_system_with_mock(sf_players, "contract", "Purdy is overvalued.")
+    result = system.ask("Who is most overvalued?")
+    assert set(result.keys()) == {"query", "agent", "response", "data_used"}
+
+
+def test_ask_routes_to_contract_agent(sf_players):
+    system = _make_system_with_mock(sf_players, "contract", "Cap analysis here.")
+    result = system.ask("Who is overvalued?")
+    assert result["agent"] == "contract"
+
+
+def test_ask_routes_to_scouting_agent(sf_players):
+    system = _make_system_with_mock(sf_players, "scouting", "Kittle is elite.")
+    result = system.ask("Tell me about Kittle")
+    assert result["agent"] == "scouting"
+
+
+def test_ask_routes_to_strategy_agent(sf_players):
+    system = _make_system_with_mock(sf_players, "strategy", "Target pass rush.")
+    result = system.ask("What positions should we target?")
+    assert result["agent"] == "strategy"
+
+
+def test_ask_returns_error_dict_on_api_error(sf_players):
+    """API error → returns error dict, does not raise."""
+    client = MagicMock(spec=anthropic.Anthropic)
+    client.messages.create.side_effect = anthropic.APIConnectionError(
+        request=MagicMock()
+    )
+    with patch("src.agents.agent_system.anthropic.Anthropic") as mock_cls:
+        mock_cls.return_value = client
+        system = AgentSystem(players=sf_players, api_key="sk-test")
+
+    result = system.ask("any question")
+    assert result["agent"] == "error"
+    assert "error" in result["response"].lower()
+    assert result["data_used"] == []
+
+
+def test_ask_echoes_query(sf_players):
+    system = _make_system_with_mock(sf_players, "scouting", "response")
+    result = system.ask("Is Bosa healthy?")
+    assert result["query"] == "Is Bosa healthy?"
