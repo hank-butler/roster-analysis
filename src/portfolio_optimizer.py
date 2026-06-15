@@ -68,6 +68,7 @@ class PortfolioOptimizer:
         pos_counts: Dict[str, int] = {}
         cap_used = 0.0
 
+        # Phase 1: greedy fill up to max counts
         for player in shuffled:
             pos = player.position
             _, max_c = self._constraints.position_limits.get(pos, (0, 0))
@@ -77,6 +78,23 @@ class PortfolioOptimizer:
                 roster.append(player)
                 pos_counts[pos] = pos_counts.get(pos, 0) + 1
                 cap_used += player.cap_hit_2026
+
+        # Phase 2: fill any positions that didn't reach their minimum
+        for pos, (min_c, _) in self._constraints.position_limits.items():
+            while pos_counts.get(pos, 0) < min_c:
+                candidates = [
+                    p for p in shuffled
+                    if p.position == pos and p not in roster
+                ]
+                if not candidates:
+                    break
+                cheapest = min(candidates, key=lambda p: p.cap_hit_2026)
+                if cap_used + cheapest.cap_hit_2026 <= self._constraints.salary_cap:
+                    roster.append(cheapest)
+                    pos_counts[pos] = pos_counts.get(pos, 0) + 1
+                    cap_used += cheapest.cap_hit_2026
+                else:
+                    break
 
         if self._is_valid_roster(roster):
             return roster
@@ -133,44 +151,63 @@ class PortfolioOptimizer:
     def calculate_position_efficient_allocation(self) -> Dict[str, Dict[str, object]]:
         """Compare current position cap allocation to the optimal from top Monte Carlo rosters.
 
+        Runs a single Monte Carlo pass collecting both efficiency and position data.
+        Top 10% rosters by efficiency determine the "optimal" allocation.
+
         Args: None (uses self._current_roster and self._available_players).
 
         Returns:
-            Dict mapping position group to {current_pct, optimal_pct, delta, recommendation}.
+            Dict mapping position group → {current_pct, optimal_pct, delta, recommendation}.
         """
-        frontier_df = self.calculate_efficient_frontier(n_points=20)
-        if frontier_df.empty:
-            return {}
-
-        threshold = frontier_df["efficiency"].quantile(0.90)
         pool = self._current_roster + self._available_players
-        pos_data: Dict[str, List[float]] = {g: [] for g in POSITION_GROUPS}
+        samples: List[Dict] = []
 
-        for _ in range(200):
+        for _ in range(_N_MONTE_CARLO):
             roster = self._random_roster(pool)
             if roster is None:
                 continue
             metrics = self._roster_metrics(roster)
-            if metrics["efficiency"] >= threshold:
-                total_cap = sum(p.cap_hit_2026 for p in roster)
-                if total_cap == 0:
-                    continue
-                group_cap: Dict[str, float] = {g: 0.0 for g in POSITION_GROUPS}
+            # Record position allocation alongside metrics
+            total_cap = sum(p.cap_hit_2026 for p in roster)
+            group_cap: Dict[str, float] = {g: 0.0 for g in POSITION_GROUPS}
+            if total_cap > 0:
                 for p in roster:
                     g = _POS_TO_GROUP.get(p.position.upper().strip())
                     if g:
-                        group_cap[g] += p.cap_hit_2026
-                for g, cap in group_cap.items():
-                    pos_data[g].append(cap / total_cap * 100)
+                        group_cap[g] += p.cap_hit_2026 / total_cap * 100
+            samples.append({**metrics, **{f"pos_{g}": v for g, v in group_cap.items()}})
 
         current_alloc = SuperBowlTemplateAnalyzer().calculate_position_allocation(
             self._current_roster
         )
 
-        result: Dict[str, Dict[str, object]] = {}
+        if not samples:
+            logger.warning(
+                "Monte Carlo produced 0 valid rosters — returning current allocation as optimal"
+            )
+            result: Dict[str, Dict[str, object]] = {}
+            for group in POSITION_GROUPS:
+                current_pct = current_alloc.get(group, 0.0)
+                result[group] = {
+                    "current_pct": round(current_pct, 2),
+                    "optimal_pct": round(current_pct, 2),
+                    "delta": 0.0,
+                    "recommendation": "maintain",
+                }
+            return result
+
+        df = pd.DataFrame(samples)
+        threshold = df["efficiency"].quantile(0.90)
+        top_df = df[df["efficiency"] >= threshold]
+
+        if top_df.empty:
+            top_df = df  # fallback: use all samples
+
+        result = {}
         for group in POSITION_GROUPS:
+            col = f"pos_{group}"
             current_pct = current_alloc.get(group, 0.0)
-            optimal_pct = float(np.mean(pos_data[group])) if pos_data[group] else current_pct
+            optimal_pct = float(top_df[col].mean()) if col in top_df.columns else current_pct
             delta = optimal_pct - current_pct
             if abs(delta) <= 2.0:
                 recommendation = "maintain"
