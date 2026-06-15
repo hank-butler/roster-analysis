@@ -81,12 +81,14 @@ class SuperBowlTemplateAnalyzer:
         Returns:
             Dict mapping bucket label to percentage of roster count (0-100).
         """
-        counts = {"22-25": 0, "26-29": 0, "30+": 0}
+        counts = {b: 0 for b in _AGE_BUCKETS}
         valid = 0
 
         for player in roster:
             if player.age == 0:
-                logger.warning(f"Age 0 for {player.name} — excluded from age distribution")
+                logger.warning(
+                    "Age 0 for %s — excluded from age distribution", player.name
+                )
                 continue
             valid += 1
             if player.age <= 25:
@@ -125,7 +127,7 @@ class SuperBowlTemplateAnalyzer:
             "top_10": round(sum(sorted_caps[:10]) / total_cap * 100, 4),
         }
 
-    def build_sb_template(self) -> Dict:
+    def build_sb_template(self) -> Dict[str, Dict[str, float]]:
         """Return hardcoded SB winner averages (2020-2024).
 
         Returns:
@@ -133,7 +135,7 @@ class SuperBowlTemplateAnalyzer:
         """
         return _SB_TEMPLATE
 
-    def calculate_similarity_score(self, roster: List[PlayerAsset]) -> Dict:
+    def calculate_similarity_score(self, roster: List[PlayerAsset]) -> Dict[str, object]:
         """Compare roster metrics against the SB winner template.
 
         Uses mean absolute percentage deviation per category, capped at 1.0.
