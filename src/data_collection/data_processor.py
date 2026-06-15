@@ -128,7 +128,8 @@ class DataProcessor:
                 logger.warning(f"Missing field '{field}' — defaulting to 0")
                 df[field] = 0
 
-        df["age"] = pd.to_numeric(df["age"], errors="coerce").fillna(25).astype(int)
+        # Treat age=0 as missing (OTC scraper stores 0 when age unavailable)
+        df["age"] = pd.to_numeric(df["age"], errors="coerce").replace(0, np.nan).fillna(25).astype(int)
         df["years_remaining"] = (
             pd.to_numeric(df["years_remaining"], errors="coerce").fillna(1).astype(int)
         )

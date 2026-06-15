@@ -48,6 +48,8 @@ class RosterBuilder:
         self.contract_dir = Path(contract_dir)
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
+        # Populated by _aggregate_performance; used in merge() to fill unmatched ages
+        self._age_lookup: dict = {}  # (norm_name, norm_team) -> age
 
     def _aggregate_performance(
         self, stats_df: pd.DataFrame, rosters_df: pd.DataFrame
@@ -70,9 +72,10 @@ class RosterBuilder:
             epa_total, snaps_played, games_missed.
         """
         # Join stats to rosters to get player_name, position, team
-        rosters_slim = rosters_df[
-            ["player_id", "season", "player_name", "position", "team"]
-        ].drop_duplicates(subset=["player_id", "season"])
+        roster_cols = ["player_id", "season", "player_name", "position", "team"]
+        if "birth_date" in rosters_df.columns:
+            roster_cols.append("birth_date")
+        rosters_slim = rosters_df[roster_cols].drop_duplicates(subset=["player_id", "season"])
 
         df = stats_df.merge(rosters_slim, on=["player_id", "season"], how="inner")
         if df.empty:
@@ -81,6 +84,34 @@ class RosterBuilder:
                 "columns exist in both inputs and cover overlapping seasons."
             )
         df["team"] = df["team"].apply(_normalize_team)
+
+        # Compute player age from birth_date (reference year = 2026 for cap analysis)
+        if "birth_date" in df.columns:
+            current_year = 2026
+            df["birth_year"] = pd.to_datetime(df["birth_date"], errors="coerce").dt.year
+            df["computed_age"] = current_year - df["birth_year"]
+
+        # Build a broader age lookup from ALL roster rows (covers players who won't
+        # match via stats join but whose ages appear in the rosters CSV).
+        if "birth_date" in rosters_df.columns:
+            current_year = 2026
+            full_ages = rosters_df[["player_name", "team", "birth_date"]].copy()
+            full_ages["team"] = full_ages["team"].apply(_normalize_team)
+            full_ages["birth_year"] = pd.to_datetime(
+                full_ages["birth_date"], errors="coerce"
+            ).dt.year
+            full_ages["computed_age"] = current_year - full_ages["birth_year"]
+            full_ages = full_ages.dropna(subset=["computed_age"])
+            full_ages["_norm_name"] = full_ages["player_name"].apply(_normalize_name)
+            full_ages["_norm_team"] = full_ages["team"].apply(_normalize_team)
+            # Keep most recent (highest) age per (name, team)
+            self._age_lookup = (
+                full_ages.groupby(["_norm_name", "_norm_team"])["computed_age"]
+                .max()
+                .astype(int)
+                .to_dict()
+            )
+            logger.info(f"Built age lookup with {len(self._age_lookup)} entries from rosters data")
 
         # Total EPA per player-season
         epa_cols = [c for c in ["passing_epa", "rushing_epa", "receiving_epa"]
@@ -116,10 +147,17 @@ class RosterBuilder:
                     for yr, w in available_weights.items()
                 )
 
+            age = (
+                int(group["computed_age"].max())
+                if "computed_age" in group.columns and group["computed_age"].notna().any()
+                else 0
+            )
+
             records.append({
                 "player_name": player_name,
                 "team": team,
                 "position": position,
+                "age": age,
                 "epa_total": round(epa_total, 4),
                 "snaps_played": int(group["season_snaps"].sum()),
                 "games_missed": int(group["season_games_missed"].sum()),
@@ -205,7 +243,9 @@ class RosterBuilder:
         contracts["_norm_name"] = contracts["player_name"].apply(_normalize_name)
         contracts["_norm_team"] = contracts["team"].apply(_normalize_team)
 
-        perf_cols = ["epa_total", "snaps_played", "games_missed"]
+        base_perf_cols = ["epa_total", "snaps_played", "games_missed"]
+        # Also copy computed age from nfl_data_py when available
+        perf_cols = base_perf_cols + (["age"] if "age" in perf.columns else [])
         matched_rows = []
         unmatched_rows = []
 
@@ -231,8 +271,13 @@ class RosterBuilder:
                 if pd.isna(row_dict.get("position")):
                     row_dict["position"] = best_match.get("position", "")
             else:
-                for col in perf_cols:
+                for col in base_perf_cols:
                     row_dict[col] = np.nan
+                # Try to fill age from broader roster lookup even without a perf match
+                if self._age_lookup:
+                    looked_up_age = self._age_lookup.get((otc_name, otc_team))
+                    if looked_up_age is not None:
+                        row_dict["age"] = looked_up_age
                 unmatched_rows.append({
                     "otc_name": otc_row["player_name"],
                     "otc_team": otc_row.get("team", ""),
