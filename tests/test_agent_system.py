@@ -173,3 +173,52 @@ def test_scouting_agent_query_echoed(sf_players):
     agent = ScoutingAgent(client=_mock_client("ok"))
     result = agent.run("Is Bosa injury-prone?", sf_players)
     assert result["query"] == "Is Bosa injury-prone?"
+
+
+from src.agents.strategy_agent import StrategyAgent
+
+
+@pytest.fixture
+def multi_team_players():
+    """Players from multiple NFC West teams for StrategyAgent."""
+    sf = [_make_valued_player(f"SF Player {i}", pos, 10_000_000, 27, "SF")
+          for i, pos in enumerate(["QB", "WR", "DL"])]
+    sea = [_make_valued_player(f"SEA Player {i}", pos, 8_000_000, 28, "SEA")
+           for i, pos in enumerate(["QB", "WR"])]
+    return sf + sea
+
+
+def test_strategy_agent_returns_required_keys(multi_team_players):
+    agent = StrategyAgent(client=_mock_client("Focus on pass rush."))
+    result = agent.run("What should we prioritise in free agency?", multi_team_players)
+    assert set(result.keys()) == {"query", "agent", "response", "data_used"}
+
+
+def test_strategy_agent_sets_agent_name(multi_team_players):
+    agent = StrategyAgent(client=_mock_client("Strategy response."))
+    result = agent.run("any", multi_team_players)
+    assert result["agent"] == "strategy"
+
+
+def test_strategy_agent_data_used_contains_team_names(multi_team_players):
+    agent = StrategyAgent(client=_mock_client("ok"))
+    result = agent.run("how do we compare?", multi_team_players)
+    assert isinstance(result["data_used"], list)
+    assert all(isinstance(t, str) for t in result["data_used"])
+    assert len(result["data_used"]) > 0
+
+
+def test_strategy_agent_query_echoed(multi_team_players):
+    agent = StrategyAgent(client=_mock_client("ok"))
+    result = agent.run("How do we compare to the SB template?", multi_team_players)
+    assert result["query"] == "How do we compare to the SB template?"
+
+
+def test_strategy_agent_handles_single_team_data():
+    """Should not crash when only one team's data is available."""
+    sf_only = [_make_valued_player(f"P {i}", "QB", 10_000_000, 27, "SF")
+               for i in range(3)]
+    agent = StrategyAgent(client=_mock_client("ok"))
+    result = agent.run("what should we do?", sf_only)
+    assert result["agent"] == "strategy"
+    assert "response" in result
