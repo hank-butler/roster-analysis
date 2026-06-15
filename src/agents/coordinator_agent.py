@@ -41,14 +41,25 @@ class CoordinatorAgent:
 
         Returns:
             One of 'contract', 'scouting', or 'strategy'.
+            Returns DEFAULT_FALLBACK on any API error or unexpected response.
         """
-        response = self._client.messages.create(
-            model=_MODEL,
-            max_tokens=10,
-            system=_ROUTING_SYSTEM_PROMPT,
-            messages=[{"role": "user", "content": query}],
-        )
-        category = response.content[0].text.strip().lower()
+        try:
+            response = self._client.messages.create(
+                model=_MODEL,
+                max_tokens=10,
+                system=_ROUTING_SYSTEM_PROMPT,
+                messages=[{"role": "user", "content": query}],
+            )
+            raw = (
+                response.content[0].text
+                if response.content and hasattr(response.content[0], "text")
+                else ""
+            )
+            category = raw.strip().lower().split()[0] if raw.strip() else ""
+        except anthropic.APIError as exc:
+            logger.warning("Coordinator API error: %s — falling back to '%s'", exc, self.DEFAULT_FALLBACK)
+            return self.DEFAULT_FALLBACK
+
         if category not in self.CATEGORIES:
             logger.warning(
                 "Coordinator returned unexpected category '%s' — falling back to '%s'",
