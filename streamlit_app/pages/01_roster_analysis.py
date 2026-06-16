@@ -61,7 +61,7 @@ with col_left:
         st.success("No significantly overvalued players")
     else:
         st.dataframe(
-            ov[["name", "position", "cap_hit", "fair_value", "pct_overvalued"]],
+            ov[["name", "position", "cap_hit", "fair_value", "efficiency_ratio", "pct_overvalued"]],
             use_container_width=True,
             hide_index=True,
         )
@@ -73,7 +73,7 @@ with col_right:
         st.success("No significantly undervalued players")
     else:
         st.dataframe(
-            uv[["name", "position", "cap_hit", "fair_value", "pct_undervalued"]],
+            uv[["name", "position", "cap_hit", "fair_value", "efficiency_ratio", "pct_undervalued"]],
             use_container_width=True,
             hide_index=True,
         )
