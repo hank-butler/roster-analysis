@@ -275,9 +275,9 @@ class PlayerValuationModel:
         :rtype: float
         """
 
-        if player.risk_score <= 0:
+        if player.risk_score <= 0 or player.cap_hit_2026 <= 0:
             return 0.0
-        
+
         excess_return = (player.expected_value - player.cap_hit_2026)
 
         return excess_return / (player.risk_score * player.cap_hit_2026)
