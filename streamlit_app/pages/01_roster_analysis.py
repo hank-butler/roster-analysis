@@ -40,11 +40,23 @@ st.plotly_chart(
 
 st.divider()
 
+MIN_CAP_THRESHOLD = 5_000_000  # exclude minimum-deal depth players from valuation tables
+
+col_left, col_right = st.columns(2)
+
+def _filter_table(df):
+    """Keep only players with meaningful cap hits and known positions."""
+    return df[
+        (df["cap_hit"] >= MIN_CAP_THRESHOLD) &
+        (df["position"].notna()) &
+        (df["position"].str.strip() != "")
+    ]
+
 col_left, col_right = st.columns(2)
 
 with col_left:
     st.subheader("Most Overvalued")
-    ov = pa.identify_overvalued().head(5)
+    ov = _filter_table(pa.identify_overvalued()).head(5)
     if ov.empty:
         st.success("No significantly overvalued players")
     else:
@@ -56,7 +68,7 @@ with col_left:
 
 with col_right:
     st.subheader("Most Undervalued")
-    uv = pa.identify_undervalued().head(5)
+    uv = _filter_table(pa.identify_undervalued()).head(5)
     if uv.empty:
         st.success("No significantly undervalued players")
     else:
@@ -80,6 +92,6 @@ with st.expander("📋 Model Notes & Known Limitations"):
 - **George Kittle (borderline)** — the age penalty (31, four years past TE peak) reduces his modelled fair value. Reflects succession-planning risk, not current performance
 - **LB/OL valuations are directional** — Fred Warner and Trent Williams use positional EPA averages, which are a weak signal for their roles
 
-**Model constraints:** EPA only (no PFF grades or tracking data); 2023–2024 seasons (2025 stats not yet published); all contracts default to 1 year remaining.
+**Model constraints:** EPA only (no PFF grades or tracking data); 2023–2024 seasons (2025 stats not yet published); all contracts default to 1 year remaining. Tables above exclude players earning below $5M — backup/minimum-deal players receive synthetic positional-average EPA and would otherwise dominate the undervalued list due to the position premium in the baseline.
     """)
     st.caption("Full notes: docs/model_insights.md")
