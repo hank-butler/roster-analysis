@@ -65,3 +65,21 @@ with col_right:
             use_container_width=True,
             hide_index=True,
         )
+
+st.divider()
+
+with st.expander("📋 Model Notes & Known Limitations"):
+    st.markdown("""
+**How to read these numbers:**
+- **Efficiency > 1.0** = player creates more value than their cap hit — good contract
+- **Efficiency < 1.0** = cap hit exceeds modelled value — watch for over-commitment
+
+**Key insights on the 2026 SF roster:**
+- **Brock Purdy (efficiency ~2.1×)** — legitimately undervalued on a cost-controlled deal. Elite QBs command $40–50M+ on the open market; his $23.7M cap hit is well below that
+- **Nick Bosa (efficiency ~0.4×)** — the EPA metric does not capture elite pass-rushing value. DL/EDGE players who generate pressure and disruption show as overvalued under any EPA-based model. Treat this as a cap-concentration flag, not a performance verdict
+- **George Kittle (borderline)** — the age penalty (31, four years past TE peak) reduces his modelled fair value. Reflects succession-planning risk, not current performance
+- **LB/OL valuations are directional** — Fred Warner and Trent Williams use positional EPA averages, which are a weak signal for their roles
+
+**Model constraints:** EPA only (no PFF grades or tracking data); 2023–2024 seasons (2025 stats not yet published); all contracts default to 1 year remaining.
+    """)
+    st.caption("Full notes: docs/model_insights.md")
