@@ -63,22 +63,25 @@ class PlayerValuationModel:
             "LS": 1_500_000
         }
 
+        # Calibrated for per-season EPA (nfl_data_py seasonal totals normalised by
+        # seasons_count in the data pipeline). Elite QBs generate ~50-70 EPA/season;
+        # elite TEs ~25-40; non-skill positions rely more on the position baseline.
         self.epa_to_dollars = {
-            "QB": 2_500_000,
-            "WR": 1_800_000,
-            "RB": 1_200_000,
-            "TE": 1_500_000,
-            "OT": 1_000_000,
-            "OG": 900_000,
-            "C": 900_000,
-            "EDGE": 1_600_000,
-            "DL": 1_400_000,
-            "LB": 1_300_000,
-            "CB": 1_600_000,
-            "S": 1_400_000,
-            "K": 500_000,
-            "P": 400_000,
-            "LS": 300_000
+            "QB":    250_000,
+            "WR":    180_000,
+            "RB":    120_000,
+            "TE":    150_000,
+            "OT":    100_000,
+            "OG":     90_000,
+            "C":      90_000,
+            "EDGE":  160_000,
+            "DL":    140_000,
+            "LB":    130_000,
+            "CB":    160_000,
+            "S":     140_000,
+            "K":      50_000,
+            "P":      40_000,
+            "LS":     30_000,
         }
 
         self.peak_ages = {
@@ -157,7 +160,7 @@ class PlayerValuationModel:
         """
         risk_components = []
 
-        injury_risk = min(player.games_missed / 51, 0.5) # 51 for 3 full regular seasons
+        injury_risk = min(player.games_missed / 17, 0.5)  # per-season average games missed
         risk_components.append(injury_risk)
 
         peak_age = self.peak_ages.get(player.position, 27) # simplifying assumption of player peak at 27 years due to avg NFL career being ~5 seasons

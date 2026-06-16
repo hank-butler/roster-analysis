@@ -70,20 +70,22 @@ def test_epa_prorated_when_seasons_missing(sample_stats, sample_rosters):
     assert abs(purdy["epa_total"] - expected) < 0.01
 
 
-def test_games_missed_raw_sum(sample_stats, sample_rosters):
+def test_games_missed_per_season(sample_stats, sample_rosters):
     builder = RosterBuilder()
     agg = builder._aggregate_performance(sample_stats, sample_rosters)
     kittle = agg[agg["player_name"] == "George Kittle"].iloc[0]
-    # 2023: 17-16=1, 2024: 17-14=3, 2025: 17-17=0 → total = 4
-    assert kittle["games_missed"] == 4
+    # Raw total: 2023: 17-16=1, 2024: 17-14=3, 2025: 17-17=0 → 4 over 3 seasons
+    # Per-season average: int(4 / 3) = 1
+    assert kittle["games_missed"] == 1
 
 
-def test_snaps_raw_sum(sample_stats, sample_rosters):
+def test_snaps_per_season(sample_stats, sample_rosters):
     builder = RosterBuilder()
     agg = builder._aggregate_performance(sample_stats, sample_rosters)
     kittle = agg[agg["player_name"] == "George Kittle"].iloc[0]
-    # 800 + 700 + 900 = 2400
-    assert kittle["snaps_played"] == 2400
+    # Raw total: 800 + 700 + 900 = 2400 over 3 seasons
+    # Per-season average: int(2400 / 3) = 800
+    assert kittle["snaps_played"] == 800
 
 
 def test_merge_matches_on_name_and_team(sample_stats, sample_rosters, sample_contracts):

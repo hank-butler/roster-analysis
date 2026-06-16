@@ -163,8 +163,10 @@ class RosterBuilder:
                 "position": position,
                 "age": age,
                 "epa_total": round(epa_per_season, 4),
-                "snaps_played": int(group["season_snaps"].sum()),
-                "games_missed": int(group["season_games_missed"].sum()),
+                # Normalise to per-season so snap_factor and injury_risk
+                # formulas in PlayerValuationModel work on a single-season scale.
+                "snaps_played": int(group["season_snaps"].sum() / seasons_count),
+                "games_missed": int(group["season_games_missed"].sum() / seasons_count),
             })
 
         return pd.DataFrame(records)
