@@ -54,8 +54,9 @@ def test_epa_weighted_decay_three_seasons(sample_stats, sample_rosters):
     builder = RosterBuilder()
     agg = builder._aggregate_performance(sample_stats, sample_rosters)
     kittle = agg[agg["player_name"] == "George Kittle"].iloc[0]
-    # 2023: 12 * 0.2 = 2.4, 2024: 10 * 0.3 = 3.0, 2025: 15 * 0.5 = 7.5 → total = 12.9
-    assert abs(kittle["epa_total"] - 12.9) < 0.01
+    # Weighted avg: 2023: 12*0.2=2.4, 2024: 10*0.3=3.0, 2025: 15*0.5=7.5 → 12.9
+    # Normalised by 3 seasons → 12.9 / 3 = 4.3
+    assert abs(kittle["epa_total"] - 4.3) < 0.01
 
 
 def test_epa_prorated_when_seasons_missing(sample_stats, sample_rosters):
@@ -63,7 +64,9 @@ def test_epa_prorated_when_seasons_missing(sample_stats, sample_rosters):
     agg = builder._aggregate_performance(sample_stats, sample_rosters)
     purdy = agg[agg["player_name"] == "Brock Purdy"].iloc[0]
     # Only 2024 and 2025. Prorated: 2024=0.3/0.8, 2025=0.5/0.8
-    expected = 32.0 * (0.3 / 0.8) + 38.0 * (0.5 / 0.8)
+    # Weighted avg = 32.0*(0.3/0.8) + 38.0*(0.5/0.8) = 35.75
+    # Normalised by 2 seasons → 35.75 / 2 = 17.875
+    expected = (32.0 * (0.3 / 0.8) + 38.0 * (0.5 / 0.8)) / 2
     assert abs(purdy["epa_total"] - expected) < 0.01
 
 
@@ -90,7 +93,7 @@ def test_merge_matches_on_name_and_team(sample_stats, sample_rosters, sample_con
     kittle = merged[merged["player_name"] == "George Kittle"]
     assert len(kittle) == 1
     assert kittle.iloc[0]["cap_hit"] == 10_900_000.0
-    assert abs(kittle.iloc[0]["epa_total"] - 12.9) < 0.01
+    assert abs(kittle.iloc[0]["epa_total"] - 4.3) < 0.01  # 12.9 / 3 seasons
 
 
 def test_unmatched_player_included_with_nulls(sample_stats, sample_rosters, sample_contracts):

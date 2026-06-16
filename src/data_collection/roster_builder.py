@@ -139,6 +139,7 @@ class RosterBuilder:
                 yr: w for yr, w in EPA_WEIGHTS.items() if yr in group["season"].values
             }
             total_weight = sum(available_weights.values())
+            seasons_count = max(len(available_weights), 1)
             if total_weight == 0:
                 epa_total = 0.0
             else:
@@ -146,6 +147,9 @@ class RosterBuilder:
                     group.loc[group["season"] == yr, "season_epa"].sum() * (w / total_weight)
                     for yr, w in available_weights.items()
                 )
+            # Normalise to per-season average so epa_total is on a consistent scale
+            # regardless of how many seasons of data a player has.
+            epa_per_season = epa_total / seasons_count
 
             age = (
                 int(group["computed_age"].max())
@@ -158,7 +162,7 @@ class RosterBuilder:
                 "team": team,
                 "position": position,
                 "age": age,
-                "epa_total": round(epa_total, 4),
+                "epa_total": round(epa_per_season, 4),
                 "snaps_played": int(group["season_snaps"].sum()),
                 "games_missed": int(group["season_games_missed"].sum()),
             })
