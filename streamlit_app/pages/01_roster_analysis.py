@@ -42,14 +42,20 @@ st.divider()
 
 MIN_CAP_THRESHOLD = 5_000_000  # exclude minimum-deal depth players from valuation tables
 
-col_left, col_right = st.columns(2)
+KNOWN_POSITIONS = {
+    "QB", "WR", "RB", "TE", "OT", "OG", "C",
+    "EDGE", "DL", "LB", "CB", "S", "K", "P", "LS",
+}
 
 def _filter_table(df):
-    """Keep only players with meaningful cap hits and known positions."""
+    """Keep only players with meaningful cap hits and NFL-standard positions.
+
+    Excludes players with composite/non-standard position codes (e.g. 'DB', 'OL')
+    that fall back to model defaults and produce unreliable valuations.
+    """
     return df[
         (df["cap_hit"] >= MIN_CAP_THRESHOLD) &
-        (df["position"].notna()) &
-        (df["position"].str.strip() != "")
+        (df["position"].isin(KNOWN_POSITIONS))
     ]
 
 col_left, col_right = st.columns(2)
