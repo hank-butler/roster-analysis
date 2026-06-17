@@ -49,7 +49,7 @@ class Chromosome:
 
     def __init__(self, players: List[PlayerAsset]):
         self.players = players
-        self.fitness = None,
+        self.fitness = None
         self._analyzer = None
 
     def __len__(self):
