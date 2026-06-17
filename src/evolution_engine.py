@@ -351,8 +351,57 @@ class EvolutionEngine:
                 child1_players.extend(p2_at_pos)
                 child2_players.extend(p1_at_pos)
 
-        return Chromosome(child1_players), Chromosome(child2_players)
-    
+        return Chromosome(self._repair_roster(child1_players)), Chromosome(self._repair_roster(child2_players))
+
+    def _repair_roster(self, players: List[PlayerAsset]) -> List[PlayerAsset]:
+        """Trim over-filled positions and top up under-filled ones to meet constraints."""
+        result = list(players)
+
+        # Trim over-max positions by removing lowest expected_value
+        pos_groups: Dict[str, List[PlayerAsset]] = {}
+        for p in result:
+            pos_groups.setdefault(p.position, []).append(p)
+
+        trimmed: List[PlayerAsset] = []
+        for pos, group in pos_groups.items():
+            _, max_c = self.constraints.position_limits.get(pos, (0, 99))
+            if len(group) > max_c:
+                group.sort(key=lambda p: p.expected_value, reverse=True)
+                trimmed.extend(group[:max_c])
+            else:
+                trimmed.extend(group)
+        result = trimmed
+
+        # Trim total size
+        if len(result) > self.constraints.max_roster_size:
+            result.sort(key=lambda p: p.expected_value, reverse=True)
+            result = result[:self.constraints.max_roster_size]
+
+        # Fill under-min positions cheaply from available_players
+        cap_used = sum(p.cap_hit_2026 for p in result)
+        current_ids = {p.player_id for p in result}
+        pos_counts: Dict[str, int] = {}
+        for p in result:
+            pos_counts[p.position] = pos_counts.get(p.position, 0) + 1
+
+        for pos, (min_c, _) in self.constraints.position_limits.items():
+            while pos_counts.get(pos, 0) < min_c:
+                candidates = [
+                    p for p in self.available_players
+                    if p.position == pos
+                    and p.player_id not in current_ids
+                    and cap_used + p.cap_hit_2026 <= self.constraints.salary_cap
+                ]
+                if not candidates:
+                    break
+                cheapest = min(candidates, key=lambda p: p.cap_hit_2026)
+                result.append(cheapest)
+                current_ids.add(cheapest.player_id)
+                cap_used += cheapest.cap_hit_2026
+                pos_counts[pos] = pos_counts.get(pos, 0) + 1
+
+        return result
+
     def mutate(self, chromosome: Chromosome) -> Chromosome:
         """
         Randomly mutate roster
