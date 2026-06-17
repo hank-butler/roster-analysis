@@ -24,7 +24,8 @@ from src.player_valuation import PlayerAsset, PlayerValuationModel, PortfolioAna
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 logger = logging.getLogger(__name__)
 
-VALID_POSITIONS = {"QB", "WR", "RB", "TE", "DL", "LB", "K", "P", "LS"}
+VALID_POSITIONS = {"QB", "WR", "RB", "TE", "DL", "LB", "K", "LS"}
+# Note: P (punter) excluded — SF's 2026 punter is not captured in the OTC data pipeline yet.
 OUTPUT_PATH = Path("data/processed/evolution_results.json")
 
 
@@ -65,7 +66,6 @@ def make_constraints() -> RosterConstraints:
         "DL":  (4, 9),
         "LB":  (4, 9),
         "K":   (1, 1),
-        "P":   (1, 1),
         "LS":  (1, 2),
     }
     return c
@@ -104,7 +104,7 @@ def main():
     # Run the evolution
     engine = EvolutionEngine(
         current_roster=sf_players,
-        available_players=all_players,
+        available_players=sf_players,   # optimize within SF's own roster
         constraints=constraints,
         valuation_model=PlayerValuationModel(),
     )
@@ -137,7 +137,7 @@ def main():
             "generations": engine.generations,
             "salary_cap": constraints.salary_cap,
             "positions_included": sorted(VALID_POSITIONS),
-            "note": "Analysis covers QB/WR/RB/TE/DL/LB/K/P/LS — positions with data from the pipeline"
+            "note": "Optimizes within SF's current roster (QB/WR/RB/TE/DL/LB/K/LS). P excluded — punter not in pipeline yet. Cross-team acquisition is future work."
         },
         "current_roster": {
             "players": [player_to_dict(p) for p in sorted(sf_players, key=lambda p: -p.cap_hit_2026)],
@@ -170,6 +170,10 @@ def main():
 
     OUTPUT_PATH.write_text(json.dumps(results, indent=2))
     logger.info(f"Saved results to {OUTPUT_PATH}")
+    logger.info(
+        f"Additions drawn from SF's own roster. "
+        f"Kept: {len(kept)}, removed: {len(removed)}, added back: {len(added)}"
+    )
     logger.info(f"Players removed: {[p['name'] for p in results['changes']['removed']]}")
     logger.info(f"Players added:   {[p['name'] for p in results['changes']['added']]}")
 
