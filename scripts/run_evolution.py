@@ -142,8 +142,8 @@ def main():
         "current_roster": {
             "players": [player_to_dict(p) for p in sorted(sf_players, key=lambda p: -p.cap_hit_2026)],
             "cap_used": round(sum(p.cap_hit_2026 for p in sf_players)),
-            "portfolio_efficiency": round(pa_current.portfolio_efficiency(), 4),
-            "portfolio_risk": round(pa_current.portfolio_risk(), 4),
+            "portfolio_efficiency": round(pa_current_pre.portfolio_efficiency(), 4),
+            "portfolio_risk": round(pa_current_pre.portfolio_risk(), 4),
         },
         "evolved_roster": {
             "fitness": round(best_fitness, 4),
