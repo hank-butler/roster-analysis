@@ -319,14 +319,15 @@ class RosterBuilder:
                 # Backfill position from full roster data for unmatched players
                 if pd.isna(row_dict.get("position")) or str(row_dict.get("position", "")).strip() == "":
                     row_dict["position"] = pos_lookup.get((otc_name, otc_team), "")
+                has_suggestion = best_match is not None and best_score >= 60
                 unmatched_rows.append({
                     "otc_name": otc_row["player_name"],
                     "otc_team": otc_row.get("team", ""),
                     "otc_position": otc_row.get("position", ""),
-                    "nfl_name": best_match["player_name"] if best_match is not None else "",
-                    "nfl_team": best_match["team"] if best_match is not None else "",
-                    "nfl_position": best_match["position"] if best_match is not None else "",
-                    "match_score": best_score,
+                    "nfl_name": best_match["player_name"] if has_suggestion else "",
+                    "nfl_team": best_match["team"] if has_suggestion else "",
+                    "nfl_position": best_match["position"] if has_suggestion else "",
+                    "match_score": best_score if has_suggestion else 0,
                 })
 
             matched_rows.append(row_dict)

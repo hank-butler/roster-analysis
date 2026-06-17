@@ -1,243 +1,243 @@
 otc_name,otc_team,otc_position,nfl_name,nfl_team,nfl_position,match_score
 Chris Jones,KC,,Chris Oladokun,KC,QB,64.0
-Trey Smith,KC,,JuJu Smith-Schuster,KC,WR,50.0
-Nick Bolton,KC,,Tyquan Thornton,KC,WR,46.15384615384615
-Jaylon Moore,KC,,Mike Caliendo,KC,OL,48.0
-Creed Humphrey,KC,,Jared Wiley,KC,TE,48.0
-Kristian Fulton,KC,,Tyquan Thornton,KC,WR,46.666666666666664
-Mansoor Delane,KC,,DeAndre Hopkins,KC,WR,55.172413793103445
-George Karlaftis,KC,,Travis Kelce,KC,TE,50.0
-Harrison Butker,KC,,Justin Watson,KC,WR,50.0
-Kenneth Walker III,KC,,Samaje Perine,KC,RB,44.44444444444444
-Drue Tranquill,KC,,Travis Kelce,KC,TE,46.15384615384615
-Chamarri Conner,KC,,Kadarius Toney,KC,WR,55.172413793103445
-Felix Anudike-Uzomah,KC,,Nikko Remigio,KC,WR,43.75
-Alohi Gilman,KC,,Chris Oladokun,KC,QB,46.15384615384615
-Josh Simmons,KC,,Justin Watson,KC,WR,48.0
-Peter Woods,KC,,Samaje Perine,KC,RB,41.666666666666664
-Khyiris Tonga,KC,,Kadarius Toney,KC,WR,59.25925925925925
-Justin Fields,KC,,Justin Watson,KC,WR,46.15384615384615
-R Mason Thomas,KC,,DeAndre Hopkins,KC,WR,48.275862068965516
-Kader Kohou,KC,,Kadarius Toney,KC,WR,48.0
-Kaiir Elam,KC,,Richie James,KC,WR,45.45454545454546
-Kingsley Suamataia,KC,,Samaje Perine,KC,RB,51.61290322580645
+Trey Smith,KC,,,,,0.0
+Nick Bolton,KC,,,,,0.0
+Jaylon Moore,KC,,,,,0.0
+Creed Humphrey,KC,,,,,0.0
+Kristian Fulton,KC,,,,,0.0
+Mansoor Delane,KC,,,,,0.0
+George Karlaftis,KC,,,,,0.0
+Harrison Butker,KC,,,,,0.0
+Kenneth Walker III,KC,,,,,0.0
+Drue Tranquill,KC,,,,,0.0
+Chamarri Conner,KC,,,,,0.0
+Felix Anudike-Uzomah,KC,,,,,0.0
+Alohi Gilman,KC,,,,,0.0
+Josh Simmons,KC,,,,,0.0
+Peter Woods,KC,,,,,0.0
+Khyiris Tonga,KC,,,,,0.0
+Justin Fields,KC,,,,,0.0
+R Mason Thomas,KC,,,,,0.0
+Kader Kohou,KC,,,,,0.0
+Kaiir Elam,KC,,,,,0.0
+Kingsley Suamataia,KC,,,,,0.0
 James Winchester,KC,,Richie James,KC,WR,71.42857142857143
-Omarr Norman-Lott,KC,,Keaontay Ingram,KC,RB,45.16129032258065
-Ashton Gillotte,KC,,Carson Steele,KC,RB,50.0
-Nohl Williams,KC,,Justin Watson,KC,WR,38.46153846153846
-Jack Cochrane,KC,,Chris Oladokun,KC,QB,44.44444444444444
-Emari Demercado,KC,,Mike Caliendo,KC,OL,50.0
-Jalen Royals,KC,,Justyn Ross,KC,WR,52.17391304347826
-L'Jarius Sneed,KC,,Kadarius Toney,KC,WR,59.25925925925925
-Cole Christiansen,KC,,Mecole Hardman,KC,WR,58.06451612903225
-Jadon Canady,KC,,Jaden Hicks,KC,DB,52.17391304347826
-Hunter Nourzad,KC,,Kareem Hunt,KC,RB,48.0
-Jeffrey Bassa,KC,,La'Mical Perine,KC,RB,44.44444444444444
-Christian Roland-Wallace,KC,,Chris Oladokun,KC,QB,54.054054054054056
-Tanner McCalister,KC,,La'Mical Perine,KC,RB,51.61290322580645
-Matt Waletzko,KC,,Carson Wentz,KC,QB,48.0
-Matt Araiza,KC,,Samaje Perine,KC,RB,41.666666666666664
-Jason Brownlee,KC,,Marquise Brown,KC,WR,57.14285714285714
-C.J. Hanson,KC,,Justin Watson,KC,WR,54.54545454545454
-Brashard Smith,KC,,Donovan Smith,KC,OL,51.85185185185186
-Top 51 Cutoff,KC,,Justin Watson,KC,WR,43.47826086956522
-Ethan Driskell,KC,,Kadarius Toney,KC,WR,50.0
-Emmett Johnson,KC,,Tommy Townsend,KC,P,50.0
-Chukwuebuka Godrick,KC,,Patrick Mahomes,KC,QB,41.17647058823529
-Kevin Knowles II,KC,,DeAndre Hopkins,KC,WR,42.85714285714286
-Cooper McDonald,KC,,Jerick McKinnon,KC,RB,46.666666666666664
-Tyreke Smith,KC,,JuJu Smith-Schuster,KC,WR,46.666666666666664
-Esa Pole,KC,,Isiah Pacheco,KC,RB,47.61904761904761
-Cyrus Allen,KC,,Baylor Cupp,KC,TE,45.45454545454546
-Garrett Nussmeier,KC,,Jared Wiley,KC,TE,42.85714285714286
-Jake Briningstool,KC,,Chris Oladokun,KC,QB,45.16129032258065
-Jeff Caldwell,KC,,Mike Caliendo,KC,OL,46.15384615384615
-Pete Nygra,KC,,Keaontay Ingram,KC,RB,56.00000000000001
-Bryce Phillips,KC,,DeAndre Hopkins,KC,WR,41.379310344827594
+Omarr Norman-Lott,KC,,,,,0.0
+Ashton Gillotte,KC,,,,,0.0
+Nohl Williams,KC,,,,,0.0
+Jack Cochrane,KC,,,,,0.0
+Emari Demercado,KC,,,,,0.0
+Jalen Royals,KC,,,,,0.0
+L'Jarius Sneed,KC,,,,,0.0
+Cole Christiansen,KC,,,,,0.0
+Jadon Canady,KC,,,,,0.0
+Hunter Nourzad,KC,,,,,0.0
+Jeffrey Bassa,KC,,,,,0.0
+Christian Roland-Wallace,KC,,,,,0.0
+Tanner McCalister,KC,,,,,0.0
+Matt Waletzko,KC,,,,,0.0
+Matt Araiza,KC,,,,,0.0
+Jason Brownlee,KC,,,,,0.0
+C.J. Hanson,KC,,,,,0.0
+Brashard Smith,KC,,,,,0.0
+Top 51 Cutoff,KC,,,,,0.0
+Ethan Driskell,KC,,,,,0.0
+Emmett Johnson,KC,,,,,0.0
+Chukwuebuka Godrick,KC,,,,,0.0
+Kevin Knowles II,KC,,,,,0.0
+Cooper McDonald,KC,,,,,0.0
+Tyreke Smith,KC,,,,,0.0
+Esa Pole,KC,,,,,0.0
+Cyrus Allen,KC,,,,,0.0
+Garrett Nussmeier,KC,,,,,0.0
+Jake Briningstool,KC,,,,,0.0
+Jeff Caldwell,KC,,,,,0.0
+Pete Nygra,KC,,,,,0.0
+Bryce Phillips,KC,,,,,0.0
 DeShon Singleton,KC,,Peyton Hendershot,KC,TE,60.60606060606061
-Vincent Anthony,KC,,Carson Wentz,KC,QB,51.85185185185186
-John Michael Gyllenborg,KC,,Mike Caliendo,KC,OL,44.44444444444444
-Josh Thompson,KC,,Justin Watson,KC,WR,53.84615384615385
-Xavier Nwankpa,KC,,Xavier Worthy,KC,WR,59.25925925925925
-Zelmar Vedder,KC,,Clyde Edwards-Helaire,KC,RB,42.42424242424242
-Wesley Bissainthe,KC,,Jared Wiley,KC,TE,50.0
+Vincent Anthony,KC,,,,,0.0
+John Michael Gyllenborg,KC,,,,,0.0
+Josh Thompson,KC,,,,,0.0
+Xavier Nwankpa,KC,,,,,0.0
+Zelmar Vedder,KC,,,,,0.0
+Wesley Bissainthe,KC,,,,,0.0
 Cole Brevard,KC,,Mecole Hardman,KC,WR,61.53846153846154
-Damon Payne Jr.,KC,,La'Mical Perine,KC,RB,48.0
-Omari Evans,KC,,Donovan Smith,KC,OL,50.0
-Ethan Downs,KC,,Donovan Smith,KC,OL,50.0
-Marcus Harris,KC,,Chris Oladokun,KC,QB,51.85185185185186
+Damon Payne Jr.,KC,,,,,0.0
+Omari Evans,KC,,,,,0.0
+Ethan Downs,KC,,,,,0.0
+Marcus Harris,KC,,,,,0.0
 Tre Watson,KC,,Justin Watson,KC,WR,69.56521739130434
-Andrew Armstrong,KC,,Kadarius Toney,KC,WR,53.333333333333336
-Jimmy Holiday,KC,,Mike Caliendo,KC,OL,38.46153846153846
+Andrew Armstrong,KC,,,,,0.0
+Jimmy Holiday,KC,,,,,0.0
 Melvin Smith,KC,,Donovan Smith,KC,OL,64.0
-Jacob De Jesus,KC,,Samaje Perine,KC,RB,37.03703703703704
-Kahlil Benson,KC,,Marquise Brown,KC,WR,44.44444444444444
+Jacob De Jesus,KC,,,,,0.0
+Kahlil Benson,KC,,,,,0.0
 Xavier Loyd,KC,,Xavier Worthy,KC,WR,75.0
-E.J. Smith,KC,,Donovan Smith,KC,OL,57.14285714285714
-D'Arco Perkins-McAllister,KC,,Samaje Perine,KC,RB,50.0
-Amari McNeill,KC,,Kadarius Toney,KC,WR,51.85185185185186
-Anthony Dunn,KC,,Tyquan Thornton,KC,WR,51.85185185185186
-Jaydn Ott,KC,,Justyn Ross,KC,WR,50.0
-Kam Arnold,KC,,Kareem Hunt,KC,RB,47.61904761904761
-Tristan Wirfs,TB,,Chris Godwin,TB,WR,48.0
-"Antoine Winfield, Jr.",TB,,Baker Mayfield,TB,QB,53.333333333333336
-Vita Vea,TB,,Kyle Trask,TB,QB,44.44444444444444
-A'Shawn Robinson,TB,,Sterling Shepard,TB,WR,45.16129032258065
-Alex Anzalone,TB,,Jalen McMillan,TB,WR,44.44444444444444
-Ben Bredeson,TB,,Chase Edmonds,TB,RB,48.0
-Luke Goedeke,TB,,Sean Tucker,TB,RB,43.47826086956522
-Kenneth Gainwell,TB,,David Wells,TB,TE,44.44444444444444
-Anthony Nelson,TB,,Kameron Johnson,TB,WR,48.275862068965516
-Zyon McCollum,TB,,Ryan Miller,TB,WR,50.0
-Al-Quadin Muhammad,TB,,Jalen McMillan,TB,WR,45.16129032258065
-Calijah Kancey,TB,,Kameron Johnson,TB,WR,41.379310344827594
-Rueben Bain,TB,,David Moore,TB,WR,45.45454545454546
-Cody Mauch,TB,,Rachaad White,TB,RB,34.78260869565217
-Emeka Egbuka,TB,,Mike Evans,TB,WR,45.45454545454546
-YaYa Diaby,TB,,Payne Durham,TB,TE,45.45454545454546
-Graham Barton,TB,,Rakim Jarrett,TB,WR,53.84615384615385
-Chase McLaughlin,TB,,Chase Edmonds,TB,RB,55.172413793103445
-Riley Dixon,TB,,David Moore,TB,WR,45.45454545454546
-Josiah Trotter,TB,,Sean Tucker,TB,RB,48.0
-Benjamin Morrison,TB,,Jalen McMillan,TB,WR,45.16129032258065
-Chris Braswell,TB,,David Wells,TB,TE,48.0
-Miles Killebrew,TB,,Baker Mayfield,TB,QB,48.275862068965516
-Tykee Smith,TB,,Mike Evans,TB,WR,47.61904761904761
-Christian Rozeboom,TB,,Chris Godwin,TB,WR,46.666666666666664
-Jacob Parrish,TB,,Rakim Jarrett,TB,WR,38.46153846153846
-Justin Skule,TB,,J.J. Russell,TB,LB,45.45454545454546
-Jake Browning,TB,,Kameron Johnson,TB,WR,42.85714285714286
-Rakeem Nunez-Roches,TB,,Rakim Jarrett,TB,WR,45.16129032258065
-Dan Feeney,TB,,Payne Durham,TB,TE,45.45454545454546
-Ted Hurst,TB,,Chris Godwin,TB,WR,47.61904761904761
-SirVocea Dennis,TB,,Mike Evans,TB,WR,48.0
-Josh Hayes,TB,,Chase Edmonds,TB,RB,52.17391304347826
-Keionte Scott,TB,,Ko Kieft,TB,TE,47.61904761904761
-Chase Lucas,TB,,Chase Edmonds,TB,RB,58.33333333333333
+E.J. Smith,KC,,,,,0.0
+D'Arco Perkins-McAllister,KC,,,,,0.0
+Amari McNeill,KC,,,,,0.0
+Anthony Dunn,KC,,,,,0.0
+Jaydn Ott,KC,,,,,0.0
+Kam Arnold,KC,,,,,0.0
+Tristan Wirfs,TB,,,,,0.0
+"Antoine Winfield, Jr.",TB,,,,,0.0
+Vita Vea,TB,,,,,0.0
+A'Shawn Robinson,TB,,,,,0.0
+Alex Anzalone,TB,,,,,0.0
+Ben Bredeson,TB,,,,,0.0
+Luke Goedeke,TB,,,,,0.0
+Kenneth Gainwell,TB,,,,,0.0
+Anthony Nelson,TB,,,,,0.0
+Zyon McCollum,TB,,,,,0.0
+Al-Quadin Muhammad,TB,,,,,0.0
+Calijah Kancey,TB,,,,,0.0
+Rueben Bain,TB,,,,,0.0
+Cody Mauch,TB,,,,,0.0
+Emeka Egbuka,TB,,,,,0.0
+YaYa Diaby,TB,,,,,0.0
+Graham Barton,TB,,,,,0.0
+Chase McLaughlin,TB,,,,,0.0
+Riley Dixon,TB,,,,,0.0
+Josiah Trotter,TB,,,,,0.0
+Benjamin Morrison,TB,,,,,0.0
+Chris Braswell,TB,,,,,0.0
+Miles Killebrew,TB,,,,,0.0
+Tykee Smith,TB,,,,,0.0
+Christian Rozeboom,TB,,,,,0.0
+Jacob Parrish,TB,,,,,0.0
+Justin Skule,TB,,,,,0.0
+Jake Browning,TB,,,,,0.0
+Rakeem Nunez-Roches,TB,,,,,0.0
+Dan Feeney,TB,,,,,0.0
+Ted Hurst,TB,,,,,0.0
+SirVocea Dennis,TB,,,,,0.0
+Josh Hayes,TB,,,,,0.0
+Keionte Scott,TB,,,,,0.0
+Chase Lucas,TB,,,,,0.0
 David Walker,TB,,David Wells,TB,TE,69.56521739130434
-Elijah Klein,TB,,Jalen McMillan,TB,WR,46.15384615384615
-Elijah Roberts,TB,,Sean Tucker,TB,RB,40.0
-Scott Daly,TB,,Cade Otton,TB,TE,50.0
+Elijah Klein,TB,,,,,0.0
+Elijah Roberts,TB,,,,,0.0
+Scott Daly,TB,,,,,0.0
 David Sills,TB,,David Wells,TB,TE,81.81818181818181
-Mohamed Kamara,TB,,Baker Mayfield,TB,QB,50.0
-Top 51 Cutoff,TB,,Cade Otton,TB,TE,40.0
-Evan Deckers,TB,,Devin Culp,TB,TE,45.45454545454546
-Damarion Williams,TB,,David Wells,TB,TE,57.14285714285714
+Mohamed Kamara,TB,,,,,0.0
+Top 51 Cutoff,TB,,,,,0.0
+Evan Deckers,TB,,,,,0.0
+Damarion Williams,TB,,,,,0.0
 Kemon Hall,TB,,Chase Edmonds,TB,RB,60.86956521739131
 Tez Johnson,TB,,Kameron Johnson,TB,WR,69.23076923076923
-Ben Chukwuma,TB,,Jalen McMillan,TB,WR,46.15384615384615
-DeMonte Capehart,TB,,Chase Edmonds,TB,RB,55.172413793103445
-Billy Schrauth,TB,,Ryan Miller,TB,WR,48.0
-Luke Haggard,TB,,Rachaad White,TB,RB,48.0
-Elijah Simmons,TB,,Chase Edmonds,TB,RB,44.44444444444444
-Connor Bazelak,TB,,Cade Otton,TB,TE,41.666666666666664
-John Bullock,TB,,Bucky Irving,TB,RB,50.0
+Ben Chukwuma,TB,,,,,0.0
+DeMonte Capehart,TB,,,,,0.0
+Billy Schrauth,TB,,,,,0.0
+Luke Haggard,TB,,,,,0.0
+Elijah Simmons,TB,,,,,0.0
+Connor Bazelak,TB,,,,,0.0
+John Bullock,TB,,,,,0.0
 Rashad Wisdom,TB,,Rachaad White,TB,RB,61.53846153846154
-Nick Jackson,TB,,Mike Evans,TB,WR,45.45454545454546
-Josh Williams,TB,,Jalen McMillan,TB,WR,44.44444444444444
-Marcus Banks,TB,,Baker Mayfield,TB,QB,46.15384615384615
-Bauer Sharp,TB,,Baker Mayfield,TB,QB,48.0
-Garrett Greene,TB,,Rakim Jarrett,TB,WR,59.25925925925925
-Paul Rubelt,TB,,Trey Palmer,TB,WR,54.54545454545454
-Ja'Qurious Conley,TB,,Kameron Johnson,TB,WR,38.70967741935484
-J.J. Roberts,TB,,J.J. Russell,TB,LB,50.0
-Eric Rivers,TB,,Trey Palmer,TB,WR,45.45454545454546
-Jalon Daniels,TB,,David Wells,TB,TE,50.0
-Ayden Garnes,TB,,Jalen McMillan,TB,WR,46.15384615384615
-Javin Wright,TB,,David Moore,TB,WR,43.47826086956522
-Henry Lutovsky,TB,,Kyle Trask,TB,QB,41.666666666666664
-Jack Pyburn,TB,,Bucky Irving,TB,RB,43.47826086956522
-Josiah Green,TB,,Deven Thompkins,TB,WR,44.44444444444444
-Deshawn McKnight,TB,,Mike Evans,TB,WR,46.15384615384615
-Kenny Fletcher Jr.,TB,,Trey Palmer,TB,WR,48.0
-Caden Fordham,TB,,Cade Otton,TB,TE,52.17391304347826
-Dean Patterson,TB,,Cade Otton,TB,TE,58.33333333333333
-Yasir Holmes,TB,,Kyle Trask,TB,QB,45.45454545454546
-Kadarius Calloway,TB,,Devin Culp,TB,TE,37.03703703703704
-Marshall Foerner,TB,,Tavierre Thomas,TB,DB,45.16129032258065
-Nash Hutmacher,TB,,Tavierre Thomas,TB,DB,48.275862068965516
-Dennis Houston,TB,,Cade Otton,TB,TE,58.33333333333333
-Jayson Jones,TB,,Kameron Johnson,TB,WR,51.85185185185186
-Ben Scott,TB,,Cade Otton,TB,TE,52.63157894736843
-Haggai Chisom Ndubuisi,TB,,Chris Godwin,TB,WR,47.05882352941176
-B.T. Potter,TB,,Cade Otton,TB,TE,42.10526315789473
+Nick Jackson,TB,,,,,0.0
+Josh Williams,TB,,,,,0.0
+Marcus Banks,TB,,,,,0.0
+Bauer Sharp,TB,,,,,0.0
+Garrett Greene,TB,,,,,0.0
+Paul Rubelt,TB,,,,,0.0
+Ja'Qurious Conley,TB,,,,,0.0
+J.J. Roberts,TB,,,,,0.0
+Eric Rivers,TB,,,,,0.0
+Jalon Daniels,TB,,,,,0.0
+Ayden Garnes,TB,,,,,0.0
+Javin Wright,TB,,,,,0.0
+Henry Lutovsky,TB,,,,,0.0
+Jack Pyburn,TB,,,,,0.0
+Josiah Green,TB,,,,,0.0
+Deshawn McKnight,TB,,,,,0.0
+Kenny Fletcher Jr.,TB,,,,,0.0
+Caden Fordham,TB,,,,,0.0
+Dean Patterson,TB,,,,,0.0
+Yasir Holmes,TB,,,,,0.0
+Kadarius Calloway,TB,,,,,0.0
+Marshall Foerner,TB,,,,,0.0
+Nash Hutmacher,TB,,,,,0.0
+Dennis Houston,TB,,,,,0.0
+Jayson Jones,TB,,,,,0.0
+Ben Scott,TB,,,,,0.0
+Haggai Chisom Ndubuisi,TB,,,,,0.0
+B.T. Potter,TB,,,,,0.0
 Lane Johnson,PHI,,Johnny Wilson,PHI,WR,64.0
-Jordan Mailata,PHI,,Marcus Mariota,PHI,QB,50.0
-Landon Dickerson,PHI,,Braden Mann,PHI,P,51.85185185185186
-Zack Baun,PHI,,Braden Mann,PHI,P,50.0
+Jordan Mailata,PHI,,,,,0.0
+Landon Dickerson,PHI,,,,,0.0
+Zack Baun,PHI,,,,,0.0
 Jalen Carter,PHI,,Jalen Hurts,PHI,QB,69.56521739130434
-Jonathan Greenard,PHI,,Jahan Dotson,PHI,WR,48.275862068965516
-Cam Jurgens,PHI,,E.J. Jenkins,PHI,TE,47.61904761904761
-Jordan Davis,PHI,,Tyrion Davis-Price,PHI,RB,55.172413793103445
-Jake Elliott,PHI,,Jalen Hurts,PHI,QB,43.47826086956522
-Quinyon Mitchell,PHI,,Kenneth Gainwell,PHI,RB,43.75
-Tyler Steen,PHI,,Tanner McKee,PHI,QB,52.17391304347826
+Jonathan Greenard,PHI,,,,,0.0
+Cam Jurgens,PHI,,,,,0.0
+Jordan Davis,PHI,,,,,0.0
+Jake Elliott,PHI,,,,,0.0
+Quinyon Mitchell,PHI,,,,,0.0
+Tyler Steen,PHI,,,,,0.0
 Nolan Smith,PHI,,Ainias Smith,PHI,WR,69.56521739130434
-Makai Lemon,PHI,,DeVonta Smith,PHI,WR,50.0
-Moro Ojomo,PHI,,Marcus Mariota,PHI,QB,41.666666666666664
-Tariq Woolen,PHI,,Britain Covey,PHI,WR,48.0
+Makai Lemon,PHI,,,,,0.0
+Moro Ojomo,PHI,,,,,0.0
+Tariq Woolen,PHI,,,,,0.0
 Jihaad Campbell,PHI,,Parris Campbell,PHI,WR,66.66666666666667
-Cooper DeJean,PHI,,Jahan Dotson,PHI,WR,48.0
-Dontayvion Wicks,PHI,,DeVonta Smith,PHI,WR,48.275862068965516
-Marquise Brown,PHI,,Braden Mann,PHI,P,48.0
-Arnold Ebiketie,PHI,,Kenneth Gainwell,PHI,RB,45.16129032258065
-Andrew Mukuba,PHI,,Braden Mann,PHI,P,50.0
-Eli Stowers,PHI,,Tanner McKee,PHI,QB,43.47826086956522
+Cooper DeJean,PHI,,,,,0.0
+Dontayvion Wicks,PHI,,,,,0.0
+Marquise Brown,PHI,,,,,0.0
+Arnold Ebiketie,PHI,,,,,0.0
+Andrew Mukuba,PHI,,,,,0.0
+Eli Stowers,PHI,,,,,0.0
 Jalyx Hunt,PHI,,Jalen Hurts,PHI,QB,66.66666666666667
-Byron Young,PHI,,Braden Mann,PHI,P,45.45454545454546
-Andy Dalton,PHI,,Johnny Wilson,PHI,WR,50.0
-Tank Bigsby,PHI,,Britain Covey,PHI,WR,41.666666666666664
-Fred Johnson,PHI,,Johnny Wilson,PHI,WR,56.00000000000001
-Marcus Epps,PHI,,Marcus Mariota,PHI,QB,48.0
+Byron Young,PHI,,,,,0.0
+Andy Dalton,PHI,,,,,0.0
+Tank Bigsby,PHI,,,,,0.0
+Fred Johnson,PHI,,,,,0.0
+Marcus Epps,PHI,,,,,0.0
 Jonathan Jones,PHI,,John Ross,PHI,WR,60.86956521739131
-Michael Carter II,PHI,,Grant Calcaterra,PHI,TE,46.666666666666664
-Kelee Ringo,PHI,,Tanner McKee,PHI,QB,43.47826086956522
+Michael Carter II,PHI,,,,,0.0
+Kelee Ringo,PHI,,,,,0.0
 Johnny Mundt,PHI,,Johnny Wilson,PHI,WR,64.0
-Ty Robinson,PHI,,Boston Scott,PHI,RB,52.17391304347826
-Joe Tryon-Shoyinka,PHI,,John Ross,PHI,WR,46.15384615384615
-A.J. Epenesa,PHI,,E.J. Jenkins,PHI,TE,50.0
-Elijah Moore,PHI,,Britain Covey,PHI,WR,40.0
-J.T. Gray,PHI,,Jack Stoll,PHI,TE,35.29411764705882
+Ty Robinson,PHI,,,,,0.0
+Joe Tryon-Shoyinka,PHI,,,,,0.0
+A.J. Epenesa,PHI,,,,,0.0
+Elijah Moore,PHI,,,,,0.0
+J.T. Gray,PHI,,,,,0.0
 John Ojukwu,PHI,,John Ross,PHI,WR,60.0
-Ambry Thomas,PHI,,Parris Campbell,PHI,WR,44.44444444444444
-Jeremiah Trotter Jr.,PHI,,Tanner McKee,PHI,QB,42.85714285714286
-Stone Smartt,PHI,,Saquon Barkley,PHI,RB,46.15384615384615
-Dameon Pierce,PHI,,Kenny Pickett,PHI,QB,53.84615384615385
-Top 51 Cutoff,PHI,,Jack Stoll,PHI,TE,40.0
-Tariq Castro-Fields,PHI,,Tyrion Davis-Price,PHI,RB,51.42857142857142
-Jakorian Bennett,PHI,,Ben VanSumeren,PHI,LB,46.666666666666664
-Ta'Quon Graham,PHI,,Saquon Barkley,PHI,RB,51.85185185185186
-Mac McWilliams,PHI,,Marcus Mariota,PHI,QB,50.0
-Smael Mondon Jr.,PHI,,DeVonta Smith,PHI,WR,48.0
-Drew Kendall,PHI,,Albert Okwuegbunam,PHI,TE,40.0
-Samori Toure,PHI,,Tyrion Davis-Price,PHI,RB,41.379310344827594
-Michael Jordan,PHI,,Braden Mann,PHI,P,48.0
-Elijah Mitchell,PHI,,Ainias Smith,PHI,WR,51.85185185185186
+Ambry Thomas,PHI,,,,,0.0
+Jeremiah Trotter Jr.,PHI,,,,,0.0
+Stone Smartt,PHI,,,,,0.0
+Dameon Pierce,PHI,,,,,0.0
+Top 51 Cutoff,PHI,,,,,0.0
+Tariq Castro-Fields,PHI,,,,,0.0
+Jakorian Bennett,PHI,,,,,0.0
+Ta'Quon Graham,PHI,,,,,0.0
+Mac McWilliams,PHI,,,,,0.0
+Smael Mondon Jr.,PHI,,,,,0.0
+Drew Kendall,PHI,,,,,0.0
+Samori Toure,PHI,,,,,0.0
+Michael Jordan,PHI,,,,,0.0
+Elijah Mitchell,PHI,,,,,0.0
 Chance Campbell,PHI,,Parris Campbell,PHI,WR,66.66666666666667
-Darius Cooper,PHI,,Parris Campbell,PHI,WR,57.14285714285714
-Cameron Latu,PHI,,Grant Calcaterra,PHI,TE,50.0
-Danny Gray,PHI,,Rashaad Penny,PHI,RB,52.17391304347826
-Jose Ramirez,PHI,,Ben VanSumeren,PHI,LB,46.15384615384615
-Carson Steele,PHI,,Boston Scott,PHI,RB,48.0
+Darius Cooper,PHI,,,,,0.0
+Cameron Latu,PHI,,,,,0.0
+Danny Gray,PHI,,,,,0.0
+Jose Ramirez,PHI,,,,,0.0
+Carson Steele,PHI,,,,,0.0
 Brandon Johnson,PHI,,Braden Mann,PHI,P,61.53846153846154
 Andre' Sam,PHI,,D'Andre Swift,PHI,RB,66.66666666666667
-Cole Payton,PHI,,Saquon Barkley,PHI,RB,48.0
-Cameron Williams,PHI,,Parris Campbell,PHI,WR,51.61290322580645
-Micah Morris,PHI,,Parris Campbell,PHI,WR,51.85185185185186
-Myles Hinton,PHI,,Johnny Wilson,PHI,WR,48.0
-Cole Wisniewski,PHI,,Quez Watkins,PHI,WR,44.44444444444444
-Uar Bernard,PHI,,Braden Mann,PHI,P,54.54545454545454
-Keyshawn James-Newby,PHI,,Rashaad Penny,PHI,RB,43.75
-Kapena Gushiken,PHI,,Jalen Hurts,PHI,QB,46.15384615384615
-Zion Wilson,PHI,,Johnny Wilson,PHI,WR,50.0
-Maximus Pulley,PHI,,Jalen Hurts,PHI,QB,40.0
-Joshua Weru,PHI,,John Ross,PHI,WR,50.0
-Dae'Quan Wright,PHI,,D'Andre Swift,PHI,RB,53.84615384615385
-Rocco Underwood,PHI,,Tanner McKee,PHI,QB,37.03703703703704
-Jaeden Roberts,PHI,,John Ross,PHI,WR,52.17391304347826
-Deontae Lawson,PHI,,DeVonta Smith,PHI,WR,59.25925925925925
-Markel Bell,PHI,,Parris Campbell,PHI,WR,53.84615384615385
-Willie Lampkin,PHI,,Kenneth Gainwell,PHI,RB,46.666666666666664
-Jake Majors,PHI,,Saquon Barkley,PHI,RB,48.0
-Gabe Hall,PHI,,Jack Stoll,PHI,TE,42.10526315789473
-Hollin Pierce,PHI,,Kenny Pickett,PHI,QB,46.15384615384615
+Cole Payton,PHI,,,,,0.0
+Cameron Williams,PHI,,,,,0.0
+Micah Morris,PHI,,,,,0.0
+Myles Hinton,PHI,,,,,0.0
+Cole Wisniewski,PHI,,,,,0.0
+Uar Bernard,PHI,,,,,0.0
+Keyshawn James-Newby,PHI,,,,,0.0
+Kapena Gushiken,PHI,,,,,0.0
+Zion Wilson,PHI,,,,,0.0
+Maximus Pulley,PHI,,,,,0.0
+Joshua Weru,PHI,,,,,0.0
+Dae'Quan Wright,PHI,,,,,0.0
+Rocco Underwood,PHI,,,,,0.0
+Jaeden Roberts,PHI,,,,,0.0
+Deontae Lawson,PHI,,,,,0.0
+Markel Bell,PHI,,,,,0.0
+Willie Lampkin,PHI,,,,,0.0
+Jake Majors,PHI,,,,,0.0
+Gabe Hall,PHI,,,,,0.0
+Hollin Pierce,PHI,,,,,0.0
