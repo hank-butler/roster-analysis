@@ -318,7 +318,7 @@ streamlit run streamlit_app/app.py   # Launch dashboard
 1. **Always use absolute imports** from project root - never bare imports
 2. **PlayerAsset is a dataclass** - don't add methods, use PlayerValuationModel
 3. **Chromosome is mutable** - always `.clone()` before modifying
-4. **Data files go in `data/`** - never commit raw data to git
+4. **Raw data files go in `data/raw/`** — never commit them to git. Processed demo files in `data/processed/` are intentionally tracked.
 5. **Tests go in `tests/`** - not in `src/`
 6. **Save all scraped data** before processing - raw data is valuable
 7. **Rate limit scrapers** - 2 second minimum delay between OTC requests
