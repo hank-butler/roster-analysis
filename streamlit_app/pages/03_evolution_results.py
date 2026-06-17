@@ -148,7 +148,11 @@ with col_rem:
 
 st.caption(
     f"{changes['kept_count']} players retained from the current SF roster. "
-    f"Additions drawn from all {len(set(p['team'] for p in changes['added']))} NFC West teams."
+    + (
+        f"{len(changes['added'])} players added back from SF's own roster pool."
+        if changes["added"]
+        else "No changes — the current SF roster is already the evolved optimum given the available pool."
+    )
 )
 
 st.divider()
