@@ -25,9 +25,9 @@ def _make_player(position, cap_hit, age, name="Test", team="DEN",
 def small_roster():
     model = PlayerValuationModel()
     players = [
-        PlayerAsset("den_qb_p", "Purdy", "QB", "DEN", 27,
+        PlayerAsset("den_qb_n", "Nix", "QB", "DEN", 27,
                     23_000_000, 4, 10_000_000, 90_000_000, 45.0, 1050, 0),
-        PlayerAsset("den_wr_a", "Aiyuk", "WR", "DEN", 26,
+        PlayerAsset("den_wr_s", "Sutton", "WR", "DEN", 26,
                     24_000_000, 3, 12_000_000, 96_000_000, 22.0, 900, 2),
     ]
     return model.value_roster(players)
