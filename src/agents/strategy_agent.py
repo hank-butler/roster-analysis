@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 _MODEL = "claude-sonnet-4-6"
 
-_SYSTEM_PROMPT = """You are a strategic roster advisor for the San Francisco 49ers.
+_SYSTEM_PROMPT = """You are a strategic roster advisor for the Denver Broncos.
 You think in terms of cap allocation, portfolio efficiency, and competitive positioning.
 Use the team comparison data below to inform specific, actionable recommendations.
 Focus on: cap allocation gaps vs SB winners, division strengths and weaknesses,
@@ -57,11 +57,11 @@ class StrategyAgent:
             alloc_text = alloc_df.to_string()
 
             sb_lines = []
-            if "SF" in teams_data:
+            if "DEN" in teams_data:
                 sb_analyzer = SuperBowlTemplateAnalyzer()
-                sim = sb_analyzer.calculate_similarity_score(teams_data["SF"])
+                sim = sb_analyzer.calculate_similarity_score(teams_data["DEN"])
                 sb_lines.append(
-                    f"SF SB Template Similarity: {sim['overall_similarity']:.1f}/100"
+                    f"DEN SB Template Similarity: {sim['overall_similarity']:.1f}/100"
                 )
                 for gap in sim["gaps"]:
                     sb_lines.append(f"  Gap: {gap}")
@@ -74,7 +74,7 @@ class StrategyAgent:
                 alloc_text,
             ]
             if sb_lines:
-                sections += ["", "SF vs SB TEMPLATE:"] + sb_lines
+                sections += ["", "DEN vs SB TEMPLATE:"] + sb_lines
 
             context = "\n".join(sections)
         except Exception as exc:

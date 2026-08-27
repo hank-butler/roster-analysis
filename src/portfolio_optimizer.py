@@ -286,9 +286,9 @@ if __name__ == "__main__":
     from src.evolution_engine import RosterConstraints
 
     demo = [
-        PlayerAsset("sf_qb_d", "Demo QB", "QB", "SF", 27,
+        PlayerAsset("den_qb_d", "Demo QB", "QB", "DEN", 27,
                     37_000_000, 4, 20_000_000, 150_000_000, 45.0, 1050, 0),
-        PlayerAsset("sf_wr_d", "Demo WR", "WR", "SF", 25,
+        PlayerAsset("den_wr_d", "Demo WR", "WR", "DEN", 25,
                     24_000_000, 3, 12_000_000, 96_000_000, 22.0, 900, 2),
     ]
     c = RosterConstraints()
@@ -302,7 +302,7 @@ if __name__ == "__main__":
     logger.info("Pareto optimal players: %s", [p.name for p in pareto])
 
     candidate = PlayerValuationModel().value_roster([
-        PlayerAsset("sf_qb_new", "Better QB", "QB", "SF", 24,
+        PlayerAsset("den_qb_new", "Better QB", "QB", "DEN", 24,
                     20_000_000, 3, 10_000_000, 80_000_000, 60.0, 1050, 0)
     ])[0]
     mv = opt.calculate_marginal_value(opt._current_roster, candidate)

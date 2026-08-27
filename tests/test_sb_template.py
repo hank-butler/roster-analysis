@@ -3,7 +3,7 @@ from src.player_valuation import PlayerAsset
 from src.sb_template import SuperBowlTemplateAnalyzer, POSITION_GROUPS
 
 
-def _make_player(position, cap_hit, age, name="Test", team="SF", epa=5.0,
+def _make_player(position, cap_hit, age, name="Test", team="DEN", epa=5.0,
                  expected_value=0.0, risk_score=0.2):
     p = PlayerAsset(
         player_id=f"{team.lower()}_{position.lower()}_{name.lower().replace(' ', '_')}",
@@ -20,8 +20,8 @@ def _make_player(position, cap_hit, age, name="Test", team="SF", epa=5.0,
 @pytest.fixture
 def simple_roster():
     return [
-        _make_player("QB",   30_000_000, 27, "Purdy"),
-        _make_player("WR",   20_000_000, 26, "Aiyuk"),
+        _make_player("QB",   30_000_000, 27, "Nix"),
+        _make_player("WR",   20_000_000, 26, "Sutton"),
         _make_player("RB",   10_000_000, 25, "CMC"),
         _make_player("OT",   15_000_000, 30, "Williams"),
         _make_player("EDGE", 12_000_000, 28, "Bosa"),
@@ -58,7 +58,7 @@ def test_position_allocation_groups_skill_positions(simple_roster):
 def test_position_allocation_skips_blank_position():
     analyzer = SuperBowlTemplateAnalyzer()
     blank = _make_player("", 10_000_000, 25, "Unknown")
-    known = _make_player("QB", 30_000_000, 27, "Purdy")
+    known = _make_player("QB", 30_000_000, 27, "Nix")
     result = analyzer.calculate_position_allocation([blank, known])
     assert result["QB"] == 100.0
 

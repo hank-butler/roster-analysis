@@ -5,7 +5,7 @@ from src.evolution_engine import RosterConstraints
 from src.portfolio_optimizer import PortfolioOptimizer
 
 
-def _make_player(position, cap_hit, age, name="Test", team="SF",
+def _make_player(position, cap_hit, age, name="Test", team="DEN",
                  epa=5.0, expected_value=0.0, risk_score=0.2):
     p = PlayerAsset(
         player_id=f"{team.lower()}_{position.lower()}_{name.lower().replace(' ', '_')}",
@@ -25,9 +25,9 @@ def _make_player(position, cap_hit, age, name="Test", team="SF",
 def small_roster():
     model = PlayerValuationModel()
     players = [
-        PlayerAsset("sf_qb_p", "Purdy", "QB", "SF", 27,
+        PlayerAsset("den_qb_p", "Purdy", "QB", "DEN", 27,
                     23_000_000, 4, 10_000_000, 90_000_000, 45.0, 1050, 0),
-        PlayerAsset("sf_wr_a", "Aiyuk", "WR", "SF", 26,
+        PlayerAsset("den_wr_a", "Aiyuk", "WR", "DEN", 26,
                     24_000_000, 3, 12_000_000, 96_000_000, 22.0, 900, 2),
     ]
     return model.value_roster(players)
@@ -55,7 +55,7 @@ def test_constructor_none_available_treated_as_empty(small_roster):
 
 def test_constructor_values_players():
     raw = [
-        PlayerAsset("sf_qb_x", "Raw", "QB", "SF", 27,
+        PlayerAsset("den_qb_x", "Raw", "QB", "DEN", 27,
                     20_000_000, 3, 10_000_000, 60_000_000, 30.0, 900, 0),
     ]
     assert raw[0].expected_value == 0.0
@@ -66,9 +66,9 @@ def test_constructor_values_players():
 def test_pareto_optimal_excludes_dominated_player():
     model = PlayerValuationModel()
     players = [
-        PlayerAsset("p_a", "A", "QB", "SF", 25, 10_000_000, 2, 5_000_000, 20_000_000, 50.0, 1000, 0),
-        PlayerAsset("p_b", "B", "QB", "SF", 25, 20_000_000, 2, 10_000_000, 40_000_000, 20.0, 800, 0),
-        PlayerAsset("p_c", "C", "QB", "SF", 25, 25_000_000, 2, 12_000_000, 50_000_000, 80.0, 1050, 0),
+        PlayerAsset("p_a", "A", "QB", "DEN", 25, 10_000_000, 2, 5_000_000, 20_000_000, 50.0, 1000, 0),
+        PlayerAsset("p_b", "B", "QB", "DEN", 25, 20_000_000, 2, 10_000_000, 40_000_000, 20.0, 800, 0),
+        PlayerAsset("p_c", "C", "QB", "DEN", 25, 25_000_000, 2, 12_000_000, 50_000_000, 80.0, 1050, 0),
     ]
     valued = model.value_roster(players)
     opt = PortfolioOptimizer(current_roster=valued)
@@ -82,7 +82,7 @@ def test_pareto_optimal_excludes_dominated_player():
 def test_pareto_optimal_single_player_always_optimal():
     model = PlayerValuationModel()
     players = [
-        PlayerAsset("p_a", "OnlyOne", "QB", "SF", 25,
+        PlayerAsset("p_a", "OnlyOne", "QB", "DEN", 25,
                     10_000_000, 2, 5_000_000, 20_000_000, 50.0, 1000, 0),
     ]
     valued = model.value_roster(players)
@@ -95,7 +95,7 @@ def test_marginal_value_returns_float(small_roster, simple_constraints):
     opt = PortfolioOptimizer(current_roster=small_roster, constraints=simple_constraints)
     model = PlayerValuationModel()
     candidate = model.value_roster([
-        PlayerAsset("sf_qb_new", "New QB", "QB", "SF", 24,
+        PlayerAsset("den_qb_new", "New QB", "QB", "DEN", 24,
                     15_000_000, 3, 7_000_000, 45_000_000, 60.0, 1050, 0)
     ])[0]
     result = opt.calculate_marginal_value(small_roster, candidate)
@@ -106,7 +106,7 @@ def test_marginal_value_zero_when_no_position_match(small_roster, simple_constra
     opt = PortfolioOptimizer(current_roster=small_roster, constraints=simple_constraints)
     model = PlayerValuationModel()
     te_candidate = model.value_roster([
-        PlayerAsset("sf_te_x", "TE Guy", "TE", "SF", 28,
+        PlayerAsset("den_te_x", "TE Guy", "TE", "DEN", 28,
                     10_000_000, 2, 5_000_000, 20_000_000, 15.0, 700, 1)
     ])[0]
     result = opt.calculate_marginal_value(small_roster, te_candidate)

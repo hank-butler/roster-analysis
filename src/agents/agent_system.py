@@ -148,8 +148,8 @@ if __name__ == "__main__":
     system = AgentSystem()  # loads from CSV, reads ANTHROPIC_API_KEY
 
     sample_queries = [
-        "Who are the most undervalued players on the 49ers?",
-        "Generate a scouting report on Brock Purdy",
+        "Who are the most undervalued players on the Broncos?",
+        "Generate a scouting report on Patrick Surtain II",
         "How does our cap allocation compare to Super Bowl winners?",
     ]
 

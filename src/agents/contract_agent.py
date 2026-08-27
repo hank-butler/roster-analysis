@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 _MODEL = "claude-sonnet-4-6"
 _MAX_PLAYERS = 30
 
-_SYSTEM_PROMPT = """You are an NFL cap analyst for the San Francisco 49ers.
+_SYSTEM_PROMPT = """You are an NFL cap analyst for the Denver Broncos.
 You use a bond-pricing valuation model to assess player contracts.
 Key metrics provided:
 - Cap Hit: annual salary cap charge
@@ -59,7 +59,7 @@ class ContractAgent:
     ) -> Dict[str, object]:
         """Answer a contract analysis query grounded in player data.
 
-        Prioritises SF players, caps context at 30 players.
+        Prioritises DEN players, caps context at 30 players.
 
         Args:
             query: Natural language contract question.
@@ -68,9 +68,9 @@ class ContractAgent:
         Returns:
             Dict with keys: query, agent, response, data_used.
         """
-        sf = [p for p in players if p.team == "SF"]
-        others = [p for p in players if p.team != "SF"]
-        selected = (sf + others)[:_MAX_PLAYERS]
+        den = [p for p in players if p.team == "DEN"]
+        others = [p for p in players if p.team != "DEN"]
+        selected = (den + others)[:_MAX_PLAYERS]
 
         header = "Name | Position | Cap Hit | Fair Value | Efficiency | Sharpe | Status"
         rows = [_format_player_row(p) for p in selected]

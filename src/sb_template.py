@@ -195,13 +195,13 @@ if __name__ == "__main__":
     from src.player_valuation import PlayerValuationModel
 
     demo_roster = [
-        PlayerAsset("sf_qb_demo", "Demo QB", "QB", "SF", 27,
+        PlayerAsset("den_qb_demo", "Demo QB", "QB", "DEN", 27,
                     37_750_000, 4, 20_000_000, 150_000_000, 45.0, 1050, 0),
-        PlayerAsset("sf_wr_demo", "Demo WR", "WR", "SF", 25,
+        PlayerAsset("den_wr_demo", "Demo WR", "WR", "DEN", 25,
                     24_900_000, 3, 15_000_000, 120_000_000, 22.0, 900, 2),
-        PlayerAsset("sf_ot_demo", "Demo OT", "OT", "SF", 35,
+        PlayerAsset("den_ot_demo", "Demo OT", "OT", "DEN", 35,
                     23_750_000, 1, 5_000_000, 30_000_000, 0.0, 1050, 0),
-        PlayerAsset("sf_edge_demo", "Demo EDGE", "EDGE", "SF", 28,
+        PlayerAsset("den_edge_demo", "Demo EDGE", "EDGE", "DEN", 28,
                     34_000_000, 5, 25_000_000, 170_000_000, 18.0, 800, 3),
     ]
 

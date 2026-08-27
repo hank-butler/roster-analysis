@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 _MODEL = "claude-sonnet-4-6"
 _MAX_PLAYERS = 30
 
-_SYSTEM_PROMPT = """You are a senior NFL scout for the San Francisco 49ers.
+_SYSTEM_PROMPT = """You are a senior NFL scout for the Denver Broncos.
 You write scouting reports and player assessments for coaches and general managers.
 Write in plain English — translate stats into insights, not just numbers.
 Guidelines:
@@ -55,11 +55,11 @@ class ScoutingAgent:
         query_lower = query.lower()
         matched = [p for p in players if p.name.lower() in query_lower]
         others = [p for p in players if p.name.lower() not in query_lower]
-        sf_matched = [p for p in matched if p.team == "SF"]
-        other_matched = [p for p in matched if p.team != "SF"]
-        sf_others = [p for p in others if p.team == "SF"]
-        rest = [p for p in others if p.team != "SF"]
-        ordered = sf_matched + other_matched + sf_others + rest
+        den_matched = [p for p in matched if p.team == "DEN"]
+        other_matched = [p for p in matched if p.team != "DEN"]
+        den_others = [p for p in others if p.team == "DEN"]
+        rest = [p for p in others if p.team != "DEN"]
+        ordered = den_matched + other_matched + den_others + rest
         return ordered[:_MAX_PLAYERS]
 
     def run(
