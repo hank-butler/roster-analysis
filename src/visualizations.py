@@ -8,20 +8,17 @@ from src.sb_template import POSITION_GROUPS, SuperBowlTemplateAnalyzer
 
 logger = logging.getLogger(__name__)
 
-_TEAM_COLORS = {
-    "SF": "#AA0000",
-    "SEA": "#002244",
-    "LAR": "#003594",
-    "ARI": "#97233F",
+TEAM_COLORS = {
+    "DEN": "#FB4F14",
     "KC":  "#E31837",
-    "TB":  "#D50A0A",
-    "PHI": "#004C54",
+    "LAC": "#0080C6",
+    "LV":  "#000000",
 }
 _DEFAULT_COLOR = "#888888"
 
 
 def _team_color(team: str) -> str:
-    return _TEAM_COLORS.get(team.upper(), _DEFAULT_COLOR)
+    return TEAM_COLORS.get(team.upper(), _DEFAULT_COLOR)
 
 
 def plot_roster_efficiency_scatter(
@@ -66,7 +63,7 @@ def plot_roster_efficiency_scatter(
         ))
 
     fig.update_layout(
-        title="NFC West — Portfolio Risk vs Efficiency",
+        title="AFC West — Portfolio Risk vs Efficiency",
         xaxis_title="Portfolio Risk (lower = better)",
         yaxis_title="Portfolio Efficiency (value / cost)",
         showlegend=False,
@@ -162,7 +159,7 @@ def plot_evolution_history(history: List[Dict]) -> go.Figure:
 
 def plot_player_value_scatter(
     players: List[PlayerAsset],
-    highlight_team: str = "SF",
+    highlight_team: str = "DEN",
 ) -> go.Figure:
     """Scatter of cap_hit_2026 vs expected_value, colored by over/under-valued.
 
@@ -350,21 +347,21 @@ if __name__ == "__main__":
 
     model = PlayerValuationModel()
     demo_players = [
-        PlayerAsset("sf_qb_d", "Purdy", "QB", "SF", 27,
+        PlayerAsset("den_qb_d", "Nix", "QB", "DEN", 27,
                     37_000_000, 4, 20_000_000, 150_000_000, 45.0, 1050, 0),
-        PlayerAsset("sf_wr_d", "Aiyuk", "WR", "SF", 26,
+        PlayerAsset("den_wr_d", "Sutton", "WR", "DEN", 26,
                     24_000_000, 3, 12_000_000, 96_000_000, 22.0, 900, 2),
-        PlayerAsset("sea_qb_d", "Geno", "QB", "SEA", 33,
+        PlayerAsset("kc_qb_d", "Mahomes", "QB", "KC", 33,
                     20_000_000, 1, 10_000_000, 20_000_000, 15.0, 900, 2),
     ]
     valued = model.value_roster(demo_players)
     teams = {
-        "SF":  [p for p in valued if p.team == "SF"],
-        "SEA": [p for p in valued if p.team == "SEA"],
+        "DEN": [p for p in valued if p.team == "DEN"],
+        "KC":  [p for p in valued if p.team == "KC"],
     }
     template = SuperBowlTemplateAnalyzer().build_sb_template()
 
     fig = plot_roster_efficiency_scatter(teams)
     logger.info("Efficiency scatter: %d traces", len(fig.data))
-    fig2 = plot_age_distribution(teams["SF"])
+    fig2 = plot_age_distribution(teams["DEN"])
     logger.info("Age distribution: %d traces", len(fig2.data))

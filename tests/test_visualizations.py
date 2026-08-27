@@ -12,7 +12,7 @@ from src.visualizations import (
 )
 
 
-def _make_valued_player(position, cap_hit, age, name="P", team="SF"):
+def _make_valued_player(position, cap_hit, age, name="P", team="DEN"):
     model = PlayerValuationModel()
     p = PlayerAsset(
         player_id=f"{team.lower()}_{position.lower()}_{name.lower()}",
@@ -25,18 +25,18 @@ def _make_valued_player(position, cap_hit, age, name="P", team="SF"):
 
 
 @pytest.fixture
-def sf_roster():
+def den_roster():
     return [
-        _make_valued_player("QB", 30_000_000, 27, "Purdy", "SF"),
-        _make_valued_player("WR", 20_000_000, 25, "Aiyuk", "SF"),
-        _make_valued_player("OT", 15_000_000, 35, "Williams", "SF"),
+        _make_valued_player("QB", 30_000_000, 27, "Nix", "DEN"),
+        _make_valued_player("WR", 20_000_000, 25, "Sutton", "DEN"),
+        _make_valued_player("OT", 15_000_000, 35, "Bolles", "DEN"),
     ]
 
 
 @pytest.fixture
-def teams_data(sf_roster):
-    sea = [_make_valued_player("QB", 25_000_000, 28, "Geno", "SEA")]
-    return {"SF": sf_roster, "SEA": sea}
+def teams_data(den_roster):
+    kc = [_make_valued_player("QB", 25_000_000, 28, "Mahomes", "KC")]
+    return {"DEN": den_roster, "KC": kc}
 
 
 @pytest.fixture
@@ -64,8 +64,8 @@ def test_plot_evolution_history_returns_figure():
     assert isinstance(fig, go.Figure)
 
 
-def test_plot_player_value_scatter_returns_figure(sf_roster):
-    fig = plot_player_value_scatter(sf_roster, highlight_team="SF")
+def test_plot_player_value_scatter_returns_figure(den_roster):
+    fig = plot_player_value_scatter(den_roster, highlight_team="DEN")
     assert isinstance(fig, go.Figure)
 
 
@@ -74,8 +74,8 @@ def test_plot_sb_similarity_radar_returns_figure(teams_data, sb_template):
     assert isinstance(fig, go.Figure)
 
 
-def test_plot_age_distribution_returns_figure(sf_roster):
-    fig = plot_age_distribution(sf_roster)
+def test_plot_age_distribution_returns_figure(den_roster):
+    fig = plot_age_distribution(den_roster)
     assert isinstance(fig, go.Figure)
 
 
