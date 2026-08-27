@@ -50,6 +50,8 @@ class RosterBuilder:
         self.output_dir.mkdir(parents=True, exist_ok=True)
         # Populated by _aggregate_performance; used in merge() to fill unmatched ages
         self._age_lookup: dict = {}  # (norm_name, norm_team) -> age
+        # Name-only fallback, used only when a name is unambiguous league-wide
+        self._age_lookup_by_name: dict = {}  # norm_name -> age (max across teams)
 
     def _aggregate_performance(
         self, stats_df: pd.DataFrame, rosters_df: pd.DataFrame
@@ -112,6 +114,17 @@ class RosterBuilder:
                 .to_dict()
             )
             logger.info(f"Built age lookup with {len(self._age_lookup)} entries from rosters data")
+
+            # Name-only fallback (used when (name, team) misses, e.g. a player
+            # who changed teams between the 2023-2025 rosters snapshot and the
+            # 2026 OTC contract page). Age ambiguity across same-named players
+            # is low-stakes, so simply take the max computed age for the name.
+            self._age_lookup_by_name = (
+                full_ages.groupby("_norm_name")["computed_age"].max().astype(int).to_dict()
+            )
+            logger.info(
+                f"Built name-only age fallback with {len(self._age_lookup_by_name)} entries"
+            )
 
         # Total EPA per player-season
         epa_cols = [c for c in ["passing_epa", "rushing_epa", "receiving_epa"]
@@ -228,44 +241,71 @@ class RosterBuilder:
         ].reset_index(drop=True)
         return combined
 
-    def _build_position_lookup(self) -> dict:
-        """Build a (norm_name, norm_team) → position lookup from full roster data.
+    def _build_position_lookup(self) -> tuple:
+        """Build position lookups from full roster data.
 
         The roster CSV from nfl_data_py contains ALL players (including OL, DL, LB,
         S, CB, K, P) with their positions — unlike the stats join which only covers
         skill positions with EPA data.
 
         Returns:
-            Dict mapping (normalized_name, normalized_team) → uppercase position string.
+            Tuple of (team_lookup, name_only_lookup):
+              - team_lookup: (normalized_name, normalized_team) → uppercase position.
+              - name_only_lookup: normalized_name → uppercase position, populated
+                ONLY for names that map to a single position league-wide (used as
+                a fallback for players who changed teams since the rosters
+                snapshot, e.g. a name found on rosters under a different team
+                than the OTC contract lists).
         """
         rosters_path = self.perf_dir / "rosters_2023_2025.csv"
         if not rosters_path.exists():
             logger.warning(f"Roster file not found for position lookup: {rosters_path}")
-            return {}
+            return {}, {}
         rosters_df = pd.read_csv(rosters_path, usecols=["player_name", "team", "position"])
         lookup: dict = {}
+        name_positions: dict = {}  # norm_name -> set of positions seen league-wide
         for _, row in rosters_df.iterrows():
             pos = str(row.get("position", "")).strip()
             if pos and pos.upper() != "NAN":
-                key = (_normalize_name(str(row["player_name"])), _normalize_team(str(row["team"])))
+                pos = pos.upper()
+                norm_name = _normalize_name(str(row["player_name"]))
+                key = (norm_name, _normalize_team(str(row["team"])))
                 # Prefer the most recent / non-empty entry; last-write wins
-                lookup[key] = pos.upper()
+                lookup[key] = pos
+                name_positions.setdefault(norm_name, set()).add(pos)
+        # Keep only names that resolve to exactly one position league-wide;
+        # drop ambiguous names (e.g. same name, different players/positions).
+        name_only_lookup = {
+            name: next(iter(positions))
+            for name, positions in name_positions.items()
+            if len(positions) == 1
+        }
         logger.info(f"Built position lookup with {len(lookup)} entries from rosters data")
-        return lookup
+        logger.info(
+            f"Built name-only position fallback with {len(name_only_lookup)} unambiguous entries"
+        )
+        return lookup, name_only_lookup
 
     def merge(
-        self, perf_df: pd.DataFrame, contract_df: pd.DataFrame
+        self,
+        perf_df: pd.DataFrame,
+        contract_df: pd.DataFrame,
+        unmatched_filename: str = "unmatched_players.csv",
     ) -> pd.DataFrame:
         """Fuzzy-merge performance stats onto OTC contract rows.
 
         Matches on normalized player name + team (not position, since OTC data
         lacks reliable position info). Matched rows get performance columns
         populated; unmatched rows remain with NaN performance fields and are
-        logged to unmatched_players.csv.
+        logged to `unmatched_filename` under output_dir.
 
         Args:
             perf_df: Output of _aggregate_performance().
             contract_df: Loaded OTC contract DataFrame.
+            unmatched_filename: Filename (under output_dir) to write unmatched
+                rows to. Distinct callers (e.g. build_afc_west vs
+                build_sb_winners) should pass distinct filenames so their
+                unmatched logs don't clobber each other.
 
         Returns:
             Merged DataFrame with one row per OTC player.
@@ -286,7 +326,7 @@ class RosterBuilder:
 
         # Position lookup covers ALL roster players (OL, DL, LB, S, CB, K, P)
         # whereas perf_df only has skill-position players with EPA data.
-        pos_lookup = self._build_position_lookup()
+        pos_lookup, pos_lookup_by_name = self._build_position_lookup()
 
         for _, otc_row in contracts.iterrows():
             otc_name = otc_row["_norm_name"]
@@ -310,19 +350,27 @@ class RosterBuilder:
                 if pd.isna(row_dict.get("position")) or str(row_dict.get("position", "")).strip() == "":
                     row_dict["position"] = best_match.get("position", "")
                 # If still empty, fall back to full-roster position lookup
+                # (name+team first, then name-only for players whose team on
+                # the OTC page differs from the rosters snapshot).
                 if pd.isna(row_dict.get("position")) or str(row_dict.get("position", "")).strip() == "":
-                    row_dict["position"] = pos_lookup.get((otc_name, otc_team), "")
+                    row_dict["position"] = pos_lookup.get(
+                        (otc_name, otc_team), pos_lookup_by_name.get(otc_name, "")
+                    )
             else:
                 for col in base_perf_cols:
                     row_dict[col] = np.nan
                 # Try to fill age from broader roster lookup even without a perf match
-                if self._age_lookup:
-                    looked_up_age = self._age_lookup.get((otc_name, otc_team))
-                    if looked_up_age is not None:
-                        row_dict["age"] = looked_up_age
+                looked_up_age = self._age_lookup.get((otc_name, otc_team))
+                if looked_up_age is None:
+                    looked_up_age = self._age_lookup_by_name.get(otc_name)
+                if looked_up_age is not None:
+                    row_dict["age"] = looked_up_age
                 # Backfill position from full roster data for unmatched players
+                # (name+team first, then name-only fallback).
                 if pd.isna(row_dict.get("position")) or str(row_dict.get("position", "")).strip() == "":
-                    row_dict["position"] = pos_lookup.get((otc_name, otc_team), "")
+                    row_dict["position"] = pos_lookup.get(
+                        (otc_name, otc_team), pos_lookup_by_name.get(otc_name, "")
+                    )
                 has_suggestion = best_match is not None and best_score >= 60
                 unmatched_rows.append({
                     "otc_name": otc_row["player_name"],
@@ -348,7 +396,7 @@ class RosterBuilder:
                 f"Top unmatched scores: {sorted([r['match_score'] for r in unmatched_rows], reverse=True)[:5]}"
             )
 
-        unmatched_path = self.output_dir / "unmatched_players.csv"
+        unmatched_path = self.output_dir / unmatched_filename
         unmatched_frame = pd.DataFrame(
             unmatched_rows if unmatched_rows else [],
             columns=["otc_name", "otc_team", "otc_position",
@@ -389,7 +437,7 @@ class RosterBuilder:
             return pd.read_csv(output_path)
         perf = self.load_performance_data()
         contracts = self.load_contract_data(["KC", "TB", "PHI"])
-        merged = self.merge(perf, contracts)
+        merged = self.merge(perf, contracts, unmatched_filename="unmatched_sb_winners.csv")
         merged.to_csv(output_path, index=False)
         logger.info(f"Saved SB winners roster ({len(merged)} players) to {output_path}")
         return merged

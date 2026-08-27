@@ -135,6 +135,99 @@ def test_load_contract_data_drops_top_51_cutoff_row(tmp_path):
     assert len(result) == 1
 
 
+def test_build_sb_winners_writes_own_unmatched_file(tmp_path, monkeypatch):
+    """build_sb_winners() must not clobber unmatched_players.csv written by
+    build_afc_west() — it should write to unmatched_sb_winners.csv instead."""
+    builder = RosterBuilder(output_dir=str(tmp_path))
+
+    afc_perf_stub = pd.DataFrame([{
+        "player_name": "Bo Nix", "team": "DEN", "position": "QB",
+        "age": 26, "epa_total": 10.0, "snaps_played": 900, "games_missed": 0,
+    }])
+    afc_contract_stub = pd.DataFrame([
+        {"player_name": "Bo Nix", "position": np.nan, "team": "DEN",
+         "cap_hit": 5_000_000.0, "guaranteed_money": 0.0, "years_remaining": 3, "age": 26},
+        {"player_name": "Some Unmatched AFC Player", "position": np.nan, "team": "DEN",
+         "cap_hit": 1_000_000.0, "guaranteed_money": 0.0, "years_remaining": 1, "age": 24},
+    ])
+    sb_perf_stub = pd.DataFrame([{
+        "player_name": "Patrick Mahomes", "team": "KC", "position": "QB",
+        "age": 30, "epa_total": 50.0, "snaps_played": 1000, "games_missed": 0,
+    }])
+    sb_contract_stub = pd.DataFrame([
+        {"player_name": "Patrick Mahomes", "position": np.nan, "team": "KC",
+         "cap_hit": 45_000_000.0, "guaranteed_money": 0.0, "years_remaining": 3, "age": 30},
+        {"player_name": "Some Unmatched SB Player", "position": np.nan, "team": "KC",
+         "cap_hit": 1_000_000.0, "guaranteed_money": 0.0, "years_remaining": 1, "age": 24},
+    ])
+
+    def fake_load_performance_data():
+        # First call is for build_afc_west, second for build_sb_winners
+        if not hasattr(fake_load_performance_data, "calls"):
+            fake_load_performance_data.calls = 0
+        fake_load_performance_data.calls += 1
+        return afc_perf_stub if fake_load_performance_data.calls == 1 else sb_perf_stub
+
+    def fake_load_contract_data(teams):
+        return afc_contract_stub if "DEN" in teams else sb_contract_stub
+
+    monkeypatch.setattr(builder, "load_performance_data", fake_load_performance_data)
+    monkeypatch.setattr(builder, "load_contract_data", fake_load_contract_data)
+
+    builder.build_afc_west()
+    builder.build_sb_winners()
+
+    afc_unmatched_path = tmp_path / "unmatched_players.csv"
+    sb_unmatched_path = tmp_path / "unmatched_sb_winners.csv"
+    assert afc_unmatched_path.exists()
+    assert sb_unmatched_path.exists()
+
+    afc_unmatched = pd.read_csv(afc_unmatched_path)
+    sb_unmatched = pd.read_csv(sb_unmatched_path)
+
+    assert "Some Unmatched AFC Player" in afc_unmatched["otc_name"].values
+    assert "Some Unmatched SB Player" not in afc_unmatched["otc_name"].values
+    assert "Some Unmatched SB Player" in sb_unmatched["otc_name"].values
+    assert "Some Unmatched AFC Player" not in sb_unmatched["otc_name"].values
+
+
+def test_position_and_age_backfill_uses_name_only_fallback_across_teams(tmp_path):
+    """A contract row whose player appears in rosters under a DIFFERENT team
+    (e.g. traded/signed elsewhere) should still get position and age backfilled
+    via a name-only fallback, as long as the name is unambiguous league-wide."""
+    rosters_df = pd.DataFrame([
+        {"player_id": "w001", "season": 2023, "player_name": "Jaylen Waddle",
+         "position": "WR", "team": "MIA", "birth_date": "1998-11-25"},
+        {"player_id": "w001", "season": 2024, "player_name": "Jaylen Waddle",
+         "position": "WR", "team": "MIA", "birth_date": "1998-11-25"},
+    ])
+    perf_dir = tmp_path / "perf"
+    perf_dir.mkdir()
+    rosters_df.to_csv(perf_dir / "rosters_2023_2025.csv", index=False)
+
+    stats_df = pd.DataFrame([
+        {"player_id": "w001", "season": 2023, "games": 16,
+         "passing_epa": 0.0, "rushing_epa": 0.0, "receiving_epa": 20.0, "offense_snaps": 700},
+    ])
+
+    builder = RosterBuilder(perf_dir=str(perf_dir), output_dir=str(tmp_path))
+    perf = builder._aggregate_performance(stats_df, rosters_df)
+
+    # Contract row lists Waddle under DEN (a team he never actually played for in
+    # rosters_df) — simulates an OTC scrape row for a different-team player whose
+    # (name, team) key can't be found, but whose name is unambiguous league-wide.
+    contracts = pd.DataFrame([
+        {"player_name": "Jaylen Waddle", "position": np.nan, "team": "DEN",
+         "cap_hit": 1_000_000.0, "guaranteed_money": 0.0, "years_remaining": 1, "age": np.nan},
+    ])
+
+    merged = builder.merge(perf, contracts)
+    row = merged[merged["player_name"] == "Jaylen Waddle"].iloc[0]
+
+    assert str(row["position"]).strip() == "WR"
+    assert int(row["age"]) == 2026 - 1998
+
+
 def test_build_afc_west_writes_afc_west_rosters_csv(tmp_path, monkeypatch):
     builder = RosterBuilder(output_dir=str(tmp_path))
     perf_stub = pd.DataFrame([{
