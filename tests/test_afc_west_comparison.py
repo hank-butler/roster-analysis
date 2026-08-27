@@ -2,10 +2,10 @@ import pytest
 import pandas as pd
 import plotly.graph_objects as go
 from src.player_valuation import PlayerAsset, PlayerValuationModel
-from src.nfc_west_comparison import DivisionAnalyzer
+from src.afc_west_comparison import DivisionAnalyzer
 
 
-def _make_player(position, cap_hit, age, name="P", team="SF"):
+def _make_player(position, cap_hit, age, name="P", team="DEN"):
     return PlayerAsset(
         player_id=f"{team.lower()}_{position.lower()}_{name.lower().replace(' ', '_')}",
         name=name, position=position, team=team, age=age,
@@ -18,14 +18,14 @@ def _make_player(position, cap_hit, age, name="P", team="SF"):
 @pytest.fixture
 def two_team_data():
     return {
-        "SF": [
-            _make_player("QB", 30_000_000, 27, "Purdy", "SF"),
-            _make_player("WR", 20_000_000, 25, "Aiyuk", "SF"),
-            _make_player("OT", 15_000_000, 35, "Williams", "SF"),
+        "DEN": [
+            _make_player("QB", 30_000_000, 27, "Nix", "DEN"),
+            _make_player("WR", 20_000_000, 25, "Sutton", "DEN"),
+            _make_player("OT", 15_000_000, 35, "Bolles", "DEN"),
         ],
-        "SEA": [
-            _make_player("QB", 25_000_000, 33, "Geno", "SEA"),
-            _make_player("WR", 18_000_000, 27, "Metcalf", "SEA"),
+        "KC": [
+            _make_player("QB", 25_000_000, 33, "Mahomes", "KC"),
+            _make_player("WR", 18_000_000, 27, "Rice", "KC"),
         ],
     }
 
@@ -89,19 +89,19 @@ def test_rank_teams_risk_ascending(analyzer):
 
 
 def test_identify_division_advantages_keys(analyzer):
-    result = analyzer.identify_division_advantages(primary_team="SF")
+    result = analyzer.identify_division_advantages(primary_team="DEN")
     assert set(result.keys()) == {"strengths", "weaknesses", "opportunities"}
 
 
 def test_identify_division_advantages_lists_of_strings(analyzer):
-    result = analyzer.identify_division_advantages(primary_team="SF")
+    result = analyzer.identify_division_advantages(primary_team="DEN")
     for key in ("strengths", "weaknesses", "opportunities"):
         assert isinstance(result[key], list)
         assert all(isinstance(s, str) for s in result[key])
 
 
 def test_generate_division_report_keys(analyzer):
-    report = analyzer.generate_division_report(primary_team="SF")
+    report = analyzer.generate_division_report(primary_team="DEN")
     assert set(report.keys()) == {
         "metrics_df", "allocation_df", "rankings",
         "advantages", "sb_similarity", "figures",
@@ -109,13 +109,13 @@ def test_generate_division_report_keys(analyzer):
 
 
 def test_generate_division_report_figures_are_plotly(analyzer):
-    report = analyzer.generate_division_report(primary_team="SF")
+    report = analyzer.generate_division_report(primary_team="DEN")
     for name, fig in report["figures"].items():
         assert isinstance(fig, go.Figure), f"Figure '{name}' is not a go.Figure"
 
 
 def test_generate_division_report_figure_keys(analyzer):
-    report = analyzer.generate_division_report(primary_team="SF")
+    report = analyzer.generate_division_report(primary_team="DEN")
     expected_keys = {
         "efficiency_scatter", "position_allocation",
         "age_distribution", "sb_radar", "player_value_scatter",

@@ -19,7 +19,7 @@ _VALID_METRICS = ("efficiency", "risk", "sharpe_ratio", "sb_similarity")
 
 
 class DivisionAnalyzer:
-    """Coordination layer for NFC West division analysis.
+    """Coordination layer for AFC West division analysis.
 
     Values all roster inputs at init so downstream methods receive
     pre-valued PlayerAsset objects.
@@ -29,7 +29,7 @@ class DivisionAnalyzer:
         """Initialise and value all team rosters.
 
         Args:
-            teams_data: Dict mapping team abbreviation (e.g. 'SF') to roster.
+            teams_data: Dict mapping team abbreviation (e.g. 'DEN') to roster.
         """
         model = PlayerValuationModel()
         self._valued_rosters: Dict[str, List[PlayerAsset]] = {
@@ -119,7 +119,7 @@ class DivisionAnalyzer:
         return df
 
     def identify_division_advantages(
-        self, primary_team: str = "SF"
+        self, primary_team: str = "DEN"
     ) -> Dict[str, List[str]]:
         """Compare primary team's position allocations to the division average.
 
@@ -164,7 +164,7 @@ class DivisionAnalyzer:
         }
 
     def generate_division_report(
-        self, primary_team: str = "SF"
+        self, primary_team: str = "DEN"
     ) -> Dict:
         """Generate a complete division analysis report with metrics and figures.
 
@@ -228,18 +228,18 @@ if __name__ == "__main__":
     _logging.basicConfig(level=_logging.INFO)
 
     demo_teams = {
-        "SF": [
-            PlayerAsset("sf_qb", "Purdy", "QB", "SF", 27,
+        "DEN": [
+            PlayerAsset("den_qb", "Nix", "QB", "DEN", 26,
                         37_000_000, 4, 20_000_000, 150_000_000, 45.0, 1050, 0),
-            PlayerAsset("sf_wr", "Aiyuk", "WR", "SF", 26,
+            PlayerAsset("den_wr", "Sutton", "WR", "DEN", 30,
                         24_000_000, 3, 12_000_000, 96_000_000, 22.0, 900, 2),
-            PlayerAsset("sf_ot", "Williams", "OT", "SF", 35,
+            PlayerAsset("den_ot", "Bolles", "OT", "DEN", 34,
                         23_000_000, 1, 5_000_000, 23_000_000, 0.0, 1050, 0),
         ],
-        "SEA": [
-            PlayerAsset("sea_qb", "Geno", "QB", "SEA", 33,
+        "KC": [
+            PlayerAsset("kc_qb", "Mahomes", "QB", "KC", 31,
                         20_000_000, 1, 10_000_000, 20_000_000, 15.0, 900, 2),
-            PlayerAsset("sea_wr", "Metcalf", "WR", "SEA", 27,
+            PlayerAsset("kc_wr", "Rice", "WR", "KC", 26,
                         22_000_000, 3, 11_000_000, 66_000_000, 18.0, 950, 1),
         ],
     }
@@ -247,9 +247,9 @@ if __name__ == "__main__":
     da = DivisionAnalyzer(demo_teams)
     logger.info("Portfolio Metrics:\n%s", da.compare_portfolio_metrics().to_string())
     logger.info("Rankings (efficiency):\n%s", da.rank_teams("efficiency").to_string())
-    adv = da.identify_division_advantages("SF")
-    logger.info("SF Strengths: %s", adv["strengths"])
-    logger.info("SF Weaknesses: %s", adv["weaknesses"])
-    logger.info("SF Opportunities: %s", adv["opportunities"])
-    report = da.generate_division_report("SF")
+    adv = da.identify_division_advantages("DEN")
+    logger.info("DEN Strengths: %s", adv["strengths"])
+    logger.info("DEN Weaknesses: %s", adv["weaknesses"])
+    logger.info("DEN Opportunities: %s", adv["opportunities"])
+    report = da.generate_division_report("DEN")
     logger.info("Report figure keys: %s", list(report["figures"].keys()))

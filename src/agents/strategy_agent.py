@@ -3,7 +3,7 @@ from typing import Dict, List
 
 import anthropic
 
-from src.nfc_west_comparison import DivisionAnalyzer
+from src.afc_west_comparison import DivisionAnalyzer
 from src.player_valuation import PlayerAsset
 from src.sb_template import SuperBowlTemplateAnalyzer
 
