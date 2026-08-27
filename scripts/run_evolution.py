@@ -1,6 +1,6 @@
 """Pre-compute evolution results for the dashboard demo.
 
-Runs the EvolutionEngine on NFC West players where we have position data
+Runs the EvolutionEngine on AFC West players where we have position data
 (QB, WR, RB, TE, DL, LB, K, P, LS) and saves results to
 data/processed/evolution_results.json.
 
@@ -25,7 +25,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(mess
 logger = logging.getLogger(__name__)
 
 VALID_POSITIONS = {"QB", "WR", "RB", "TE", "DL", "LB", "K", "LS"}
-# Note: P (punter) excluded — SF's 2026 punter is not captured in the OTC data pipeline yet.
+# Note: P (punter) excluded — DEN's 2026 punter is not captured in the OTC data pipeline yet.
 OUTPUT_PATH = Path("data/processed/evolution_results.json")
 
 
@@ -88,23 +88,23 @@ def player_to_dict(p: PlayerAsset) -> dict:
 def main():
     logger.info("Loading players...")
     all_players = load_players()
-    sf_players = [p for p in all_players if p.team == "SF"]
-    logger.info(f"SF known-position players: {len(sf_players)}")
-    logger.info(f"Total NFC West pool: {len(all_players)}")
+    den_players = [p for p in all_players if p.team == "DEN"]
+    logger.info(f"DEN known-position players: {len(den_players)}")
+    logger.info(f"Total AFC West pool: {len(all_players)}")
 
     constraints = make_constraints()
 
-    # Score the current SF roster via portfolio metrics (not fitness fn,
+    # Score the current DEN roster via portfolio metrics (not fitness fn,
     # which penalises position-count mismatches in the raw data)
-    pa_current_pre = PortfolioAnalyzer(sf_players)
+    pa_current_pre = PortfolioAnalyzer(den_players)
     current_efficiency = pa_current_pre.portfolio_efficiency()
     current_risk = pa_current_pre.portfolio_risk()
-    logger.info(f"Current SF portfolio efficiency: {current_efficiency:.4f}, risk: {current_risk:.4f}")
+    logger.info(f"Current DEN portfolio efficiency: {current_efficiency:.4f}, risk: {current_risk:.4f}")
 
     # Run the evolution
     engine = EvolutionEngine(
-        current_roster=sf_players,
-        available_players=sf_players,   # optimize within SF's own roster
+        current_roster=den_players,
+        available_players=den_players,   # optimize within DEN's own roster
         constraints=constraints,
         valuation_model=PlayerValuationModel(),
     )
@@ -119,9 +119,9 @@ def main():
     logger.info(f"Best evolved fitness: {best_fitness:.4f}")
 
     # Build before/after diff
-    current_ids = {p.player_id for p in sf_players}
+    current_ids = {p.player_id for p in den_players}
     evolved_ids = {p.player_id for p in best_chromosome.players}
-    removed = [p for p in sf_players if p.player_id not in evolved_ids]
+    removed = [p for p in den_players if p.player_id not in evolved_ids]
     added = [p for p in best_chromosome.players if p.player_id not in current_ids]
     kept = [p for p in best_chromosome.players if p.player_id in current_ids]
 
@@ -137,11 +137,11 @@ def main():
             "generations": engine.generations,
             "salary_cap": constraints.salary_cap,
             "positions_included": sorted(VALID_POSITIONS),
-            "note": "Optimizes within SF's current roster (QB/WR/RB/TE/DL/LB/K/LS). P excluded — punter not in pipeline yet. Cross-team acquisition is future work."
+            "note": "Optimizes within DEN's current roster (QB/WR/RB/TE/DL/LB/K/LS). P excluded — punter not in pipeline yet. Cross-team acquisition is future work."
         },
         "current_roster": {
-            "players": [player_to_dict(p) for p in sorted(sf_players, key=lambda p: -p.cap_hit_2026)],
-            "cap_used": round(sum(p.cap_hit_2026 for p in sf_players)),
+            "players": [player_to_dict(p) for p in sorted(den_players, key=lambda p: -p.cap_hit_2026)],
+            "cap_used": round(sum(p.cap_hit_2026 for p in den_players)),
             "portfolio_efficiency": round(pa_current_pre.portfolio_efficiency(), 4),
             "portfolio_risk": round(pa_current_pre.portfolio_risk(), 4),
         },
@@ -171,7 +171,7 @@ def main():
     OUTPUT_PATH.write_text(json.dumps(results, indent=2))
     logger.info(f"Saved results to {OUTPUT_PATH}")
     logger.info(
-        f"Additions drawn from SF's own roster. "
+        f"Additions drawn from DEN's own roster. "
         f"Kept: {len(kept)}, removed: {len(removed)}, added back: {len(added)}"
     )
     logger.info(f"Players removed: {[p['name'] for p in results['changes']['removed']]}")

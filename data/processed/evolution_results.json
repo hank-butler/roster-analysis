@@ -13,1147 +13,1258 @@
       "TE",
       "WR"
     ],
-    "note": "Optimizes within SF's current roster (QB/WR/RB/TE/DL/LB/K/LS). P excluded \u2014 punter not in pipeline yet. Cross-team acquisition is future work."
+    "note": "Optimizes within DEN's current roster (QB/WR/RB/TE/DL/LB/K/LS). P excluded \u2014 punter not in pipeline yet. Cross-team acquisition is future work."
   },
   "current_roster": {
     "players": [
       {
-        "name": "Brock Purdy",
-        "position": "QB",
-        "team": "SF",
-        "age": 27,
-        "cap_hit": 23709530.0,
-        "expected_value": 50456364.37,
-        "efficiency_ratio": 2.1281,
-        "risk_score": 0.0435,
-        "fair_value": 48260028.51
-      },
-      {
-        "name": "Nick Bosa",
+        "name": "Zach Allen",
         "position": "DL",
-        "team": "SF",
+        "team": "DEN",
         "age": 29,
-        "cap_hit": 22990988.0,
-        "expected_value": 9832305.48,
-        "efficiency_ratio": 0.4277,
+        "cap_hit": 16477000.0,
+        "expected_value": 10020549.09,
+        "efficiency_ratio": 0.6082,
         "risk_score": 0.2547,
-        "fair_value": 7327959.44
+        "fair_value": 7468256.29
       },
       {
-        "name": "Fred Warner",
-        "position": "LB",
-        "team": "SF",
-        "age": 30,
-        "cap_hit": 17865471.0,
-        "expected_value": 7947783.66,
-        "efficiency_ratio": 0.4449,
-        "risk_score": 0.3247,
-        "fair_value": 5367091.55
-      },
-      {
-        "name": "George Kittle",
-        "position": "TE",
-        "team": "SF",
-        "age": 33,
-        "cap_hit": 14147529.0,
-        "expected_value": 14968793.18,
-        "efficiency_ratio": 1.0581,
-        "risk_score": 0.2635,
-        "fair_value": 11024075.92
-      },
-      {
-        "name": "Brandon Aiyuk",
-        "position": "WR",
-        "team": "SF",
-        "age": 28,
-        "cap_hit": 13665790.0,
-        "expected_value": 16162414.7,
-        "efficiency_ratio": 1.1827,
-        "risk_score": 0.1976,
-        "fair_value": 12967960.97
-      },
-      {
-        "name": "Christian McCaffrey",
-        "position": "RB",
-        "team": "SF",
-        "age": 30,
-        "cap_hit": 10856472.0,
-        "expected_value": 5322194.8,
-        "efficiency_ratio": 0.4902,
-        "risk_score": 0.4447,
-        "fair_value": 2955383.47
-      },
-      {
-        "name": "Mykel Williams",
+        "name": "D.J. Jones",
         "position": "DL",
-        "team": "SF",
-        "age": 22,
-        "cap_hit": 5424238.0,
-        "expected_value": 9832305.48,
-        "efficiency_ratio": 1.8127,
-        "risk_score": 0.2147,
-        "fair_value": 7721251.66
+        "team": "DEN",
+        "age": 31,
+        "cap_hit": 14570000.0,
+        "expected_value": 10020549.09,
+        "efficiency_ratio": 0.6878,
+        "risk_score": 0.3347,
+        "fair_value": 6666612.36
       },
       {
-        "name": "Dre Greenlaw",
-        "position": "LB",
-        "team": "SF",
-        "age": 29,
-        "cap_hit": 3550000.0,
-        "expected_value": 7947783.66,
-        "efficiency_ratio": 2.2388,
-        "risk_score": 0.2447,
-        "fair_value": 6002914.25
-      },
-      {
-        "name": "Luke Farrell",
+        "name": "Evan Engram",
         "position": "TE",
-        "team": "SF",
-        "age": 29,
-        "cap_hit": 3514000.0,
-        "expected_value": 7487095.01,
-        "efficiency_ratio": 2.1306,
-        "risk_score": 0.2212,
-        "fair_value": 5831125.76
-      },
-      {
-        "name": "Ricky Pearsall",
-        "position": "WR",
-        "team": "SF",
-        "age": 26,
-        "cap_hit": 3419563.0,
-        "expected_value": 12886836.3,
-        "efficiency_ratio": 3.7686,
-        "risk_score": 0.2047,
-        "fair_value": 10248825.1
-      },
-      {
-        "name": "Mac Jones",
-        "position": "QB",
-        "team": "SF",
-        "age": 28,
-        "cap_hit": 3130000.0,
-        "expected_value": 31638559.95,
-        "efficiency_ratio": 10.1082,
-        "risk_score": 0.1376,
-        "fair_value": 27283605.23
-      },
-      {
-        "name": "Kyle Juszczyk",
-        "position": "RB",
-        "team": "SF",
-        "age": 35,
-        "cap_hit": 2896000.0,
-        "expected_value": 6172037.04,
-        "efficiency_ratio": 2.1312,
-        "risk_score": 0.3976,
-        "fair_value": 3717744.66
-      },
-      {
-        "name": "Demarcus Robinson",
-        "position": "WR",
-        "team": "SF",
+        "team": "DEN",
         "age": 32,
-        "cap_hit": 2701867.0,
-        "expected_value": 12156492.66,
-        "efficiency_ratio": 4.4993,
-        "risk_score": 0.4047,
-        "fair_value": 7236688.57
+        "cap_hit": 14136666.0,
+        "expected_value": 8293503.07,
+        "efficiency_ratio": 0.5867,
+        "risk_score": 0.3576,
+        "fair_value": 5327356.09
       },
       {
-        "name": "Alfred Collins",
-        "position": "DL",
-        "team": "SF",
-        "age": 25,
-        "cap_hit": 2342478.0,
-        "expected_value": 9832305.48,
-        "efficiency_ratio": 4.1974,
-        "risk_score": 0.2147,
-        "fair_value": 7721251.66
+        "name": "Courtland Sutton",
+        "position": "WR",
+        "team": "DEN",
+        "age": 31,
+        "cap_hit": 13975000.0,
+        "expected_value": 22087540.8,
+        "efficiency_ratio": 1.5805,
+        "risk_score": 0.2635,
+        "fair_value": 16266824.17
       },
       {
-        "name": "Sam Okuayinonu",
-        "position": "DL",
-        "team": "SF",
+        "name": "Brandon Jones",
+        "position": "WR",
+        "team": "DEN",
         "age": 28,
-        "cap_hit": 2280000.0,
-        "expected_value": 9832305.48,
-        "efficiency_ratio": 4.3124,
-        "risk_score": 0.2547,
-        "fair_value": 7327959.44
-      },
-      {
-        "name": "Jake Tonges",
-        "position": "TE",
-        "team": "SF",
-        "age": 27,
-        "cap_hit": 2058000.0,
-        "expected_value": 7487095.01,
-        "efficiency_ratio": 3.638,
-        "risk_score": 0.1812,
-        "fair_value": 6130609.56
-      },
-      {
-        "name": "Luke Gifford",
-        "position": "LB",
-        "team": "SF",
-        "age": 31,
-        "cap_hit": 1972000.0,
-        "expected_value": 7947783.66,
-        "efficiency_ratio": 4.0303,
-        "risk_score": 0.3247,
-        "fair_value": 5367091.55
-      },
-      {
-        "name": "Eddy Pineiro",
-        "position": "K",
-        "team": "SF",
-        "age": 31,
-        "cap_hit": 1951000.0,
-        "expected_value": 2066609.1,
-        "efficiency_ratio": 1.0593,
-        "risk_score": 0.2247,
-        "fair_value": 1602229.88
-      },
-      {
-        "name": "Keion White",
-        "position": "DL",
-        "team": "SF",
-        "age": 27,
-        "cap_hit": 1812297.0,
-        "expected_value": 9832305.48,
-        "efficiency_ratio": 5.4253,
-        "risk_score": 0.2147,
-        "fair_value": 7721251.66
-      },
-      {
-        "name": "Nick Martin",
-        "position": "LB",
-        "team": "SF",
-        "age": 24,
-        "cap_hit": 1491288.0,
-        "expected_value": 7947783.66,
-        "efficiency_ratio": 5.3295,
-        "risk_score": 0.2047,
-        "fair_value": 6320825.59
-      },
-      {
-        "name": "Jon Weeks",
-        "position": "LS",
-        "team": "SF",
-        "age": 40,
-        "cap_hit": 1262500.0,
-        "expected_value": 1056065.46,
-        "efficiency_ratio": 0.8365,
-        "risk_score": 0.3847,
-        "fair_value": 649790.87
-      },
-      {
-        "name": "C.J. West",
-        "position": "DL",
-        "team": "SF",
-        "age": 24,
-        "cap_hit": 1257773.0,
-        "expected_value": 9832305.48,
-        "efficiency_ratio": 7.8172,
-        "risk_score": 0.2147,
-        "fair_value": 7721251.66
-      },
-      {
-        "name": "Isaac Guerendo",
-        "position": "RB",
-        "team": "SF",
-        "age": 26,
-        "cap_hit": 1251132.0,
-        "expected_value": 7914601.24,
-        "efficiency_ratio": 6.326,
-        "risk_score": 0.2141,
-        "fair_value": 6219945.45
-      },
-      {
-        "name": "Jacob Cowing",
-        "position": "WR",
-        "team": "SF",
-        "age": 25,
-        "cap_hit": 1207177.0,
-        "expected_value": 3672720.09,
-        "efficiency_ratio": 3.0424,
-        "risk_score": 0.24,
-        "fair_value": 2791267.27
-      },
-      {
-        "name": "Jordan Watkins",
-        "position": "WR",
-        "team": "SF",
-        "age": 24,
-        "cap_hit": 1171454.0,
-        "expected_value": 12156492.66,
-        "efficiency_ratio": 10.3773,
-        "risk_score": 0.2047,
-        "fair_value": 9667987.11
-      },
-      {
-        "name": "Jalen Graham",
-        "position": "LB",
-        "team": "SF",
-        "age": 26,
-        "cap_hit": 1145000.0,
-        "expected_value": 7947783.66,
-        "efficiency_ratio": 6.9413,
-        "risk_score": 0.2047,
-        "fair_value": 6320825.59
-      },
-      {
-        "name": "Brayden Willis",
-        "position": "TE",
-        "team": "SF",
-        "age": 27,
-        "cap_hit": 1145000.0,
-        "expected_value": 635900.53,
-        "efficiency_ratio": 0.5554,
-        "risk_score": 0.24,
-        "fair_value": 483284.4
-      },
-      {
-        "name": "Jordan James",
-        "position": "RB",
-        "team": "SF",
-        "age": 22,
-        "cap_hit": 1114921.0,
-        "expected_value": 5357826.1,
-        "efficiency_ratio": 4.8056,
-        "risk_score": 0.2212,
-        "fair_value": 4172801.03
-      },
-      {
-        "name": "Tatum Bethune",
-        "position": "LB",
-        "team": "SF",
-        "age": 25,
-        "cap_hit": 1095452.0,
-        "expected_value": 7947783.66,
-        "efficiency_ratio": 7.2553,
-        "risk_score": 0.2047,
-        "fair_value": 6320825.59
-      },
-      {
-        "name": "Colton Dowell",
-        "position": "WR",
-        "team": "SF",
-        "age": 27,
-        "cap_hit": 1075000.0,
-        "expected_value": 12156492.66,
-        "efficiency_ratio": 11.3084,
+        "cap_hit": 9243334.0,
+        "expected_value": 14076117.9,
+        "efficiency_ratio": 1.5228,
         "risk_score": 0.2447,
-        "fair_value": 9181727.4
+        "fair_value": 10631609.05
       },
       {
-        "name": "Patrick Taylor",
+        "name": "Nik Bonitto",
+        "position": "LB",
+        "team": "DEN",
+        "age": 27,
+        "cap_hit": 8421200.0,
+        "expected_value": 8109081.29,
+        "efficiency_ratio": 0.9629,
+        "risk_score": 0.2047,
+        "fair_value": 6449104.65
+      },
+      {
+        "name": "Jarrett Stidham",
+        "position": "QB",
+        "team": "DEN",
+        "age": 30,
+        "cap_hit": 8000000.0,
+        "expected_value": 4529330.0,
+        "efficiency_ratio": 0.5662,
+        "risk_score": 0.26,
+        "fair_value": 3351704.2
+      },
+      {
+        "name": "Marvin Mims",
+        "position": "WR",
+        "team": "DEN",
+        "age": 24,
+        "cap_hit": 6120388.0,
+        "expected_value": 18900928.8,
+        "efficiency_ratio": 3.0882,
+        "risk_score": 0.0871,
+        "fair_value": 17255436.18
+      },
+      {
+        "name": "J.K. Dobbins",
         "position": "RB",
-        "team": "SF",
+        "team": "DEN",
+        "age": 28,
+        "cap_hit": 6000000.0,
+        "expected_value": 3408856.37,
+        "efficiency_ratio": 0.5681,
+        "risk_score": 0.4,
+        "fair_value": 2045313.82
+      },
+      {
+        "name": "Alex Singleton",
+        "position": "LB",
+        "team": "DEN",
+        "age": 33,
+        "cap_hit": 5970000.0,
+        "expected_value": 8109081.29,
+        "efficiency_ratio": 1.3583,
+        "risk_score": 0.4047,
+        "fair_value": 4827288.39
+      },
+      {
+        "name": "Jonathon Cooper",
+        "position": "LB",
+        "team": "DEN",
+        "age": 28,
+        "cap_hit": 5780000.0,
+        "expected_value": 8109081.29,
+        "efficiency_ratio": 1.403,
+        "risk_score": 0.2447,
+        "fair_value": 6124741.4
+      },
+      {
+        "name": "Bo Nix",
+        "position": "QB",
+        "team": "DEN",
+        "age": 26,
+        "cap_hit": 5076318.0,
+        "expected_value": 55619650.12,
+        "efficiency_ratio": 10.9567,
+        "risk_score": 0.02,
+        "fair_value": 54507257.12
+      },
+      {
+        "name": "Jaylen Waddle",
+        "position": "WR",
+        "team": "DEN",
+        "age": 28,
+        "cap_hit": 4878200.0,
+        "expected_value": 15902620.45,
+        "efficiency_ratio": 3.2599,
+        "risk_score": 0.1741,
+        "fair_value": 13133693.6
+      },
+      {
+        "name": "Adam Trautman",
+        "position": "TE",
+        "team": "DEN",
+        "age": 29,
+        "cap_hit": 3333333.0,
+        "expected_value": 9638011.77,
+        "efficiency_ratio": 2.8914,
+        "risk_score": 0.1271,
+        "fair_value": 8413417.33
+      },
+      {
+        "name": "Justin Strnad",
+        "position": "LB",
+        "team": "DEN",
+        "age": 30,
+        "cap_hit": 3286666.0,
+        "expected_value": 8109081.29,
+        "efficiency_ratio": 2.4673,
+        "risk_score": 0.3247,
+        "fair_value": 5476014.9
+      },
+      {
+        "name": "Malcolm Roach",
+        "position": "DL",
+        "team": "DEN",
+        "age": 28,
+        "cap_hit": 3101333.0,
+        "expected_value": 10020549.09,
+        "efficiency_ratio": 3.231,
+        "risk_score": 0.2547,
+        "fair_value": 7468256.29
+      },
+      {
+        "name": "Wil Lutz",
+        "position": "K",
+        "team": "DEN",
+        "age": 32,
+        "cap_hit": 2498666.0,
+        "expected_value": 2117338.96,
+        "efficiency_ratio": 0.8474,
+        "risk_score": 0.2247,
+        "fair_value": 1641560.44
+      },
+      {
+        "name": "Sam Ehlinger",
+        "position": "QB",
+        "team": "DEN",
+        "age": 28,
+        "cap_hit": 2000000.0,
+        "expected_value": 26520612.25,
+        "efficiency_ratio": 13.2603,
+        "risk_score": 0.1612,
+        "fair_value": 22246113.57
+      },
+      {
+        "name": "Drew Sanders",
+        "position": "LB",
+        "team": "DEN",
+        "age": 26,
+        "cap_hit": 1824688.0,
+        "expected_value": 8109081.29,
+        "efficiency_ratio": 4.4441,
+        "risk_score": 0.2047,
+        "fair_value": 6449104.65
+      },
+      {
+        "name": "R.J. Harvey",
+        "position": "RB",
+        "team": "DEN",
+        "age": 25,
+        "cap_hit": 1672653.0,
+        "expected_value": 3408856.37,
+        "efficiency_ratio": 2.038,
+        "risk_score": 0.28,
+        "fair_value": 2454376.59
+      },
+      {
+        "name": "Jonah Elliss",
+        "position": "LB",
+        "team": "DEN",
+        "age": 23,
+        "cap_hit": 1601104.0,
+        "expected_value": 8109081.29,
+        "efficiency_ratio": 5.0647,
+        "risk_score": 0.2047,
+        "fair_value": 6449104.65
+      },
+      {
+        "name": "Nate Adkins",
+        "position": "TE",
+        "team": "DEN",
+        "age": 27,
+        "cap_hit": 1555000.0,
+        "expected_value": 5436597.4,
+        "efficiency_ratio": 3.4962,
+        "risk_score": 0.24,
+        "fair_value": 4131814.02
+      },
+      {
+        "name": "Pat Bryant",
+        "position": "WR",
+        "team": "DEN",
+        "age": 24,
+        "cap_hit": 1495700.0,
+        "expected_value": 15902620.45,
+        "efficiency_ratio": 10.6322,
+        "risk_score": 0.1341,
+        "fair_value": 13769798.42
+      },
+      {
+        "name": "Mitchell Fraboni",
+        "position": "LS",
+        "team": "DEN",
+        "age": 30,
+        "cap_hit": 1415000.0,
+        "expected_value": 1084403.38,
+        "efficiency_ratio": 0.7664,
+        "risk_score": 0.1847,
+        "fair_value": 884107.69
+      },
+      {
+        "name": "Sai'vion Jones",
+        "position": "DL",
+        "team": "DEN",
+        "age": 23,
+        "cap_hit": 1400269.0,
+        "expected_value": 10020549.09,
+        "efficiency_ratio": 7.1562,
+        "risk_score": 0.2147,
+        "fair_value": 7869078.25
+      },
+      {
+        "name": "Jaleel McLaughlin",
+        "position": "RB",
+        "team": "DEN",
+        "age": 26,
+        "cap_hit": 1385000.0,
+        "expected_value": 8305097.02,
+        "efficiency_ratio": 5.9965,
+        "risk_score": 0.12,
+        "fair_value": 7308485.38
+      },
+      {
+        "name": "Lucas Krull",
+        "position": "TE",
+        "team": "DEN",
+        "age": 28,
+        "cap_hit": 1360000.0,
+        "expected_value": 5664038.88,
+        "efficiency_ratio": 4.1647,
+        "risk_score": 0.2682,
+        "fair_value": 4144743.75
+      },
+      {
+        "name": "Troy Franklin",
+        "position": "WR",
+        "team": "DEN",
+        "age": 23,
+        "cap_hit": 1288709.0,
+        "expected_value": 15222841.92,
+        "efficiency_ratio": 11.8125,
+        "risk_score": 0.0635,
+        "fair_value": 14255743.73
+      },
+      {
+        "name": "Adam Prentice",
+        "position": "RB",
+        "team": "DEN",
+        "age": 29,
+        "cap_hit": 1262500.0,
+        "expected_value": 3408856.37,
+        "efficiency_ratio": 2.7001,
+        "risk_score": 0.4,
+        "fair_value": 2045313.82
+      },
+      {
+        "name": "Lil'Jordan Humphrey",
+        "position": "WR",
+        "team": "DEN",
+        "age": 28,
+        "cap_hit": 1221323.0,
+        "expected_value": 14652159.98,
+        "efficiency_ratio": 11.997,
+        "risk_score": 0.1741,
+        "fair_value": 12100960.36
+      },
+      {
+        "name": "Que Robinson",
+        "position": "LB",
+        "team": "DEN",
+        "age": 25,
+        "cap_hit": 1218564.0,
+        "expected_value": 8109081.29,
+        "efficiency_ratio": 6.6546,
+        "risk_score": 0.2047,
+        "fair_value": 6449104.65
+      },
+      {
+        "name": "Eyioma Uwazurike",
+        "position": "DL",
+        "team": "DEN",
+        "age": 28,
+        "cap_hit": 1145000.0,
+        "expected_value": 10020549.09,
+        "efficiency_ratio": 8.7516,
+        "risk_score": 0.2547,
+        "fair_value": 7468256.29
+      },
+      {
+        "name": "Michael Bandy",
+        "position": "WR",
+        "team": "DEN",
+        "age": 29,
+        "cap_hit": 1085000.0,
+        "expected_value": 15902620.45,
+        "efficiency_ratio": 14.6568,
+        "risk_score": 0.2541,
+        "fair_value": 11861483.96
+      },
+      {
+        "name": "Dondrea Tillman",
+        "position": "LB",
+        "team": "DEN",
         "age": 28,
         "cap_hit": 1075000.0,
-        "expected_value": 2287333.1,
-        "efficiency_ratio": 2.1278,
-        "risk_score": 0.4,
-        "fair_value": 1372399.86
+        "expected_value": 8109081.29,
+        "efficiency_ratio": 7.5433,
+        "risk_score": 0.2447,
+        "fair_value": 6124741.4
       },
       {
-        "name": "Malik Turner",
-        "position": "WR",
-        "team": "SF",
-        "age": 30,
-        "cap_hit": 1075000.0,
-        "expected_value": 12156492.66,
-        "efficiency_ratio": 11.3084,
-        "risk_score": 0.3247,
-        "fair_value": 8209207.99
-      },
-      {
-        "name": "Garret Wallow",
-        "position": "LB",
-        "team": "SF",
+        "name": "Tyler Badie",
+        "position": "RB",
+        "team": "DEN",
         "age": 27,
         "cap_hit": 1075000.0,
-        "expected_value": 7947783.66,
-        "efficiency_ratio": 7.3933,
-        "risk_score": 0.2047,
-        "fair_value": 6320825.59
+        "expected_value": 1467787.62,
+        "efficiency_ratio": 1.3654,
+        "risk_score": 0.32,
+        "fair_value": 998095.58
       },
       {
-        "name": "Hayden Rucci",
-        "position": "TE",
-        "team": "SF",
+        "name": "Cody Schrader",
+        "position": "RB",
+        "team": "DEN",
+        "age": 27,
+        "cap_hit": 1075000.0,
+        "expected_value": 3408856.37,
+        "efficiency_ratio": 3.171,
+        "risk_score": 0.32,
+        "fair_value": 2318022.33
+      },
+      {
+        "name": "Jordan Jackson",
+        "position": "DL",
+        "team": "DEN",
+        "age": 28,
+        "cap_hit": 1075000.0,
+        "expected_value": 10020549.09,
+        "efficiency_ratio": 9.3214,
+        "risk_score": 0.2547,
+        "fair_value": 7468256.29
+      },
+      {
+        "name": "Karene Reid",
+        "position": "LB",
+        "team": "DEN",
+        "age": 26,
+        "cap_hit": 1010000.0,
+        "expected_value": 8109081.29,
+        "efficiency_ratio": 8.0288,
+        "risk_score": 0.2047,
+        "fair_value": 6449104.65
+      },
+      {
+        "name": "Jordan Turner",
+        "position": "LB",
+        "team": "DEN",
         "age": 25,
         "cap_hit": 1005000.0,
-        "expected_value": 7487095.01,
-        "efficiency_ratio": 7.4498,
-        "risk_score": 0.1812,
-        "fair_value": 6130609.56
-      },
-      {
-        "name": "Adrian Martinez",
-        "position": "QB",
-        "team": "SF",
-        "age": 26,
-        "cap_hit": 1005000.0,
-        "expected_value": 31638559.95,
-        "efficiency_ratio": 31.4812,
-        "risk_score": 0.1376,
-        "fair_value": 27283605.23
-      },
-      {
-        "name": "Evan Anderson",
-        "position": "DL",
-        "team": "SF",
-        "age": 24,
-        "cap_hit": 1005000.0,
-        "expected_value": 9832305.48,
-        "efficiency_ratio": 9.7834,
-        "risk_score": 0.2147,
-        "fair_value": 7721251.66
-      },
-      {
-        "name": "Sebastian Valdez",
-        "position": "DL",
-        "team": "SF",
-        "age": 24,
-        "cap_hit": 1005000.0,
-        "expected_value": 9832305.48,
-        "efficiency_ratio": 9.7834,
-        "risk_score": 0.2147,
-        "fair_value": 7721251.66
-      },
-      {
-        "name": "Andrew Farmer",
-        "position": "LB",
-        "team": "SF",
-        "age": 26,
-        "cap_hit": 1005000.0,
-        "expected_value": 7947783.66,
-        "efficiency_ratio": 7.9082,
+        "expected_value": 8109081.29,
+        "efficiency_ratio": 8.0687,
         "risk_score": 0.2047,
-        "fair_value": 6320825.59
+        "fair_value": 6449104.65
       },
       {
-        "name": "Kurtis Rourke",
-        "position": "QB",
-        "team": "SF",
-        "age": 26,
-        "cap_hit": 918559.0,
-        "expected_value": 31638559.95,
-        "efficiency_ratio": 34.4437,
-        "risk_score": 0.1376,
-        "fair_value": 27283605.23
+        "name": "Johnny Walker Jr.",
+        "position": "DL",
+        "team": "DEN",
+        "age": 25,
+        "cap_hit": 891666.0,
+        "expected_value": 10020549.09,
+        "efficiency_ratio": 11.238,
+        "risk_score": 0.2147,
+        "fair_value": 7869078.25
       },
       {
-        "name": "Junior Bergen",
+        "name": "Kyrese Rowan",
         "position": "WR",
-        "team": "SF",
-        "age": 24,
+        "team": "DEN",
+        "age": 25,
         "cap_hit": 885000.0,
-        "expected_value": 12156492.66,
-        "efficiency_ratio": 13.7361,
-        "risk_score": 0.2047,
-        "fair_value": 9667987.11
+        "expected_value": 15902620.45,
+        "efficiency_ratio": 17.9691,
+        "risk_score": 0.1341,
+        "fair_value": 13769798.42
+      },
+      {
+        "name": "Jordan Miller",
+        "position": "DL",
+        "team": "DEN",
+        "age": 26,
+        "cap_hit": 885000.0,
+        "expected_value": 10020549.09,
+        "efficiency_ratio": 11.3227,
+        "risk_score": 0.2147,
+        "fair_value": 7869078.25
+      },
+      {
+        "name": "Kristian Williams",
+        "position": "DL",
+        "team": "DEN",
+        "age": 26,
+        "cap_hit": 885000.0,
+        "expected_value": 10020549.09,
+        "efficiency_ratio": 11.3227,
+        "risk_score": 0.2147,
+        "fair_value": 7869078.25
+      },
+      {
+        "name": "Ron Stone Jr.",
+        "position": "DL",
+        "team": "DEN",
+        "age": 26,
+        "cap_hit": 885000.0,
+        "expected_value": 10020549.09,
+        "efficiency_ratio": 11.3227,
+        "risk_score": 0.2147,
+        "fair_value": 7869078.25
+      },
+      {
+        "name": "Caleb Lohner",
+        "position": "TE",
+        "team": "DEN",
+        "age": 25,
+        "cap_hit": 885000.0,
+        "expected_value": 8293503.07,
+        "efficiency_ratio": 9.3712,
+        "risk_score": 0.1576,
+        "fair_value": 6986056.7
       }
     ],
-    "cap_used": 163557479,
-    "portfolio_efficiency": 2.7474,
-    "portfolio_risk": 0.2349
+    "cap_used": 165430280,
+    "portfolio_efficiency": 2.9043,
+    "portfolio_risk": 0.2531
   },
   "evolved_roster": {
-    "fitness": 0.8718,
+    "fitness": 0.8637,
     "players": [
       {
-        "name": "Brock Purdy",
-        "position": "QB",
-        "team": "SF",
-        "age": 27,
-        "cap_hit": 23709530.0,
-        "expected_value": 50456364.37,
-        "efficiency_ratio": 2.1281,
-        "risk_score": 0.0435,
-        "fair_value": 48260028.51
-      },
-      {
-        "name": "Nick Bosa",
+        "name": "Zach Allen",
         "position": "DL",
-        "team": "SF",
+        "team": "DEN",
         "age": 29,
-        "cap_hit": 22990988.0,
-        "expected_value": 9832305.48,
-        "efficiency_ratio": 0.4277,
+        "cap_hit": 16477000.0,
+        "expected_value": 10020549.09,
+        "efficiency_ratio": 0.6082,
         "risk_score": 0.2547,
-        "fair_value": 7327959.44
+        "fair_value": 7468256.29
       },
       {
-        "name": "Fred Warner",
-        "position": "LB",
-        "team": "SF",
-        "age": 30,
-        "cap_hit": 17865471.0,
-        "expected_value": 7947783.66,
-        "efficiency_ratio": 0.4449,
-        "risk_score": 0.3247,
-        "fair_value": 5367091.55
-      },
-      {
-        "name": "George Kittle",
+        "name": "Evan Engram",
         "position": "TE",
-        "team": "SF",
-        "age": 33,
-        "cap_hit": 14147529.0,
-        "expected_value": 14968793.18,
-        "efficiency_ratio": 1.0581,
-        "risk_score": 0.2635,
-        "fair_value": 11024075.92
-      },
-      {
-        "name": "Brandon Aiyuk",
-        "position": "WR",
-        "team": "SF",
-        "age": 28,
-        "cap_hit": 13665790.0,
-        "expected_value": 16162414.7,
-        "efficiency_ratio": 1.1827,
-        "risk_score": 0.1976,
-        "fair_value": 12967960.97
-      },
-      {
-        "name": "Christian McCaffrey",
-        "position": "RB",
-        "team": "SF",
-        "age": 30,
-        "cap_hit": 10856472.0,
-        "expected_value": 5322194.8,
-        "efficiency_ratio": 0.4902,
-        "risk_score": 0.4447,
-        "fair_value": 2955383.47
-      },
-      {
-        "name": "Mykel Williams",
-        "position": "DL",
-        "team": "SF",
-        "age": 22,
-        "cap_hit": 5424238.0,
-        "expected_value": 9832305.48,
-        "efficiency_ratio": 1.8127,
-        "risk_score": 0.2147,
-        "fair_value": 7721251.66
-      },
-      {
-        "name": "Dre Greenlaw",
-        "position": "LB",
-        "team": "SF",
-        "age": 29,
-        "cap_hit": 3550000.0,
-        "expected_value": 7947783.66,
-        "efficiency_ratio": 2.2388,
-        "risk_score": 0.2447,
-        "fair_value": 6002914.25
-      },
-      {
-        "name": "Luke Farrell",
-        "position": "TE",
-        "team": "SF",
-        "age": 29,
-        "cap_hit": 3514000.0,
-        "expected_value": 7487095.01,
-        "efficiency_ratio": 2.1306,
-        "risk_score": 0.2212,
-        "fair_value": 5831125.76
-      },
-      {
-        "name": "Ricky Pearsall",
-        "position": "WR",
-        "team": "SF",
-        "age": 26,
-        "cap_hit": 3419563.0,
-        "expected_value": 12886836.3,
-        "efficiency_ratio": 3.7686,
-        "risk_score": 0.2047,
-        "fair_value": 10248825.1
-      },
-      {
-        "name": "Mac Jones",
-        "position": "QB",
-        "team": "SF",
-        "age": 28,
-        "cap_hit": 3130000.0,
-        "expected_value": 31638559.95,
-        "efficiency_ratio": 10.1082,
-        "risk_score": 0.1376,
-        "fair_value": 27283605.23
-      },
-      {
-        "name": "Kyle Juszczyk",
-        "position": "RB",
-        "team": "SF",
-        "age": 35,
-        "cap_hit": 2896000.0,
-        "expected_value": 6172037.04,
-        "efficiency_ratio": 2.1312,
-        "risk_score": 0.3976,
-        "fair_value": 3717744.66
-      },
-      {
-        "name": "Demarcus Robinson",
-        "position": "WR",
-        "team": "SF",
+        "team": "DEN",
         "age": 32,
-        "cap_hit": 2701867.0,
-        "expected_value": 12156492.66,
-        "efficiency_ratio": 4.4993,
-        "risk_score": 0.4047,
-        "fair_value": 7236688.57
+        "cap_hit": 14136666.0,
+        "expected_value": 8293503.07,
+        "efficiency_ratio": 0.5867,
+        "risk_score": 0.3576,
+        "fair_value": 5327356.09
       },
       {
-        "name": "Alfred Collins",
-        "position": "DL",
-        "team": "SF",
-        "age": 25,
-        "cap_hit": 2342478.0,
-        "expected_value": 9832305.48,
-        "efficiency_ratio": 4.1974,
-        "risk_score": 0.2147,
-        "fair_value": 7721251.66
+        "name": "Courtland Sutton",
+        "position": "WR",
+        "team": "DEN",
+        "age": 31,
+        "cap_hit": 13975000.0,
+        "expected_value": 22087540.8,
+        "efficiency_ratio": 1.5805,
+        "risk_score": 0.2635,
+        "fair_value": 16266824.17
       },
       {
-        "name": "Sam Okuayinonu",
-        "position": "DL",
-        "team": "SF",
+        "name": "Brandon Jones",
+        "position": "WR",
+        "team": "DEN",
         "age": 28,
-        "cap_hit": 2280000.0,
-        "expected_value": 9832305.48,
-        "efficiency_ratio": 4.3124,
-        "risk_score": 0.2547,
-        "fair_value": 7327959.44
-      },
-      {
-        "name": "Jake Tonges",
-        "position": "TE",
-        "team": "SF",
-        "age": 27,
-        "cap_hit": 2058000.0,
-        "expected_value": 7487095.01,
-        "efficiency_ratio": 3.638,
-        "risk_score": 0.1812,
-        "fair_value": 6130609.56
-      },
-      {
-        "name": "Luke Gifford",
-        "position": "LB",
-        "team": "SF",
-        "age": 31,
-        "cap_hit": 1972000.0,
-        "expected_value": 7947783.66,
-        "efficiency_ratio": 4.0303,
-        "risk_score": 0.3247,
-        "fair_value": 5367091.55
-      },
-      {
-        "name": "Eddy Pineiro",
-        "position": "K",
-        "team": "SF",
-        "age": 31,
-        "cap_hit": 1951000.0,
-        "expected_value": 2066609.1,
-        "efficiency_ratio": 1.0593,
-        "risk_score": 0.2247,
-        "fair_value": 1602229.88
-      },
-      {
-        "name": "Keion White",
-        "position": "DL",
-        "team": "SF",
-        "age": 27,
-        "cap_hit": 1812297.0,
-        "expected_value": 9832305.48,
-        "efficiency_ratio": 5.4253,
-        "risk_score": 0.2147,
-        "fair_value": 7721251.66
-      },
-      {
-        "name": "Nick Martin",
-        "position": "LB",
-        "team": "SF",
-        "age": 24,
-        "cap_hit": 1491288.0,
-        "expected_value": 7947783.66,
-        "efficiency_ratio": 5.3295,
-        "risk_score": 0.2047,
-        "fair_value": 6320825.59
-      },
-      {
-        "name": "Jon Weeks",
-        "position": "LS",
-        "team": "SF",
-        "age": 40,
-        "cap_hit": 1262500.0,
-        "expected_value": 1056065.46,
-        "efficiency_ratio": 0.8365,
-        "risk_score": 0.3847,
-        "fair_value": 649790.87
-      },
-      {
-        "name": "C.J. West",
-        "position": "DL",
-        "team": "SF",
-        "age": 24,
-        "cap_hit": 1257773.0,
-        "expected_value": 9832305.48,
-        "efficiency_ratio": 7.8172,
-        "risk_score": 0.2147,
-        "fair_value": 7721251.66
-      },
-      {
-        "name": "Isaac Guerendo",
-        "position": "RB",
-        "team": "SF",
-        "age": 26,
-        "cap_hit": 1251132.0,
-        "expected_value": 7914601.24,
-        "efficiency_ratio": 6.326,
-        "risk_score": 0.2141,
-        "fair_value": 6219945.45
-      },
-      {
-        "name": "Jacob Cowing",
-        "position": "WR",
-        "team": "SF",
-        "age": 25,
-        "cap_hit": 1207177.0,
-        "expected_value": 3672720.09,
-        "efficiency_ratio": 3.0424,
-        "risk_score": 0.24,
-        "fair_value": 2791267.27
-      },
-      {
-        "name": "Jordan Watkins",
-        "position": "WR",
-        "team": "SF",
-        "age": 24,
-        "cap_hit": 1171454.0,
-        "expected_value": 12156492.66,
-        "efficiency_ratio": 10.3773,
-        "risk_score": 0.2047,
-        "fair_value": 9667987.11
-      },
-      {
-        "name": "Jalen Graham",
-        "position": "LB",
-        "team": "SF",
-        "age": 26,
-        "cap_hit": 1145000.0,
-        "expected_value": 7947783.66,
-        "efficiency_ratio": 6.9413,
-        "risk_score": 0.2047,
-        "fair_value": 6320825.59
-      },
-      {
-        "name": "Brayden Willis",
-        "position": "TE",
-        "team": "SF",
-        "age": 27,
-        "cap_hit": 1145000.0,
-        "expected_value": 635900.53,
-        "efficiency_ratio": 0.5554,
-        "risk_score": 0.24,
-        "fair_value": 483284.4
-      },
-      {
-        "name": "Jordan James",
-        "position": "RB",
-        "team": "SF",
-        "age": 22,
-        "cap_hit": 1114921.0,
-        "expected_value": 5357826.1,
-        "efficiency_ratio": 4.8056,
-        "risk_score": 0.2212,
-        "fair_value": 4172801.03
-      },
-      {
-        "name": "Tatum Bethune",
-        "position": "LB",
-        "team": "SF",
-        "age": 25,
-        "cap_hit": 1095452.0,
-        "expected_value": 7947783.66,
-        "efficiency_ratio": 7.2553,
-        "risk_score": 0.2047,
-        "fair_value": 6320825.59
-      },
-      {
-        "name": "Colton Dowell",
-        "position": "WR",
-        "team": "SF",
-        "age": 27,
-        "cap_hit": 1075000.0,
-        "expected_value": 12156492.66,
-        "efficiency_ratio": 11.3084,
+        "cap_hit": 9243334.0,
+        "expected_value": 14076117.9,
+        "efficiency_ratio": 1.5228,
         "risk_score": 0.2447,
-        "fair_value": 9181727.4
+        "fair_value": 10631609.05
       },
       {
-        "name": "Patrick Taylor",
+        "name": "Nik Bonitto",
+        "position": "LB",
+        "team": "DEN",
+        "age": 27,
+        "cap_hit": 8421200.0,
+        "expected_value": 8109081.29,
+        "efficiency_ratio": 0.9629,
+        "risk_score": 0.2047,
+        "fair_value": 6449104.65
+      },
+      {
+        "name": "Jarrett Stidham",
+        "position": "QB",
+        "team": "DEN",
+        "age": 30,
+        "cap_hit": 8000000.0,
+        "expected_value": 4529330.0,
+        "efficiency_ratio": 0.5662,
+        "risk_score": 0.26,
+        "fair_value": 3351704.2
+      },
+      {
+        "name": "Marvin Mims",
+        "position": "WR",
+        "team": "DEN",
+        "age": 24,
+        "cap_hit": 6120388.0,
+        "expected_value": 18900928.8,
+        "efficiency_ratio": 3.0882,
+        "risk_score": 0.0871,
+        "fair_value": 17255436.18
+      },
+      {
+        "name": "J.K. Dobbins",
         "position": "RB",
-        "team": "SF",
+        "team": "DEN",
+        "age": 28,
+        "cap_hit": 6000000.0,
+        "expected_value": 3408856.37,
+        "efficiency_ratio": 0.5681,
+        "risk_score": 0.4,
+        "fair_value": 2045313.82
+      },
+      {
+        "name": "Alex Singleton",
+        "position": "LB",
+        "team": "DEN",
+        "age": 33,
+        "cap_hit": 5970000.0,
+        "expected_value": 8109081.29,
+        "efficiency_ratio": 1.3583,
+        "risk_score": 0.4047,
+        "fair_value": 4827288.39
+      },
+      {
+        "name": "Jonathon Cooper",
+        "position": "LB",
+        "team": "DEN",
+        "age": 28,
+        "cap_hit": 5780000.0,
+        "expected_value": 8109081.29,
+        "efficiency_ratio": 1.403,
+        "risk_score": 0.2447,
+        "fair_value": 6124741.4
+      },
+      {
+        "name": "Bo Nix",
+        "position": "QB",
+        "team": "DEN",
+        "age": 26,
+        "cap_hit": 5076318.0,
+        "expected_value": 55619650.12,
+        "efficiency_ratio": 10.9567,
+        "risk_score": 0.02,
+        "fair_value": 54507257.12
+      },
+      {
+        "name": "Jaylen Waddle",
+        "position": "WR",
+        "team": "DEN",
+        "age": 28,
+        "cap_hit": 4878200.0,
+        "expected_value": 15902620.45,
+        "efficiency_ratio": 3.2599,
+        "risk_score": 0.1741,
+        "fair_value": 13133693.6
+      },
+      {
+        "name": "Adam Trautman",
+        "position": "TE",
+        "team": "DEN",
+        "age": 29,
+        "cap_hit": 3333333.0,
+        "expected_value": 9638011.77,
+        "efficiency_ratio": 2.8914,
+        "risk_score": 0.1271,
+        "fair_value": 8413417.33
+      },
+      {
+        "name": "Justin Strnad",
+        "position": "LB",
+        "team": "DEN",
+        "age": 30,
+        "cap_hit": 3286666.0,
+        "expected_value": 8109081.29,
+        "efficiency_ratio": 2.4673,
+        "risk_score": 0.3247,
+        "fair_value": 5476014.9
+      },
+      {
+        "name": "Malcolm Roach",
+        "position": "DL",
+        "team": "DEN",
+        "age": 28,
+        "cap_hit": 3101333.0,
+        "expected_value": 10020549.09,
+        "efficiency_ratio": 3.231,
+        "risk_score": 0.2547,
+        "fair_value": 7468256.29
+      },
+      {
+        "name": "Wil Lutz",
+        "position": "K",
+        "team": "DEN",
+        "age": 32,
+        "cap_hit": 2498666.0,
+        "expected_value": 2117338.96,
+        "efficiency_ratio": 0.8474,
+        "risk_score": 0.2247,
+        "fair_value": 1641560.44
+      },
+      {
+        "name": "Sam Ehlinger",
+        "position": "QB",
+        "team": "DEN",
+        "age": 28,
+        "cap_hit": 2000000.0,
+        "expected_value": 26520612.25,
+        "efficiency_ratio": 13.2603,
+        "risk_score": 0.1612,
+        "fair_value": 22246113.57
+      },
+      {
+        "name": "Drew Sanders",
+        "position": "LB",
+        "team": "DEN",
+        "age": 26,
+        "cap_hit": 1824688.0,
+        "expected_value": 8109081.29,
+        "efficiency_ratio": 4.4441,
+        "risk_score": 0.2047,
+        "fair_value": 6449104.65
+      },
+      {
+        "name": "R.J. Harvey",
+        "position": "RB",
+        "team": "DEN",
+        "age": 25,
+        "cap_hit": 1672653.0,
+        "expected_value": 3408856.37,
+        "efficiency_ratio": 2.038,
+        "risk_score": 0.28,
+        "fair_value": 2454376.59
+      },
+      {
+        "name": "Jonah Elliss",
+        "position": "LB",
+        "team": "DEN",
+        "age": 23,
+        "cap_hit": 1601104.0,
+        "expected_value": 8109081.29,
+        "efficiency_ratio": 5.0647,
+        "risk_score": 0.2047,
+        "fair_value": 6449104.65
+      },
+      {
+        "name": "Nate Adkins",
+        "position": "TE",
+        "team": "DEN",
+        "age": 27,
+        "cap_hit": 1555000.0,
+        "expected_value": 5436597.4,
+        "efficiency_ratio": 3.4962,
+        "risk_score": 0.24,
+        "fair_value": 4131814.02
+      },
+      {
+        "name": "Pat Bryant",
+        "position": "WR",
+        "team": "DEN",
+        "age": 24,
+        "cap_hit": 1495700.0,
+        "expected_value": 15902620.45,
+        "efficiency_ratio": 10.6322,
+        "risk_score": 0.1341,
+        "fair_value": 13769798.42
+      },
+      {
+        "name": "Mitchell Fraboni",
+        "position": "LS",
+        "team": "DEN",
+        "age": 30,
+        "cap_hit": 1415000.0,
+        "expected_value": 1084403.38,
+        "efficiency_ratio": 0.7664,
+        "risk_score": 0.1847,
+        "fair_value": 884107.69
+      },
+      {
+        "name": "Sai'vion Jones",
+        "position": "DL",
+        "team": "DEN",
+        "age": 23,
+        "cap_hit": 1400269.0,
+        "expected_value": 10020549.09,
+        "efficiency_ratio": 7.1562,
+        "risk_score": 0.2147,
+        "fair_value": 7869078.25
+      },
+      {
+        "name": "Jaleel McLaughlin",
+        "position": "RB",
+        "team": "DEN",
+        "age": 26,
+        "cap_hit": 1385000.0,
+        "expected_value": 8305097.02,
+        "efficiency_ratio": 5.9965,
+        "risk_score": 0.12,
+        "fair_value": 7308485.38
+      },
+      {
+        "name": "Lucas Krull",
+        "position": "TE",
+        "team": "DEN",
+        "age": 28,
+        "cap_hit": 1360000.0,
+        "expected_value": 5664038.88,
+        "efficiency_ratio": 4.1647,
+        "risk_score": 0.2682,
+        "fair_value": 4144743.75
+      },
+      {
+        "name": "Troy Franklin",
+        "position": "WR",
+        "team": "DEN",
+        "age": 23,
+        "cap_hit": 1288709.0,
+        "expected_value": 15222841.92,
+        "efficiency_ratio": 11.8125,
+        "risk_score": 0.0635,
+        "fair_value": 14255743.73
+      },
+      {
+        "name": "Adam Prentice",
+        "position": "RB",
+        "team": "DEN",
+        "age": 29,
+        "cap_hit": 1262500.0,
+        "expected_value": 3408856.37,
+        "efficiency_ratio": 2.7001,
+        "risk_score": 0.4,
+        "fair_value": 2045313.82
+      },
+      {
+        "name": "Lil'Jordan Humphrey",
+        "position": "WR",
+        "team": "DEN",
+        "age": 28,
+        "cap_hit": 1221323.0,
+        "expected_value": 14652159.98,
+        "efficiency_ratio": 11.997,
+        "risk_score": 0.1741,
+        "fair_value": 12100960.36
+      },
+      {
+        "name": "Que Robinson",
+        "position": "LB",
+        "team": "DEN",
+        "age": 25,
+        "cap_hit": 1218564.0,
+        "expected_value": 8109081.29,
+        "efficiency_ratio": 6.6546,
+        "risk_score": 0.2047,
+        "fair_value": 6449104.65
+      },
+      {
+        "name": "Eyioma Uwazurike",
+        "position": "DL",
+        "team": "DEN",
+        "age": 28,
+        "cap_hit": 1145000.0,
+        "expected_value": 10020549.09,
+        "efficiency_ratio": 8.7516,
+        "risk_score": 0.2547,
+        "fair_value": 7468256.29
+      },
+      {
+        "name": "Michael Bandy",
+        "position": "WR",
+        "team": "DEN",
+        "age": 29,
+        "cap_hit": 1085000.0,
+        "expected_value": 15902620.45,
+        "efficiency_ratio": 14.6568,
+        "risk_score": 0.2541,
+        "fair_value": 11861483.96
+      },
+      {
+        "name": "Jordan Jackson",
+        "position": "DL",
+        "team": "DEN",
         "age": 28,
         "cap_hit": 1075000.0,
-        "expected_value": 2287333.1,
-        "efficiency_ratio": 2.1278,
-        "risk_score": 0.4,
-        "fair_value": 1372399.86
+        "expected_value": 10020549.09,
+        "efficiency_ratio": 9.3214,
+        "risk_score": 0.2547,
+        "fair_value": 7468256.29
       },
       {
-        "name": "Malik Turner",
-        "position": "WR",
-        "team": "SF",
-        "age": 30,
-        "cap_hit": 1075000.0,
-        "expected_value": 12156492.66,
-        "efficiency_ratio": 11.3084,
-        "risk_score": 0.3247,
-        "fair_value": 8209207.99
-      },
-      {
-        "name": "Garret Wallow",
-        "position": "LB",
-        "team": "SF",
+        "name": "Cody Schrader",
+        "position": "RB",
+        "team": "DEN",
         "age": 27,
         "cap_hit": 1075000.0,
-        "expected_value": 7947783.66,
-        "efficiency_ratio": 7.3933,
-        "risk_score": 0.2047,
-        "fair_value": 6320825.59
+        "expected_value": 3408856.37,
+        "efficiency_ratio": 3.171,
+        "risk_score": 0.32,
+        "fair_value": 2318022.33
       },
       {
-        "name": "Hayden Rucci",
-        "position": "TE",
-        "team": "SF",
+        "name": "Tyler Badie",
+        "position": "RB",
+        "team": "DEN",
+        "age": 27,
+        "cap_hit": 1075000.0,
+        "expected_value": 1467787.62,
+        "efficiency_ratio": 1.3654,
+        "risk_score": 0.32,
+        "fair_value": 998095.58
+      },
+      {
+        "name": "Karene Reid",
+        "position": "LB",
+        "team": "DEN",
+        "age": 26,
+        "cap_hit": 1010000.0,
+        "expected_value": 8109081.29,
+        "efficiency_ratio": 8.0288,
+        "risk_score": 0.2047,
+        "fair_value": 6449104.65
+      },
+      {
+        "name": "Jordan Turner",
+        "position": "LB",
+        "team": "DEN",
         "age": 25,
         "cap_hit": 1005000.0,
-        "expected_value": 7487095.01,
-        "efficiency_ratio": 7.4498,
-        "risk_score": 0.1812,
-        "fair_value": 6130609.56
-      },
-      {
-        "name": "Adrian Martinez",
-        "position": "QB",
-        "team": "SF",
-        "age": 26,
-        "cap_hit": 1005000.0,
-        "expected_value": 31638559.95,
-        "efficiency_ratio": 31.4812,
-        "risk_score": 0.1376,
-        "fair_value": 27283605.23
-      },
-      {
-        "name": "Evan Anderson",
-        "position": "DL",
-        "team": "SF",
-        "age": 24,
-        "cap_hit": 1005000.0,
-        "expected_value": 9832305.48,
-        "efficiency_ratio": 9.7834,
-        "risk_score": 0.2147,
-        "fair_value": 7721251.66
-      },
-      {
-        "name": "Sebastian Valdez",
-        "position": "DL",
-        "team": "SF",
-        "age": 24,
-        "cap_hit": 1005000.0,
-        "expected_value": 9832305.48,
-        "efficiency_ratio": 9.7834,
-        "risk_score": 0.2147,
-        "fair_value": 7721251.66
-      },
-      {
-        "name": "Andrew Farmer",
-        "position": "LB",
-        "team": "SF",
-        "age": 26,
-        "cap_hit": 1005000.0,
-        "expected_value": 7947783.66,
-        "efficiency_ratio": 7.9082,
+        "expected_value": 8109081.29,
+        "efficiency_ratio": 8.0687,
         "risk_score": 0.2047,
-        "fair_value": 6320825.59
+        "fair_value": 6449104.65
       },
       {
-        "name": "Kurtis Rourke",
-        "position": "QB",
-        "team": "SF",
+        "name": "Johnny Walker Jr.",
+        "position": "DL",
+        "team": "DEN",
+        "age": 25,
+        "cap_hit": 891666.0,
+        "expected_value": 10020549.09,
+        "efficiency_ratio": 11.238,
+        "risk_score": 0.2147,
+        "fair_value": 7869078.25
+      },
+      {
+        "name": "Kristian Williams",
+        "position": "DL",
+        "team": "DEN",
         "age": 26,
-        "cap_hit": 918559.0,
-        "expected_value": 31638559.95,
-        "efficiency_ratio": 34.4437,
-        "risk_score": 0.1376,
-        "fair_value": 27283605.23
-      },
-      {
-        "name": "Junior Bergen",
-        "position": "WR",
-        "team": "SF",
-        "age": 24,
         "cap_hit": 885000.0,
-        "expected_value": 12156492.66,
-        "efficiency_ratio": 13.7361,
-        "risk_score": 0.2047,
-        "fair_value": 9667987.11
+        "expected_value": 10020549.09,
+        "efficiency_ratio": 11.3227,
+        "risk_score": 0.2147,
+        "fair_value": 7869078.25
+      },
+      {
+        "name": "Jordan Miller",
+        "position": "DL",
+        "team": "DEN",
+        "age": 26,
+        "cap_hit": 885000.0,
+        "expected_value": 10020549.09,
+        "efficiency_ratio": 11.3227,
+        "risk_score": 0.2147,
+        "fair_value": 7869078.25
+      },
+      {
+        "name": "Ron Stone Jr.",
+        "position": "DL",
+        "team": "DEN",
+        "age": 26,
+        "cap_hit": 885000.0,
+        "expected_value": 10020549.09,
+        "efficiency_ratio": 11.3227,
+        "risk_score": 0.2147,
+        "fair_value": 7869078.25
+      },
+      {
+        "name": "Kyrese Rowan",
+        "position": "WR",
+        "team": "DEN",
+        "age": 25,
+        "cap_hit": 885000.0,
+        "expected_value": 15902620.45,
+        "efficiency_ratio": 17.9691,
+        "risk_score": 0.1341,
+        "fair_value": 13769798.42
+      },
+      {
+        "name": "Caleb Lohner",
+        "position": "TE",
+        "team": "DEN",
+        "age": 25,
+        "cap_hit": 885000.0,
+        "expected_value": 8293503.07,
+        "efficiency_ratio": 9.3712,
+        "risk_score": 0.1576,
+        "fair_value": 6986056.7
       }
     ],
-    "cap_used": 163557479,
-    "portfolio_efficiency": 2.7474,
-    "portfolio_risk": 0.2349
+    "cap_used": 149785280,
+    "portfolio_efficiency": 3.0866,
+    "portfolio_risk": 0.2452
   },
   "changes": {
-    "removed": [],
+    "removed": [
+      {
+        "name": "D.J. Jones",
+        "position": "DL",
+        "team": "DEN",
+        "age": 31,
+        "cap_hit": 14570000.0,
+        "expected_value": 10020549.09,
+        "efficiency_ratio": 0.6878,
+        "risk_score": 0.3347,
+        "fair_value": 6666612.36
+      },
+      {
+        "name": "Dondrea Tillman",
+        "position": "LB",
+        "team": "DEN",
+        "age": 28,
+        "cap_hit": 1075000.0,
+        "expected_value": 8109081.29,
+        "efficiency_ratio": 7.5433,
+        "risk_score": 0.2447,
+        "fair_value": 6124741.4
+      }
+    ],
     "added": [],
-    "kept_count": 40
+    "kept_count": 43
   },
   "history": [
     {
       "generation": 0,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8636336140077322,
+      "avg_fitness": -15.822556868035115,
+      "diversity": 128.12898955819108
     },
     {
       "generation": 1,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8636339539996032,
+      "avg_fitness": 0.8606384770319657,
+      "diversity": 0.002280234526032067
     },
     {
       "generation": 2,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8626254562111699,
+      "diversity": 0.0017058455759164134
     },
     {
       "generation": 3,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8634607659878163,
+      "diversity": 0.0010583412063019076
     },
     {
       "generation": 4,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8633518465358312,
+      "diversity": 0.0014131446964758111
     },
     {
       "generation": 5,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8635570846022446,
+      "diversity": 0.0010529448835352858
     },
     {
       "generation": 6,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8634226802934077,
+      "diversity": 0.0014987452874495092
     },
     {
       "generation": 7,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8635871717999121,
+      "diversity": 0.0008601237573431205
     },
     {
       "generation": 8,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8636593892498144,
+      "diversity": 0.00026290810944158623
     },
     {
       "generation": 9,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8636996022884205,
+      "diversity": 1.043991825737288e-05
     },
     {
       "generation": 10,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8636099545077355,
+      "diversity": 0.0005077924743031813
     },
     {
       "generation": 11,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.863699844659169,
+      "diversity": 8.578233212692483e-06
     },
     {
       "generation": 12,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8637009614500091,
       "diversity": 1.1102230246251565e-16
     },
     {
       "generation": 13,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8635593571869293,
+      "diversity": 0.001025546761712525
     },
     {
       "generation": 14,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8635794051226352,
+      "diversity": 0.0008613590667412977
     },
     {
       "generation": 15,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8635889668345541,
+      "diversity": 0.0008602469642854747
     },
     {
       "generation": 16,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8635889668345541,
+      "diversity": 0.0008602469642854746
     },
     {
       "generation": 17,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8635598507296005,
+      "diversity": 0.0010838920100446484
     },
     {
       "generation": 18,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8637009614500091,
       "diversity": 1.1102230246251565e-16
     },
     {
       "generation": 19,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8635599504809964,
+      "diversity": 0.0010831258050337978
     },
     {
       "generation": 20,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8636593892498144,
+      "diversity": 0.00026290810944158623
     },
     {
       "generation": 21,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8637009614500091,
       "diversity": 1.1102230246251565e-16
     },
     {
       "generation": 22,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8635598507296005,
+      "diversity": 0.0010838920100446484
     },
     {
       "generation": 23,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8632855377992347,
+      "diversity": 0.0018114291082091025
     },
     {
       "generation": 24,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8636991664153669,
+      "diversity": 1.3787922709019702e-05
     },
     {
       "generation": 25,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8637009614500091,
       "diversity": 1.1102230246251565e-16
     },
     {
       "generation": 26,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8635221122604918,
+      "diversity": 0.001090187376249432
     },
     {
       "generation": 27,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8637009614500091,
       "diversity": 1.1102230246251565e-16
     },
     {
       "generation": 28,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8636433241575997,
+      "diversity": 0.0004427204435090631
     },
     {
       "generation": 29,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8636675918001449,
+      "diversity": 0.00025631714416272743
     },
     {
       "generation": 30,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8635593571869296,
+      "diversity": 0.0010255467617125249
     },
     {
       "generation": 31,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8636433241575997,
+      "diversity": 0.00044272044350906315
     },
     {
       "generation": 32,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8637009614500091,
       "diversity": 1.1102230246251565e-16
     },
     {
       "generation": 33,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8637009614500091,
       "diversity": 1.1102230246251565e-16
     },
     {
       "generation": 34,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8635264810797363,
+      "diversity": 0.0011095506915711926
     },
     {
       "generation": 35,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8635637910138162,
+      "diversity": 0.001053626112695251
     },
     {
       "generation": 36,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8637009614500091,
       "diversity": 1.1102230246251565e-16
     },
     {
       "generation": 37,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8635598507296005,
+      "diversity": 0.0010838920100446484
     },
     {
       "generation": 38,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8634217487271136,
+      "diversity": 0.0014925220548446419
     },
     {
       "generation": 39,
-      "best_fitness": 0.8718388964798398,
-      "avg_fitness": 0.8718388964798397,
+      "best_fitness": 0.8637009614500092,
+      "avg_fitness": 0.8637009614500091,
       "diversity": 1.1102230246251565e-16
     }
   ]
