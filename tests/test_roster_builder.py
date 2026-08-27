@@ -88,8 +88,8 @@ def test_snaps_per_season(sample_stats, sample_rosters):
     assert engram["snaps_played"] == 800
 
 
-def test_merge_matches_on_name_and_team(sample_stats, sample_rosters, sample_contracts):
-    builder = RosterBuilder()
+def test_merge_matches_on_name_and_team(sample_stats, sample_rosters, sample_contracts, tmp_path):
+    builder = RosterBuilder(output_dir=str(tmp_path))
     perf = builder._aggregate_performance(sample_stats, sample_rosters)
     merged = builder.merge(perf, sample_contracts)
     engram = merged[merged["player_name"] == "Evan Engram"]
@@ -98,8 +98,8 @@ def test_merge_matches_on_name_and_team(sample_stats, sample_rosters, sample_con
     assert abs(engram.iloc[0]["epa_total"] - 4.3) < 0.01  # 12.9 / 3 seasons
 
 
-def test_unmatched_player_included_with_nulls(sample_stats, sample_rosters, sample_contracts):
-    builder = RosterBuilder()
+def test_unmatched_player_included_with_nulls(sample_stats, sample_rosters, sample_contracts, tmp_path):
+    builder = RosterBuilder(output_dir=str(tmp_path))
     perf = builder._aggregate_performance(sample_stats, sample_rosters)
     merged = builder.merge(perf, sample_contracts)
     sutton = merged[merged["player_name"] == "Courtland Sutton"]
