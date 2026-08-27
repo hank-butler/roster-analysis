@@ -1,4 +1,83 @@
 otc_name,otc_team,otc_position,nfl_name,nfl_team,nfl_position,match_score
+Mike McGlinchey,DEN,,,,,0.0
+Zach Allen,DEN,,,,,0.0
+D.J. Jones,DEN,,,,,0.0
+Evan Engram,DEN,,,,,0.0
+Talanoa Hufanga,DEN,,,,,0.0
+Patrick Surtain II,DEN,,,,,0.0
+Ben Powers,DEN,,,,,0.0
+Quinn Meinerz,DEN,,,,,0.0
+Garett Bolles,DEN,,,,,0.0
+Nik Bonitto,DEN,,,,,0.0
+J.K. Dobbins,DEN,,,,,0.0
+Alex Singleton,DEN,,,,,0.0
+Jonathon Cooper,DEN,,,,,0.0
+Ja'Quan McMillian,DEN,,,,,0.0
+Jaylen Waddle,DEN,,,,,0.0
+Jahdae Barron,DEN,,,,,0.0
+Riley Moss,DEN,,Riley Dixon,DEN,P,66.66666666666667
+Luke Wattenberg,DEN,,,,,0.0
+Justin Strnad,DEN,,,,,0.0
+Alex Palczewski,DEN,,,,,0.0
+Malcolm Roach,DEN,,,,,0.0
+Wil Lutz,DEN,,,,,0.0
+Matt Peart,DEN,,,,,0.0
+Sam Ehlinger,DEN,,Samaje Perine,DEN,RB,64.0
+Drew Sanders,DEN,,,,,0.0
+R.J. Harvey,DEN,,,,,0.0
+Jonah Elliss,DEN,,,,,0.0
+Tycen Anderson,DEN,,,,,0.0
+Pat Bryant,DEN,,,,,0.0
+Mitchell Fraboni,DEN,,Michael Burton,DEN,RB,66.66666666666667
+Sai'vion Jones,DEN,,,,,0.0
+Tyler Onyedim,DEN,,Tyler Badie,DEN,RB,66.66666666666667
+Adam Prentice,DEN,,,,,0.0
+Que Robinson,DEN,,,,,0.0
+J.L. Skinner,DEN,,,,,0.0
+Jonah Coleman,DEN,,,,,0.0
+Kage Casey,DEN,,,,,0.0
+Alex Forsyth,DEN,,,,,0.0
+Kris Abrams-Draine,DEN,,,,,0.0
+Eyioma Uwazurike,DEN,,,,,0.0
+Michael Bandy,DEN,,Michael Burton,DEN,RB,74.07407407407408
+Frank Crum,DEN,,,,,0.0
+Lecitus Smith,DEN,,,,,0.0
+Devon Key,DEN,,Riley Dixon,DEN,P,60.0
+Dondrea Tillman,DEN,,,,,0.0
+Cody Schrader,DEN,,,,,0.0
+Jordan Jackson,DEN,,,,,0.0
+Taylor Rapp,DEN,,,,,0.0
+Calvin Throckmorton,DEN,,,,,0.0
+Jeremy Crawshaw,DEN,,,,,0.0
+Nick Gargiulo,DEN,,,,,0.0
+Justin Joly,DEN,,,,,0.0
+Karene Reid,DEN,,,,,0.0
+Reese Taylor,DEN,,,,,0.0
+Jordan Turner,DEN,,,,,0.0
+Miles Scott,DEN,,,,,0.0
+Dallen Bentley,DEN,,,,,0.0
+Red Murdock,DEN,,,,,0.0
+Taurean York,DEN,,,,,0.0
+Tyler Miller,DEN,,Tyler Badie,DEN,RB,69.56521739130434
+Dasan McCullough,DEN,,,,,0.0
+Brent Austin,DEN,,,,,0.0
+Johnny Walker Jr.,DEN,,,,,0.0
+Dane Key,DEN,,,,,0.0
+Cam Ross,DEN,,,,,0.0
+Joseph Manjack,DEN,,,,,0.0
+Parker Robertson,DEN,,,,,0.0
+Gavin Ortega,DEN,,,,,0.0
+Luke Basso,DEN,,,,,0.0
+Kolbe Katsis,DEN,,,,,0.0
+Kyrese Rowan,DEN,,,,,0.0
+Reid Holskey,DEN,,,,,0.0
+Jordan Miller,DEN,,,,,0.0
+Kristian Williams,DEN,,Javonte Williams,DEN,RB,66.66666666666667
+Kyre Duplessis,DEN,,,,,0.0
+Ron Stone Jr.,DEN,,,,,0.0
+Caleb Lohner,DEN,,,,,0.0
+Sean Fresch,DEN,,,,,0.0
+Ricardo Hallman,DEN,,,,,0.0
 Chris Jones,KC,,Chris Oladokun,KC,QB,64.0
 Trey Smith,KC,,,,,0.0
 Nick Bolton,KC,,,,,0.0
@@ -40,7 +119,6 @@ Matt Araiza,KC,,,,,0.0
 Jason Brownlee,KC,,,,,0.0
 C.J. Hanson,KC,,,,,0.0
 Brashard Smith,KC,,,,,0.0
-Top 51 Cutoff,KC,,,,,0.0
 Ethan Driskell,KC,,,,,0.0
 Emmett Johnson,KC,,,,,0.0
 Chukwuebuka Godrick,KC,,,,,0.0
@@ -79,165 +157,169 @@ Amari McNeill,KC,,,,,0.0
 Anthony Dunn,KC,,,,,0.0
 Jaydn Ott,KC,,,,,0.0
 Kam Arnold,KC,,,,,0.0
-Tristan Wirfs,TB,,,,,0.0
-"Antoine Winfield, Jr.",TB,,,,,0.0
-Vita Vea,TB,,,,,0.0
-A'Shawn Robinson,TB,,,,,0.0
-Alex Anzalone,TB,,,,,0.0
-Ben Bredeson,TB,,,,,0.0
-Luke Goedeke,TB,,,,,0.0
-Kenneth Gainwell,TB,,,,,0.0
-Anthony Nelson,TB,,,,,0.0
-Zyon McCollum,TB,,,,,0.0
-Al-Quadin Muhammad,TB,,,,,0.0
-Calijah Kancey,TB,,,,,0.0
-Rueben Bain,TB,,,,,0.0
-Cody Mauch,TB,,,,,0.0
-Emeka Egbuka,TB,,,,,0.0
-YaYa Diaby,TB,,,,,0.0
-Graham Barton,TB,,,,,0.0
-Chase McLaughlin,TB,,,,,0.0
-Riley Dixon,TB,,,,,0.0
-Josiah Trotter,TB,,,,,0.0
-Benjamin Morrison,TB,,,,,0.0
-Chris Braswell,TB,,,,,0.0
-Miles Killebrew,TB,,,,,0.0
-Tykee Smith,TB,,,,,0.0
-Christian Rozeboom,TB,,,,,0.0
-Jacob Parrish,TB,,,,,0.0
-Justin Skule,TB,,,,,0.0
-Jake Browning,TB,,,,,0.0
-Rakeem Nunez-Roches,TB,,,,,0.0
-Dan Feeney,TB,,,,,0.0
-Ted Hurst,TB,,,,,0.0
-SirVocea Dennis,TB,,,,,0.0
-Josh Hayes,TB,,,,,0.0
-Keionte Scott,TB,,,,,0.0
-Chase Lucas,TB,,,,,0.0
-David Walker,TB,,David Wells,TB,TE,69.56521739130434
-Elijah Klein,TB,,,,,0.0
-Elijah Roberts,TB,,,,,0.0
-Scott Daly,TB,,,,,0.0
-David Sills,TB,,David Wells,TB,TE,81.81818181818181
-Mohamed Kamara,TB,,,,,0.0
-Top 51 Cutoff,TB,,,,,0.0
-Evan Deckers,TB,,,,,0.0
-Damarion Williams,TB,,,,,0.0
-Kemon Hall,TB,,Chase Edmonds,TB,RB,60.86956521739131
-Tez Johnson,TB,,Kameron Johnson,TB,WR,69.23076923076923
-Ben Chukwuma,TB,,,,,0.0
-DeMonte Capehart,TB,,,,,0.0
-Billy Schrauth,TB,,,,,0.0
-Luke Haggard,TB,,,,,0.0
-Elijah Simmons,TB,,,,,0.0
-Connor Bazelak,TB,,,,,0.0
-John Bullock,TB,,,,,0.0
-Rashad Wisdom,TB,,Rachaad White,TB,RB,61.53846153846154
-Nick Jackson,TB,,,,,0.0
-Josh Williams,TB,,,,,0.0
-Marcus Banks,TB,,,,,0.0
-Bauer Sharp,TB,,,,,0.0
-Garrett Greene,TB,,,,,0.0
-Paul Rubelt,TB,,,,,0.0
-Ja'Qurious Conley,TB,,,,,0.0
-J.J. Roberts,TB,,,,,0.0
-Eric Rivers,TB,,,,,0.0
-Jalon Daniels,TB,,,,,0.0
-Ayden Garnes,TB,,,,,0.0
-Javin Wright,TB,,,,,0.0
-Henry Lutovsky,TB,,,,,0.0
-Jack Pyburn,TB,,,,,0.0
-Josiah Green,TB,,,,,0.0
-Deshawn McKnight,TB,,,,,0.0
-Kenny Fletcher Jr.,TB,,,,,0.0
-Caden Fordham,TB,,,,,0.0
-Dean Patterson,TB,,,,,0.0
-Yasir Holmes,TB,,,,,0.0
-Kadarius Calloway,TB,,,,,0.0
-Marshall Foerner,TB,,,,,0.0
-Nash Hutmacher,TB,,,,,0.0
-Dennis Houston,TB,,,,,0.0
-Jayson Jones,TB,,,,,0.0
-Ben Scott,TB,,,,,0.0
-Haggai Chisom Ndubuisi,TB,,,,,0.0
-B.T. Potter,TB,,,,,0.0
-Lane Johnson,PHI,,Johnny Wilson,PHI,WR,64.0
-Jordan Mailata,PHI,,,,,0.0
-Landon Dickerson,PHI,,,,,0.0
-Zack Baun,PHI,,,,,0.0
-Jalen Carter,PHI,,Jalen Hurts,PHI,QB,69.56521739130434
-Jonathan Greenard,PHI,,,,,0.0
-Cam Jurgens,PHI,,,,,0.0
-Jordan Davis,PHI,,,,,0.0
-Jake Elliott,PHI,,,,,0.0
-Quinyon Mitchell,PHI,,,,,0.0
-Tyler Steen,PHI,,,,,0.0
-Nolan Smith,PHI,,Ainias Smith,PHI,WR,69.56521739130434
-Makai Lemon,PHI,,,,,0.0
-Moro Ojomo,PHI,,,,,0.0
-Tariq Woolen,PHI,,,,,0.0
-Jihaad Campbell,PHI,,Parris Campbell,PHI,WR,66.66666666666667
-Cooper DeJean,PHI,,,,,0.0
-Dontayvion Wicks,PHI,,,,,0.0
-Marquise Brown,PHI,,,,,0.0
-Arnold Ebiketie,PHI,,,,,0.0
-Andrew Mukuba,PHI,,,,,0.0
-Eli Stowers,PHI,,,,,0.0
-Jalyx Hunt,PHI,,Jalen Hurts,PHI,QB,66.66666666666667
-Byron Young,PHI,,,,,0.0
-Andy Dalton,PHI,,,,,0.0
-Tank Bigsby,PHI,,,,,0.0
-Fred Johnson,PHI,,,,,0.0
-Marcus Epps,PHI,,,,,0.0
-Jonathan Jones,PHI,,John Ross,PHI,WR,60.86956521739131
-Michael Carter II,PHI,,,,,0.0
-Kelee Ringo,PHI,,,,,0.0
-Johnny Mundt,PHI,,Johnny Wilson,PHI,WR,64.0
-Ty Robinson,PHI,,,,,0.0
-Joe Tryon-Shoyinka,PHI,,,,,0.0
-A.J. Epenesa,PHI,,,,,0.0
-Elijah Moore,PHI,,,,,0.0
-J.T. Gray,PHI,,,,,0.0
-John Ojukwu,PHI,,John Ross,PHI,WR,60.0
-Ambry Thomas,PHI,,,,,0.0
-Jeremiah Trotter Jr.,PHI,,,,,0.0
-Stone Smartt,PHI,,,,,0.0
-Dameon Pierce,PHI,,,,,0.0
-Top 51 Cutoff,PHI,,,,,0.0
-Tariq Castro-Fields,PHI,,,,,0.0
-Jakorian Bennett,PHI,,,,,0.0
-Ta'Quon Graham,PHI,,,,,0.0
-Mac McWilliams,PHI,,,,,0.0
-Smael Mondon Jr.,PHI,,,,,0.0
-Drew Kendall,PHI,,,,,0.0
-Samori Toure,PHI,,,,,0.0
-Michael Jordan,PHI,,,,,0.0
-Elijah Mitchell,PHI,,,,,0.0
-Chance Campbell,PHI,,Parris Campbell,PHI,WR,66.66666666666667
-Darius Cooper,PHI,,,,,0.0
-Cameron Latu,PHI,,,,,0.0
-Danny Gray,PHI,,,,,0.0
-Jose Ramirez,PHI,,,,,0.0
-Carson Steele,PHI,,,,,0.0
-Brandon Johnson,PHI,,Braden Mann,PHI,P,61.53846153846154
-Andre' Sam,PHI,,D'Andre Swift,PHI,RB,66.66666666666667
-Cole Payton,PHI,,,,,0.0
-Cameron Williams,PHI,,,,,0.0
-Micah Morris,PHI,,,,,0.0
-Myles Hinton,PHI,,,,,0.0
-Cole Wisniewski,PHI,,,,,0.0
-Uar Bernard,PHI,,,,,0.0
-Keyshawn James-Newby,PHI,,,,,0.0
-Kapena Gushiken,PHI,,,,,0.0
-Zion Wilson,PHI,,,,,0.0
-Maximus Pulley,PHI,,,,,0.0
-Joshua Weru,PHI,,,,,0.0
-Dae'Quan Wright,PHI,,,,,0.0
-Rocco Underwood,PHI,,,,,0.0
-Jaeden Roberts,PHI,,,,,0.0
-Deontae Lawson,PHI,,,,,0.0
-Markel Bell,PHI,,,,,0.0
-Willie Lampkin,PHI,,,,,0.0
-Jake Majors,PHI,,,,,0.0
-Gabe Hall,PHI,,,,,0.0
-Hollin Pierce,PHI,,,,,0.0
+Derwin James,LAC,,,,,0.0
+Rashawn Slater,LAC,,,,,0.0
+Khalil Mack,LAC,,,,,0.0
+Joe Alt,LAC,,,,,0.0
+Donte Jackson,LAC,,,,,0.0
+Elijah Molden,LAC,,,,,0.0
+Dalvin Tomlinson,LAC,,Eric Tomlinson,LAC,TE,73.33333333333334
+Tuli Tuipulotu,LAC,,,,,0.0
+Teair Tart,LAC,,,,,0.0
+Cameron Dicker,LAC,,,,,0.0
+Cole Strange,LAC,,,,,0.0
+Charlie Kolar,LAC,,,,,0.0
+Omarion Hampton,LAC,,,,,0.0
+Daiyan Henley,LAC,,,,,0.0
+Bud Dupree,LAC,,,,,0.0
+Akheem Mesidor,LAC,,,,,0.0
+Trevor Penning,LAC,,,,,0.0
+Troy Dye,LAC,,,,,0.0
+Alec Ingold,LAC,,,,,0.0
+Keaton Mitchell,LAC,,,,,0.0
+David Njoku,LAC,,,,,0.0
+Del'Shawn Phillips,LAC,,,,,0.0
+Trey Lance,LAC,,,,,0.0
+Denzel Perryman,LAC,,,,,0.0
+Kayode Awosika,LAC,,,,,0.0
+Tre Harris,LAC,,,,,0.0
+Tony Jefferson,LAC,,,,,0.0
+Junior Colson,LAC,,,,,0.0
+Josh Harris,LAC,,,,,0.0
+Jake Slaughter,LAC,,,,,0.0
+Jamaree Caldwell,LAC,,,,,0.0
+Deane Leonard,LAC,,,,,0.0
+Justin Eboigbe,LAC,,Justin Herbert,LAC,QB,71.42857142857143
+Kyle Kennard,LAC,,,,,0.0
+Brenen Thompson,LAC,,,,,0.0
+Travis Burke,LAC,,,,,0.0
+Tarheeb Still,LAC,,,,,0.0
+Cam Hart,LAC,,,,,0.0
+Andre Carter II,LAC,,,,,0.0
+Jaret Patterson,LAC,,,,,0.0
+Genesis Smith,LAC,,,,,0.0
+KeAndre Lambert-Smith,LAC,,,,,0.0
+Oronde Gadsden II,LAC,,,,,0.0
+Kendall Williamson,LAC,,Mike Williams,LAC,WR,70.96774193548387
+R.J. Mickens,LAC,,,,,0.0
+Nick Barrett,LAC,,,,,0.0
+Nikko Reed,LAC,,,,,0.0
+Marlowe Wax,LAC,,,,,0.0
+Dalevon Campbell,LAC,,,,,0.0
+Logan Taylor,LAC,,,,,0.0
+Alex Harkey,LAC,,,,,0.0
+Nadame Tucker,LAC,,,,,0.0
+Eric Rogers,LAC,,,,,0.0
+Avery Smith,LAC,,,,,0.0
+Isaiah World,LAC,,Isaiah Spiller,LAC,RB,61.53846153846154
+Lander Barton,LAC,,,,,0.0
+Evan Svoboda,LAC,,,,,0.0
+Jerand Bradley,LAC,,,,,0.0
+Jahmeer Carter,LAC,,,,,0.0
+Jacobian Guillory,LAC,,,,,0.0
+Devonte Ross,LAC,,,,,0.0
+Jacob Spomer,LAC,,Josh Palmer,LAC,WR,60.86956521739131
+Devin Grant,LAC,,,,,0.0
+Terry Webb,LAC,,,,,0.0
+Sincere Brown,LAC,,,,,0.0
+Greg Desrosiers Jr.,LAC,,,,,0.0
+Noah Avinger,LAC,,,,,0.0
+Rodney Shelley,LAC,,,,,0.0
+Johnny Pascuzzi,LAC,,,,,0.0
+Peter Bowden,LAC,,,,,0.0
+Liam Clifford,LAC,,,,,0.0
+Laekin Vakalahi,LAC,,,,,0.0
+Myles Purchase,LAC,,,,,0.0
+TeRah Edwards,LAC,,Gus Edwards,LAC,RB,66.66666666666667
+JaQuae Jackson,LAC,,,,,0.0
+Amar Johnson,LAC,,,,,0.0
+Emany Johnson,LAC,,,,,0.0
+Josh Kaltenberger,LAC,,Josh Palmer,LAC,WR,64.28571428571428
+Garmon Randolph,LAC,,,,,0.0
+Branson Taylor,LAC,,,,,0.0
+DJ Uiagalelei,LAC,,,,,0.0
+Isas Waxter,LAC,,,,,0.0
+Gary Jennings Jr.,LAC,,,,,0.0
+Maxx Crosby,LV,,,,,0.0
+Kolton Miller,LV,,,,,0.0
+Tyler Linderbaum,LV,,,,,0.0
+Malcolm Koonce,LV,,,,,0.0
+Fernando Mendoza,LV,,,,,0.0
+Quay Walker,LV,,,,,0.0
+Jeremy Chinn,LV,,,,,0.0
+Kwity Paye,LV,,,,,0.0
+Taron Johnson,LV,,,,,0.0
+Ashton Jeanty,LV,,,,,0.0
+Jalen Nailor,LV,,,,,0.0
+Nakobe Dean,LV,,Dylan Laube,LV,RB,63.63636363636363
+Eric Stokes,LV,,,,,0.0
+Adam Butler,LV,,,,,0.0
+Isaiah Pola-Mao,LV,,,,,0.0
+Thomas Booker,LV,,,,,0.0
+Jordan Meredith,LV,,,,,0.0
+Spencer Burford,LV,,,,,0.0
+Jackson Powers-Johnson,LV,,Jakob Johnson,LV,RB,70.58823529411764
+Treydan Stukes,LV,,,,,0.0
+Matt Gay,LV,,,,,0.0
+Dareke Young,LV,,,,,0.0
+Connor Heyward,LV,,,,,0.0
+Jack Bech,LV,,,,,0.0
+Ian Thomas,LV,,,,,0.0
+Delmar Glaze,LV,,Dylan Laube,LV,RB,60.86956521739131
+Darien Porter,LV,,,,,0.0
+Charles Grant,LV,,,,,0.0
+Caleb Rogers,LV,,,,,0.0
+Keyron Crawford,LV,,,,,0.0
+Kirk Cousins,LV,,,,,0.0
+Decamerion Richardson,LV,,,,,0.0
+Dont'e Thornton Jr.,LV,,,,,0.0
+Trey Zuhn III,LV,,,,,0.0
+Jermod McCoy,LV,,,,,0.0
+Tonka Hemingway,LV,,,,,0.0
+Mike Washington Jr.,LV,,,,,0.0
+Tommy Eichenberg,LV,,,,,0.0
+Atonio Mafi,LV,,,,,0.0
+Brandon Johnson,LV,,Jakob Johnson,LV,RB,71.42857142857143
+Buddy Johnson,LV,,Jakob Johnson,LV,RB,69.23076923076923
+Segun Olubi,LV,,,,,0.0
+Tristin McCollum,LV,,,,,0.0
+Alex Ward,LV,,,,,0.0
+Chris Myarick,LV,,,,,0.0
+Jonah Laulu,LV,,,,,0.0
+Shedrick Jackson,LV,,,,,0.0
+Patrick Johnson,LV,,,,,0.0
+Albert Okwuegbunam,LV,,,,,0.0
+Deven Thompkins,LV,,,,,0.0
+Cameron McGrone,LV,,,,,0.0
+Phillip Dorsett,LV,,,,,0.0
+Folorunso Fatukasi,LV,,,,,0.0
+Dare Ogunbowale,LV,,,,,0.0
+JJ Pegues,LV,,,,,0.0
+Cody Lindenberg,LV,,,,,0.0
+Dalton Johnson,LV,,Jakob Johnson,LV,RB,74.07407407407408
+Greedy Vance Jr.,LV,,,,,0.0
+Will Putnam,LV,,,,,0.0
+Carter Runyon,LV,,,,,0.0
+Hezekiah Masses,LV,,,,,0.0
+Malik Benson,LV,,,,,0.0
+Brandon Cleveland,LV,,,,,0.0
+Cian Slone,LV,,,,,0.0
+Isaiah Jatta,LV,,,,,0.0
+Chase Roberts,LV,,,,,0.0
+Roman Hemby,LV,,,,,0.0
+Gary Smith III,LV,,,,,0.0
+E.J. Williams Jr.,LV,,,,,0.0
+Jacob Clark,LV,,,,,0.0
+Xavian Sorey Jr.,LV,,,,,0.0
+Tyler Duzansky,LV,,,,,0.0
+Kansei Matsuzawa,LV,,,,,0.0
+Caleb Offord,LV,,,,,0.0
+Devin Lafayette,LV,,,,,0.0
+Braeden Daniels,LV,,,,,0.0
+Dalton Wagner,LV,,,,,0.0
+Jahfari Harvey,LV,,,,,0.0
+Treven Ma'ae,LV,,,,,0.0
+Patrick Gurd,LV,,,,,0.0
+Niklas Henning,LV,,,,,0.0
+Kamar Missouri,LV,,,,,0.0
+Devyn Perkins,LV,,,,,0.0
