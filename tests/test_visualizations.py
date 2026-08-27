@@ -1,3 +1,4 @@
+import inspect
 import pytest
 import plotly.graph_objects as go
 from src.player_valuation import PlayerAsset, PlayerValuationModel
@@ -9,6 +10,7 @@ from src.visualizations import (
     plot_player_value_scatter,
     plot_sb_similarity_radar,
     plot_age_distribution,
+    TEAM_COLORS,
 )
 
 
@@ -87,3 +89,16 @@ def test_plot_evolution_history_empty_returns_figure():
 def test_plot_roster_efficiency_scatter_empty_dict():
     fig = plot_roster_efficiency_scatter({})
     assert isinstance(fig, go.Figure)
+
+
+def test_afc_west_retarget_values(teams_data):
+    # Assert TEAM_COLORS has expected AFC West values
+    assert TEAM_COLORS == {"DEN": "#FB4F14", "KC": "#E31837", "LAC": "#0080C6", "LV": "#000000"}
+
+    # Assert plot_roster_efficiency_scatter has correct title with em dash
+    fig = plot_roster_efficiency_scatter(teams_data)
+    assert fig.layout.title.text == "AFC West — Portfolio Risk vs Efficiency"
+
+    # Assert plot_player_value_scatter default highlight_team is "DEN"
+    sig = inspect.signature(plot_player_value_scatter)
+    assert sig.parameters["highlight_team"].default == "DEN"
