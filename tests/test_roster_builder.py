@@ -228,6 +228,47 @@ def test_position_and_age_backfill_uses_name_only_fallback_across_teams(tmp_path
     assert int(row["age"]) == 2026 - 1998
 
 
+def test_position_fallback_drops_ambiguous_name_across_teams(tmp_path):
+    """A name that appears in rosters data under TWO different teams with TWO
+    different positions must not be backfilled via the name-only fallback —
+    it's ambiguous which position belongs to the OTC contract row's player,
+    so the merged row's position should stay empty."""
+    rosters_df = pd.DataFrame([
+        {"player_id": "h001", "season": 2023, "player_name": "Marvin Harrison",
+         "position": "WR", "team": "IND", "birth_date": "2001-01-01"},
+        {"player_id": "h002", "season": 2023, "player_name": "Marvin Harrison",
+         "position": "CB", "team": "SEA", "birth_date": "1998-01-01"},
+    ])
+    perf_dir = tmp_path / "perf"
+    perf_dir.mkdir()
+    rosters_df.to_csv(perf_dir / "rosters_2023_2025.csv", index=False)
+
+    stats_df = pd.DataFrame([
+        {"player_id": "h001", "season": 2023, "games": 16,
+         "passing_epa": 0.0, "rushing_epa": 0.0, "receiving_epa": 10.0, "offense_snaps": 500},
+        {"player_id": "h002", "season": 2023, "games": 16,
+         "passing_epa": 0.0, "rushing_epa": 0.0, "receiving_epa": 0.0, "offense_snaps": 500},
+    ])
+
+    builder = RosterBuilder(perf_dir=str(perf_dir), output_dir=str(tmp_path))
+    perf = builder._aggregate_performance(stats_df, rosters_df)
+
+    # Contract row lists the player under DEN — a team not present in rosters_df
+    # for this name — so both the (name, team) position lookup and the perf
+    # fuzzy match miss, forcing a fall-through to the name-only lookup, which
+    # must refuse to resolve because the name maps to WR under IND and CB
+    # under SEA.
+    contracts = pd.DataFrame([
+        {"player_name": "Marvin Harrison", "position": np.nan, "team": "DEN",
+         "cap_hit": 1_000_000.0, "guaranteed_money": 0.0, "years_remaining": 1, "age": np.nan},
+    ])
+
+    merged = builder.merge(perf, contracts)
+    row = merged[merged["player_name"] == "Marvin Harrison"].iloc[0]
+
+    assert str(row["position"]).strip() in ("", "nan")
+
+
 def test_build_afc_west_writes_afc_west_rosters_csv(tmp_path, monkeypatch):
     builder = RosterBuilder(output_dir=str(tmp_path))
     perf_stub = pd.DataFrame([{
