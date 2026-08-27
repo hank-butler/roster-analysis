@@ -23,6 +23,9 @@ class OverTheCapScraper:
         "SEA": "seattle-seahawks",
         "LAR": "los-angeles-rams",
         "ARI": "arizona-cardinals",
+        "DEN": "denver-broncos",
+        "LAC": "los-angeles-chargers",
+        "LV":  "las-vegas-raiders",
         "KC":  "kansas-city-chiefs",
         "TB":  "tampa-bay-buccaneers",
         "PHI": "philadelphia-eagles",
@@ -30,7 +33,7 @@ class OverTheCapScraper:
         "HOU": "houston-texans",
     }
 
-    NFC_WEST = ["SF", "SEA", "LAR", "ARI"]
+    AFC_WEST = ["DEN", "KC", "LAC", "LV"]
     SB_WINNERS = ["KC", "TB", "PHI"]
 
     def __init__(self, output_dir: str = "data/raw/contracts"):
@@ -228,10 +231,10 @@ class OverTheCapScraper:
         time.sleep(2)
         return df
 
-    def scrape_nfc_west(self) -> Dict[str, pd.DataFrame]:
-        """Scrape all 4 NFC West teams."""
+    def scrape_afc_west(self) -> Dict[str, pd.DataFrame]:
+        """Scrape all 4 AFC West teams."""
         results = {}
-        for team in self.NFC_WEST:
+        for team in self.AFC_WEST:
             df = self.scrape_team(team)
             if df is not None:
                 results[team] = df
@@ -249,7 +252,7 @@ class OverTheCapScraper:
     def scrape_all(self) -> Dict[str, pd.DataFrame]:
         """Scrape all configured teams. Skips teams with existing CSVs."""
         results = {}
-        results.update(self.scrape_nfc_west())
+        results.update(self.scrape_afc_west())
         results.update(self.scrape_sb_winners())
         logger.info(f"Scraping complete. Teams collected: {list(results.keys())}")
         return results

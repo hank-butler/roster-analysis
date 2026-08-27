@@ -39,5 +39,5 @@ def test_parse_html_adds_team_column():
 
 def test_team_slugs_contains_all_required_teams():
     scraper = OverTheCapScraper()
-    required_teams = {"SF", "SEA", "LAR", "ARI", "KC", "TB", "PHI"}
+    required_teams = {"DEN", "KC", "LAC", "LV", "TB", "PHI"}
     assert required_teams.issubset(set(scraper.TEAM_SLUGS.keys()))
