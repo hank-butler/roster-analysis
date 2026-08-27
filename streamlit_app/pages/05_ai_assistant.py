@@ -13,7 +13,7 @@ from streamlit_app.utils import load_players
 
 st.title("AI Football Intelligence")
 st.caption(
-    "Ask natural language questions about the 49ers roster. "
+    "Ask natural language questions about the Broncos roster. "
     "Powered by a multi-agent system (Contract · Scouting · Strategy) "
     "grounded in real player data."
 )
@@ -41,7 +41,7 @@ query = st.text_area(
     "Question:",
     placeholder=(
         "e.g. Who are our most undervalued players?\n"
-        "e.g. Generate a scouting report on Brock Purdy\n"
+        "e.g. Generate a scouting report on Patrick Surtain II\n"
         "e.g. How does our cap allocation compare to Super Bowl winners?\n"
         "e.g. Which positions should we target in free agency?"
     ),
@@ -53,7 +53,7 @@ asked = st.button("Ask", disabled=ask_disabled)
 
 st.caption(
     "**Example queries:** 'Who are our most undervalued players?' · "
-    "'Generate a scouting report on Brock Purdy' · "
+    "'Generate a scouting report on Patrick Surtain II' · "
     "'How does our cap allocation compare to Super Bowl winners?' · "
     "'Which positions should we target in free agency?'"
 )

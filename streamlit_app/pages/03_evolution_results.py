@@ -17,7 +17,7 @@ st.title("Roster Evolution Engine")
 st.markdown(
     """
     The evolution engine applies a **genetic algorithm** to find an optimal roster configuration
-    within hard cap constraints. Starting from the current SF 49ers roster, it explores thousands
+    within hard cap constraints. Starting from the current Denver Broncos roster, it explores thousands
     of roster variations — swapping players in and out, crossing over configurations, and
     mutating selections — to maximise a multi-objective fitness function.
 
@@ -71,7 +71,7 @@ st.divider()
 
 # ---- Before vs After summary ---------------------------------------------
 
-st.subheader("Current SF Roster vs Evolved Optimal Roster")
+st.subheader("Current DEN Roster vs Evolved Optimal Roster")
 st.caption(
     f"Evolution run: {meta['population_size']} population · {len(history)} generations · "
     f"${meta['salary_cap']/1e6:.0f}M cap (skill + DL/LB portion)"
@@ -147,11 +147,11 @@ with col_rem:
         st.dataframe(rem_df, hide_index=True, use_container_width=True)
 
 st.caption(
-    f"{changes['kept_count']} players retained from the current SF roster. "
+    f"{changes['kept_count']} players retained from the current DEN roster. "
     + (
-        f"{len(changes['added'])} players added back from SF's own roster pool."
+        f"{len(changes['added'])} players added back from DEN's own roster pool."
         if changes["added"]
-        else "No changes — the current SF roster is already the evolved optimum given the available pool."
+        else "No changes — the current DEN roster is already the evolved optimum given the available pool."
     )
 )
 

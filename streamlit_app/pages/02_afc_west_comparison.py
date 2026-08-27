@@ -6,27 +6,27 @@ from typing import Dict, List
 
 import streamlit as st
 
-from src.nfc_west_comparison import DivisionAnalyzer
+from src.afc_west_comparison import DivisionAnalyzer
 from src.player_valuation import PlayerAsset
 from streamlit_app.utils import load_players
 
-st.title("NFC West — Division Comparison")
+st.title("AFC West — Division Comparison")
 
-NFC_WEST = {"SF", "SEA", "LAR", "ARI"}
+AFC_WEST = {"DEN", "KC", "LAC", "LV"}
 
 players: List[PlayerAsset] = load_players()
 teams_data: Dict[str, List[PlayerAsset]] = {}
 for p in players:
-    if p.team in NFC_WEST:
+    if p.team in AFC_WEST:
         teams_data.setdefault(p.team, []).append(p)
 
 if not teams_data:
-    st.warning("No NFC West player data found.")
+    st.warning("No AFC West player data found.")
     st.stop()
 
 with st.spinner("Building division analysis..."):
     analyzer = DivisionAnalyzer(teams_data)
-    report = analyzer.generate_division_report(primary_team="SF")
+    report = analyzer.generate_division_report(primary_team="DEN")
 
 st.subheader("Portfolio Metrics by Team")
 metrics_df = report["metrics_df"].sort_values("efficiency", ascending=False)
@@ -46,29 +46,29 @@ with col2:
 
 st.divider()
 
-st.subheader("SF Division Advantages")
+st.subheader("DEN Division Advantages")
 advantages = report["advantages"]
 
 col_s, col_w, col_o = st.columns(3)
 
 with col_s:
-    st.markdown("**Strengths** (SF leads division avg)")
+    st.markdown("**Strengths** (DEN leads division avg)")
     if advantages["strengths"]:
         for pos in advantages["strengths"]:
             st.success(pos)
     else:
-        st.caption("No position groups where SF leads")
+        st.caption("No position groups where DEN leads")
 
 with col_w:
-    st.markdown("**Weaknesses** (SF trails division avg)")
+    st.markdown("**Weaknesses** (DEN trails division avg)")
     if advantages["weaknesses"]:
         for pos in advantages["weaknesses"]:
             st.warning(pos)
     else:
-        st.caption("No position groups where SF trails")
+        st.caption("No position groups where DEN trails")
 
 with col_o:
-    st.markdown("**Opportunities** (weaknesses where SF ranks 3rd/4th)")
+    st.markdown("**Opportunities** (weaknesses where DEN ranks 3rd/4th)")
     if advantages["opportunities"]:
         for pos in advantages["opportunities"]:
             st.info(pos)

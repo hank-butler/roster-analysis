@@ -7,7 +7,7 @@ def test_load_players_from_csv_returns_valued_players(tmp_path):
     csv_path = tmp_path / "player_assets_ready.csv"
     pd.DataFrame([{
         "player_id": "sf_qb_test", "name": "Test QB", "position": "QB",
-        "team": "SF", "age": 27, "cap_hit_2026": 23_700_000,
+        "team": "DEN", "age": 27, "cap_hit_2026": 23_700_000,
         "years_remaining": 3, "guaranteed_money": 10_000_000,
         "total_contract_value": 71_100_000, "epa_total": 45.0,
         "snaps_played": 1050, "games_missed": 0,
@@ -33,14 +33,14 @@ def test_load_players_from_csv_skips_bad_rows(tmp_path):
     pd.DataFrame([
         {
             "player_id": "sf_qb_good", "name": "Good QB", "position": "QB",
-            "team": "SF", "age": 27, "cap_hit_2026": 23_700_000,
+            "team": "DEN", "age": 27, "cap_hit_2026": 23_700_000,
             "years_remaining": 3, "guaranteed_money": 10_000_000,
             "total_contract_value": 71_100_000, "epa_total": 45.0,
             "snaps_played": 1050, "games_missed": 0,
         },
         {
             "player_id": "bad_row", "name": "Bad Player", "position": "QB",
-            "team": "SF", "age": "not_a_number",
+            "team": "DEN", "age": "not_a_number",
             "cap_hit_2026": 10_000_000, "years_remaining": 1,
             "guaranteed_money": 0, "total_contract_value": 0,
             "epa_total": 0, "snaps_played": 0, "games_missed": 0,

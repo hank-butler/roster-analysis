@@ -10,16 +10,16 @@ from src.player_valuation import PlayerAsset, PortfolioAnalyzer
 from src.visualizations import plot_player_value_scatter
 from streamlit_app.utils import load_players
 
-st.title("SF 49ers — Roster Valuation")
+st.title("Denver Broncos — Roster Valuation")
 
 players: List[PlayerAsset] = load_players()
-sf_players = [p for p in players if p.team == "SF"]
+den_players = [p for p in players if p.team == "DEN"]
 
-if not sf_players:
-    st.warning("No SF players loaded.")
+if not den_players:
+    st.warning("No DEN players loaded.")
     st.stop()
 
-pa = PortfolioAnalyzer(sf_players)
+pa = PortfolioAnalyzer(den_players)
 summary = pa.summary_report()
 
 col1, col2, col3 = st.columns(3)
@@ -34,7 +34,7 @@ st.caption(
     "Size = inversely proportional to risk score"
 )
 st.plotly_chart(
-    plot_player_value_scatter(sf_players, highlight_team="SF"),
+    plot_player_value_scatter(den_players, highlight_team="DEN"),
     use_container_width=True,
 )
 
@@ -92,11 +92,11 @@ with st.expander("📋 Model Notes & Known Limitations"):
 - **Efficiency > 1.0** = player creates more value than their cap hit — good contract
 - **Efficiency < 1.0** = cap hit exceeds modelled value — watch for over-commitment
 
-**Key insights on the 2026 SF roster:**
-- **Brock Purdy (efficiency ~2.1×)** — legitimately undervalued on a cost-controlled deal. Elite QBs command $40–50M+ on the open market; his $23.7M cap hit is well below that
-- **Nick Bosa (efficiency ~0.4×)** — the EPA metric does not capture elite pass-rushing value. DL/EDGE players who generate pressure and disruption show as overvalued under any EPA-based model. Treat this as a cap-concentration flag, not a performance verdict
-- **George Kittle (borderline)** — the age penalty (31, four years past TE peak) reduces his modelled fair value. Reflects succession-planning risk, not current performance
-- **LB/OL valuations are directional** — Fred Warner and Trent Williams use positional EPA averages, which are a weak signal for their roles
+**Key insights on the 2026 DEN roster:**
+- **Bo Nix (efficiency ~11.0×)** — legitimately undervalued on his rookie-scale deal. A starting QB producing at this level for a $5.1M cap hit is a massive team-building advantage while the deal lasts
+- **Zach Allen (efficiency ~0.6×)** — the EPA metric does not capture elite pass-rushing value. DL/EDGE players who generate pressure and disruption show as overvalued under any EPA-based model. Treat this as a cap-concentration flag, not a performance verdict
+- **Evan Engram (borderline)** — the age penalty (32, five years past TE peak) reduces his modelled fair value despite a $14.1M cap hit. Reflects succession-planning risk, not current performance
+- **LB valuations are directional** — Alex Singleton and Jonathon Cooper use positional EPA averages, which are a weak signal for their roles
 
 **Model constraints:** EPA only (no PFF grades or tracking data); 2023–2024 seasons (2025 stats not yet published); all contracts default to 1 year remaining. Tables above exclude players earning below $5M — backup/minimum-deal players receive synthetic positional-average EPA and would otherwise dominate the undervalued list due to the position premium in the baseline.
     """)

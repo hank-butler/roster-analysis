@@ -14,25 +14,25 @@ from streamlit_app.utils import load_players
 
 st.title("Super Bowl Template Matching")
 st.caption(
-    "How does the SF 49ers roster structure compare to recent Super Bowl winners "
+    "How does the Denver Broncos roster structure compare to recent Super Bowl winners "
     "(2020–2024) across cap allocation, age distribution, and star concentration?"
 )
 
-NFC_WEST = {"SF", "SEA", "LAR", "ARI"}
+AFC_WEST = {"DEN", "KC", "LAC", "LV"}
 
 players: List[PlayerAsset] = load_players()
 teams_data: Dict[str, List[PlayerAsset]] = {}
 for p in players:
-    if p.team in NFC_WEST:
+    if p.team in AFC_WEST:
         teams_data.setdefault(p.team, []).append(p)
 
-sf_players = teams_data.get("SF", [])
-if not sf_players:
-    st.warning("No SF player data found.")
+den_players = teams_data.get("DEN", [])
+if not den_players:
+    st.warning("No DEN player data found.")
     st.stop()
 
 sb_analyzer = SuperBowlTemplateAnalyzer()
-sim = sb_analyzer.calculate_similarity_score(sf_players)
+sim = sb_analyzer.calculate_similarity_score(den_players)
 template = sb_analyzer.build_sb_template()
 
 col1, col2, col3, col4 = st.columns(4)
@@ -48,11 +48,11 @@ if sim["gaps"]:
     for gap in sim["gaps"]:
         st.warning(gap)
 else:
-    st.success("SF roster closely matches SB template structure")
+    st.success("DEN roster closely matches SB template structure")
 
 st.divider()
 
-st.subheader("SB Similarity Radar — NFC West")
+st.subheader("SB Similarity Radar — AFC West")
 st.plotly_chart(
     plot_sb_similarity_radar(teams_data, template),
     use_container_width=True,

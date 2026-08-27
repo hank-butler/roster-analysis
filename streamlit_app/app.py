@@ -11,12 +11,12 @@ from src.sb_template import SuperBowlTemplateAnalyzer
 from streamlit_app.utils import load_players
 
 st.set_page_config(
-    page_title="SF 49ers Football AI",
+    page_title="Denver Broncos Football AI",
     page_icon="🏈",
     layout="wide",
 )
 
-st.title("SF 49ers Football AI System")
+st.title("Denver Broncos Football AI System")
 st.caption(
     "An AI-powered football intelligence system that uses generative AI and "
     "multi-agent workflows to automate scouting reports, answer natural language "
@@ -25,17 +25,17 @@ st.caption(
 )
 
 players: List[PlayerAsset] = load_players()
-sf_players = [p for p in players if p.team == "SF"]
+den_players = [p for p in players if p.team == "DEN"]
 
-if not sf_players:
-    st.warning("No SF players loaded — check data/processed/player_assets_ready.csv")
+if not den_players:
+    st.warning("No DEN players loaded — check data/processed/player_assets_ready.csv")
     st.stop()
 
-pa = PortfolioAnalyzer(sf_players)
-sim = SuperBowlTemplateAnalyzer().calculate_similarity_score(sf_players)
+pa = PortfolioAnalyzer(den_players)
+sim = SuperBowlTemplateAnalyzer().calculate_similarity_score(den_players)
 
 col1, col2, col3, col4 = st.columns(4)
-col1.metric("SF Players", len(sf_players))
+col1.metric("DEN Players", len(den_players))
 col2.metric("Portfolio Efficiency", f"{pa.portfolio_efficiency():.2f}x")
 col3.metric("Portfolio Risk", f"{pa.portfolio_risk():.2f}")
 col4.metric("SB Similarity", f"{sim['overall_similarity']:.1f}/100")
@@ -46,7 +46,7 @@ st.markdown("### Built Systems")
 st.markdown("""
 - **Roster Valuation** — Bond-pricing model assigns fair value, efficiency ratio,
   and Sharpe ratio to every player contract
-- **NFC West Comparison** — Division-wide portfolio analysis powered by DivisionAnalyzer
+- **AFC West Comparison** — Division-wide portfolio analysis powered by DivisionAnalyzer
 - **Evolution Engine** — Genetic algorithm finds optimal 53-man rosters within
   hard cap constraints
 - **SB Template Matching** — Scores each roster against Super Bowl winner averages
