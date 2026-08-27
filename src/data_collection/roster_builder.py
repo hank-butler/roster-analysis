@@ -197,7 +197,7 @@ class RosterBuilder:
         """Load OTC contract CSVs for the given team abbreviations.
 
         Args:
-            teams: List of team abbreviations (e.g., ['SF', 'SEA']).
+            teams: List of team abbreviations (e.g., ['DEN', 'LAC']).
 
         Returns:
             Combined contract DataFrame.
@@ -222,7 +222,11 @@ class RosterBuilder:
                 "No contract CSVs found. Run Stage 2 first: "
                 "python collect_all_data.py --force-stage contracts"
             )
-        return pd.concat(frames, ignore_index=True)
+        combined = pd.concat(frames, ignore_index=True)
+        combined = combined[
+            combined["player_name"].astype(str).str.strip() != "Top 51 Cutoff"
+        ].reset_index(drop=True)
+        return combined
 
     def _build_position_lookup(self) -> dict:
         """Build a (norm_name, norm_team) → position lookup from full roster data.
@@ -356,21 +360,21 @@ class RosterBuilder:
 
         return merged_df.drop(columns=["_norm_name", "_norm_team"], errors="ignore")
 
-    def build_nfc_west(self) -> pd.DataFrame:
-        """Build and save nfc_west_rosters.csv.
+    def build_afc_west(self) -> pd.DataFrame:
+        """Build and save afc_west_rosters.csv.
 
         Returns:
-            Merged DataFrame for SF, SEA, LAR, ARI.
+            Merged DataFrame for DEN, KC, LAC, LV.
         """
-        output_path = self.output_dir / "nfc_west_rosters.csv"
+        output_path = self.output_dir / "afc_west_rosters.csv"
         if output_path.exists():
             logger.info(f"[SKIP] {output_path} already exists")
             return pd.read_csv(output_path)
         perf = self.load_performance_data()
-        contracts = self.load_contract_data(["SF", "SEA", "LAR", "ARI"])
+        contracts = self.load_contract_data(["DEN", "KC", "LAC", "LV"])
         merged = self.merge(perf, contracts)
         merged.to_csv(output_path, index=False)
-        logger.info(f"Saved NFC West roster ({len(merged)} players) to {output_path}")
+        logger.info(f"Saved AFC West roster ({len(merged)} players) to {output_path}")
         return merged
 
     def build_sb_winners(self) -> pd.DataFrame:

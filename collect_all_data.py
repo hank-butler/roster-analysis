@@ -45,10 +45,9 @@ PERFORMANCE_FILES = [
 ]
 
 CONTRACT_FILES = [
-    Path("data/raw/contracts/sf_2026.csv"),
-    Path("data/raw/contracts/sea_2026.csv"),
-    Path("data/raw/contracts/lar_2026.csv"),
-    Path("data/raw/contracts/ari_2026.csv"),
+    Path("data/raw/contracts/den_2026.csv"),
+    Path("data/raw/contracts/lac_2026.csv"),
+    Path("data/raw/contracts/lv_2026.csv"),
     Path("data/raw/contracts/sb_winners/kc_2026.csv"),
     Path("data/raw/contracts/sb_winners/tb_2026.csv"),
     Path("data/raw/contracts/sb_winners/phi_2026.csv"),
@@ -85,18 +84,18 @@ def run_stage_contracts(force: bool = False) -> None:
 def run_stage_merge(force: bool = False) -> None:
     """Stage 3: Fuzzy-merge performance + contract data into roster CSVs."""
     _section("Stage 3: Roster Building + Fuzzy Merge")
-    nfc_path = Path("data/processed/nfc_west_rosters.csv")
+    afc_path = Path("data/processed/afc_west_rosters.csv")
     sb_path = Path("data/processed/sb_winners_combined.csv")
-    if not force and nfc_path.exists() and sb_path.exists():
+    if not force and afc_path.exists() and sb_path.exists():
         logger.info("[SKIP] Merged roster files already exist")
         return
     if force:
-        nfc_path.unlink(missing_ok=True)
+        afc_path.unlink(missing_ok=True)
         sb_path.unlink(missing_ok=True)
     builder = RosterBuilder()
-    nfc = builder.build_nfc_west()
+    afc = builder.build_afc_west()
     sb = builder.build_sb_winners()
-    logger.info(f"NFC West: {len(nfc)} players | SB Winners: {len(sb)} players")
+    logger.info(f"AFC West: {len(afc)} players | SB Winners: {len(sb)} players")
 
 
 def run_stage_features(force: bool = False) -> None:
@@ -109,7 +108,7 @@ def run_stage_features(force: bool = False) -> None:
     if force:
         output_path.unlink(missing_ok=True)
     processor = DataProcessor()
-    processor.process("data/processed/nfc_west_rosters.csv")
+    processor.process("data/processed/afc_west_rosters.csv")
 
 
 def run_stage_validate() -> None:
