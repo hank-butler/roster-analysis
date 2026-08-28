@@ -257,7 +257,7 @@ All figures sourced in `docs/broncos_2026_cap_context.md` (OTC live fetch,
 - Top 2026 cap hits: McGlinchey ($23.8M), Zach Allen ($16.5M),
   D.J. Jones ($14.6M), Engram ($14.1M), Sutton ($14.0M),
   Hufanga ($13.5M), Surtain ($12.7M)
-- QB: Bo Nix (rookie-scale contract)
+- QB: Bo Nix ($5.1M 2026 cap hit per `data/raw/contracts/den_2026.csv`)
 - Needs: ILB (Dre Greenlaw was released — he is NOT on the roster),
   TE, RB depth
 - Acquired by trade: WR Jaylen Waddle (from Miami)
