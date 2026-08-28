@@ -5,11 +5,16 @@
 
 ## 🎯 Project Overview
 
-This is a **Football AI System** built as a portfolio project targeting the
-**San Francisco 49ers Football AI Fellow** position. The system combines
-real NFL data, bond-pricing valuation models, portfolio optimization theory,
-and generative AI to support front office decision-making across Player
-Personnel, Coaching, and Scouting.
+This is a **Football AI System** built as a portfolio project targeting a
+**Denver Broncos Analytics Engineer** position (business-side analytics).
+Three capabilities share the headline: the multi-source data pipeline
+(ETL, fuzzy merging, validation), the predictive modeling layer (valuation,
+risk scoring, efficiency ratios — the same machinery as lead scoring or
+fan-propensity models), and the Claude-powered multi-agent layer (agentic
+workflows and LLM applications). Roster construction is the demo domain,
+framed honestly as such: the scoring, segmentation, and optimization
+patterns transfer to lead scoring, demand forecasting, and fan-propensity
+modeling.
 
 **Core Thesis:** Treat NFL roster construction as a portfolio optimization
 problem under a hard salary cap constraint. Each player is a financial asset
@@ -17,8 +22,8 @@ with expected returns (performance), risk (injury/age), and cost (cap hit).
 Use evolutionary algorithms to find optimal roster configurations, and wrap
 everything in a multi-agent AI layer for natural language interaction.
 
-**Target Team:** San Francisco 49ers  
-**Division Comparison:** NFC West (49ers, Seahawks, Rams, Cardinals)  
+**Target Team:** Denver Broncos  
+**Division Comparison:** AFC West (Broncos, Chiefs, Chargers, Raiders)  
 **Super Bowl Template:** Chiefs (2020, 2023, 2024), Buccaneers (2021),
 Rams (2022), Eagles (2025)
 
@@ -43,35 +48,34 @@ nfl_roster_optimizer/
 │   │   │   ├── rosters_2023_2025.csv
 │   │   │   └── injuries_2023_2025.csv
 │   │   ├── contracts/               # OverTheCap scraped data
-│   │   │   ├── sf_2026.csv
-│   │   │   ├── sea_2026.csv
-│   │   │   ├── lar_2026.csv
-│   │   │   ├── ari_2026.csv
-│   │   │   └── sb_winners/
+│   │   │   ├── den_2026.csv
+│   │   │   ├── lac_2026.csv
+│   │   │   ├── lv_2026.csv
+│   │   │   └── sb_winners/          # incl. KC (also an AFC West rival)
 │   │   └── super_bowl_winners/      # Historical SB roster data
 │   └── processed/                   # Merged, model-ready data
-│       ├── sf_full_roster.csv
-│       ├── nfc_west_rosters.csv
-│       ├── free_agent_pool.csv
+│       ├── afc_west_rosters.csv
+│       ├── player_assets_ready.csv
+│       ├── evolution_results.json
 │       └── sb_winners_combined.csv
 │
 ├── src/
 │   ├── __init__.py
 │   ├── player_valuation.py          # ✅ COMPLETE - Bond pricing model
 │   ├── evolution_engine.py          # ✅ COMPLETE - Genetic algorithm
-│   ├── portfolio_optimizer.py       # 🔧 TODO - Efficient frontier
+│   ├── portfolio_optimizer.py       # ✅ COMPLETE - Efficient frontier
 │   ├── sb_template.py               # ✅ COMPLETE - SB winner matching
-│   ├── nfc_west_comparison.py       # 🔧 TODO - Division comparison framework
-│   ├── visualizations.py            # 🔧 TODO - Plotly charts
+│   ├── afc_west_comparison.py       # ✅ COMPLETE - Division comparison framework
+│   ├── visualizations.py            # ✅ COMPLETE - Plotly charts
 │   │
 │   ├── data_collection/
-│   │   ├── __init__.py              # 🔧 MISSING - needs to be created
-│   │   ├── nflfastr_collector.py    # ✅ COMPLETE - Performance data
-│   │   ├── overthecap_scraper.py    # 🔧 INCOMPLETE - needs methods
-│   │   ├── roster_builder.py        # 🔧 TODO - Merges data sources
-│   │   └── data_processor.py        # 🔧 TODO - Feature engineering
+│   │   ├── __init__.py
+│   │   ├── nflfastr_collection.py   # ✅ COMPLETE - Performance data
+│   │   ├── overthecap_scraper.py    # ✅ COMPLETE - Contract scraping
+│   │   ├── roster_builder.py        # ✅ COMPLETE - Merges data sources
+│   │   └── data_processor.py        # ✅ COMPLETE - Feature engineering
 │   │
-│   └── agents/                      # 🔧 TODO - Multi-agent AI layer
+│   └── agents/                      # ✅ COMPLETE - Multi-agent AI layer
 │       ├── __init__.py
 │       ├── coordinator_agent.py     # Orchestrates other agents
 │       ├── contract_agent.py        # Cap/contract analysis
@@ -80,20 +84,20 @@ nfl_roster_optimizer/
 │       └── agent_system.py          # Entry point for agent system
 │
 ├── streamlit_app/
-│   ├── app.py                       # 🔧 TODO - Main dashboard
+│   ├── app.py                       # ✅ COMPLETE - Main dashboard
+│   ├── utils.py
 │   └── pages/
 │       ├── 01_roster_analysis.py
-│       ├── 02_nfc_west_comparison.py
+│       ├── 02_afc_west_comparison.py
 │       ├── 03_evolution_results.py
 │       ├── 04_sb_template.py
 │       └── 05_ai_assistant.py
 │
-├── notebooks/
-│   └── exploratory_analysis.ipynb
+├── docs/
+│   ├── model_insights.md
+│   └── broncos_2026_cap_context.md  # Sourced cap research (OTC, team site)
 │
-└── tests/
-    ├── test_evaluation.py           # ✅ EXISTS (in src/, needs moving)
-    └── test_evolution.py            # ✅ EXISTS (in src/, needs moving)
+└── tests/                           # ✅ Full pytest suite (see Testing)
 ```
 
 ---
@@ -137,7 +141,7 @@ Fitness function weights:
 - Position balance: 20%
 - Cap utilization (90-95% optimal): 15%
 
-### `src/data_collection/nflfastr_collector.py`
+### `src/data_collection/nflfastr_collection.py`
 Collects performance data via `nfl_data_py`:
 ```python
 collector = NFLDataCollector()
@@ -147,36 +151,36 @@ data = collector.collect_all([2023, 2024, 2025])
 
 ---
 
-## 🔧 Modules To Build
+## 🔧 Build Log (historical — statuses reflect current codebase)
 
 ### Priority 1: Fix Broken Things
-- [ ] Fix imports in `evolution_engine.py` (bare → relative)
-- [ ] Fix imports in `test_evolution.py` and `test_evaluation.py`
-- [ ] Remove undefined `main()` call in `player_valuation.py`
-- [ ] Create `src/data_collection/__init__.py`
-- [ ] Fix f-string formatting bug in `nflfastr_collector.py`
+- [x] Fix imports in `evolution_engine.py` (bare → relative)
+- [x] Fix imports in `test_evolution.py` and `test_evaluation.py`
+- [x] Remove undefined `main()` call in `player_valuation.py`
+- [x] Create `src/data_collection/__init__.py`
+- [x] Fix f-string formatting bug in the nflfastR collector
 
 ### Priority 2: Complete Data Collection
-- [ ] Finish `overthecap_scraper.py` with 49ers/NFC West teams
-- [ ] Build `roster_builder.py` to merge performance + contract data
-- [ ] Build `data_processor.py` for feature engineering
-- [ ] Create `collect_all_data.py` master script
+- [x] Finish `overthecap_scraper.py` with Broncos/AFC West teams
+- [x] Build `roster_builder.py` to merge performance + contract data
+- [x] Build `data_processor.py` for feature engineering
+- [x] Create `collect_all_data.py` master script
 
 ### Priority 3: Analysis Modules
-- [ ] `sb_template.py` - Super Bowl winner template matching
-- [ ] `nfc_west_comparison.py` - Division comparison framework
-- [ ] `portfolio_optimizer.py` - Efficient frontier analysis
-- [ ] `visualizations.py` - Plotly charts
+- [x] `sb_template.py` - Super Bowl winner template matching
+- [x] `afc_west_comparison.py` - Division comparison framework
+- [x] `portfolio_optimizer.py` - Efficient frontier analysis
+- [x] `visualizations.py` - Plotly charts
 
-### Priority 4: AI Agent Layer (Critical for 49ers Role)
-- [ ] `agents/coordinator_agent.py` - Orchestrates specialist agents
-- [ ] `agents/contract_agent.py` - Natural language cap analysis
-- [ ] `agents/scouting_agent.py` - Generates scouting reports
-- [ ] `agents/strategy_agent.py` - Game strategy insights
+### Priority 4: AI Agent Layer (Critical for Broncos Role)
+- [x] `agents/coordinator_agent.py` - Orchestrates specialist agents
+- [x] `agents/contract_agent.py` - Natural language cap analysis
+- [x] `agents/scouting_agent.py` - Generates scouting reports
+- [x] `agents/strategy_agent.py` - Game strategy insights
 
 ### Priority 5: Dashboard
-- [ ] `streamlit_app/app.py` - Main Streamlit dashboard
-- [ ] Individual page modules
+- [x] `streamlit_app/app.py` - Main Streamlit dashboard
+- [x] Individual page modules
 
 ---
 
@@ -229,25 +233,36 @@ K/P/LS: 30
 ### OverTheCap Team Slugs
 ```python
 TEAM_SLUGS = {
-    # NFC West (Primary)
+    # AFC West (Primary)
+    "DEN": "denver-broncos",
+    "LAC": "los-angeles-chargers",
+    "LV":  "las-vegas-raiders",
+    "KC":  "kansas-city-chiefs",     # dual role: rival + SB template
+    # Super Bowl Winners (Template Matching)
+    "TB":  "tampa-bay-buccaneers",
+    "PHI": "philadelphia-eagles",
+    # Legacy entries from the original NFC West build (kept for reference)
     "SF":  "san-francisco-49ers",
     "SEA": "seattle-seahawks",
     "LAR": "los-angeles-rams",
     "ARI": "arizona-cardinals",
-    # Super Bowl Winners (Template Matching)
-    "KC":  "kansas-city-chiefs",
-    "TB":  "tampa-bay-buccaneers",
-    "PHI": "philadelphia-eagles",
 }
 ```
 
-### 49ers 2026 Cap Context
-- ~$71.7M in cap space
-- ~$36M+ in dead money
-- Key contracts: Purdy ($37.75M), Warner ($21M), Aiyuk ($24.9M),
-  Kittle ($10.9M), McCaffrey ($10.5M)
-- Needs: WR depth, pass rush, secondary
-- Recently signed: Mike Evans ($14.5M/yr), Christian Kirk (1yr/$6M)
+### Broncos 2026 Cap Context
+All figures sourced in `docs/broncos_2026_cap_context.md` (OTC live fetch,
+2026-08-27) — do not use numbers that aren't in that file.
+- ~$37.3M in cap space
+- ~$3.5M in dead money
+- Top 2026 cap hits: McGlinchey ($23.8M), Zach Allen ($16.5M),
+  D.J. Jones ($14.6M), Engram ($14.1M), Sutton ($14.0M),
+  Hufanga ($13.5M), Surtain ($12.7M)
+- QB: Bo Nix (rookie-scale contract)
+- Needs: ILB (Dre Greenlaw was released — he is NOT on the roster),
+  TE, RB depth
+- Acquired by trade: WR Jaylen Waddle (from Miami)
+- Key re-signings: Dobbins (RB), Singleton (ILB), Strnad (ILB),
+  Trautman (TE), among others
 
 ---
 
@@ -268,8 +283,8 @@ Synthesized Response
 
 Example queries the system should handle:
 - "Who are our most undervalued players?"
-- "Generate a scouting report on George Kittle vs Rams"
-- "How does our cap situation compare to the Seahawks?"
+- "Generate a scouting report on Courtland Sutton vs the Chiefs"
+- "How does our cap situation compare to the Chargers?"
 - "What positions should we target in free agency?"
 - "Which players should we consider cutting or trading?"
 
@@ -300,8 +315,7 @@ pip install -r requirements.txt
 ```bash
 # From project root
 python collect_all_data.py           # Full data pipeline
-python src/test_evaluation.py        # Test valuation model
-python src/test_evolution.py         # Test evolution engine
+pytest tests/ -v                     # Run the test suite
 streamlit run streamlit_app/app.py   # Launch dashboard
 ```
 
@@ -379,65 +393,72 @@ streamlit run streamlit_app/app.py   # Launch dashboard
 
 ## 🎯 Application Context
 
-This project is a portfolio piece for the **San Francisco 49ers Football
-AI Fellow** position. The role emphasizes:
+This project is a portfolio piece for a **Denver Broncos Analytics
+Engineer** position (business-side analytics: ticketing, marketing,
+sponsorship, fan engagement). The posting emphasizes SQL/Python, ETL and
+data warehousing, predictive modeling, lead scoring and segmentation,
+agentic workflows / LLM applications (Claude is named in preferred
+qualifications), dashboards, and storytelling. How this project maps:
 
-1. **AI tooling over pure analytics** - The multi-agent system is the
-   headline feature, not just the valuation model
-2. **Generative AI workflows** - Claude API agents that automate
-   scouting and roster analysis
-3. **Deployed applications** - Streamlit dashboard proves ability to
-   ship working tools
-4. **Communication** - Every output should be explainable to non-technical
-   coaches and scouts
-5. **Scouting integration** - Scouting report generator is a key feature
+1. **ETL & data integration** - Multi-source pipeline (nflfastR +
+   OverTheCap) with fuzzy merging, checkpointing, and validation
+2. **Predictive / scoring models** - Valuation, risk, and efficiency
+   scoring: the same machinery as lead scoring and fan-propensity models
+3. **Agentic workflows & LLM applications** - Claude API multi-agent
+   system with a coordinator routing to grounded specialists
+4. **Dashboards & storytelling** - Streamlit app that turns portfolio
+   math into narratives a non-technical stakeholder can act on
+5. **Honest framing** - Roster construction is the demo domain; the
+   project does NOT claim Snowflake/dbt/Power BI experience it doesn't
+   demonstrate
 
 ### Positioning Statement
-> "An AI-powered football intelligence system that uses generative AI and
-> multi-agent workflows to automate scouting reports, answer natural language
-> roster questions, and evolve optimal roster configurations within hard
-> cap constraints."
+> "An end-to-end analytics system — multi-source ETL pipeline, predictive
+> scoring models, and a Claude-powered multi-agent layer — demonstrated on
+> NFL roster construction. The same scoring, segmentation, and
+> constrained-optimization machinery transfers directly to lead scoring,
+> demand forecasting, and fan-propensity modeling."
 
 ---
 
-## 📝 TODO Checklist
+## 📝 TODO Checklist (historical — statuses reflect current codebase)
 
 ### Immediate Fixes
-- [ ] Fix bare imports → absolute imports everywhere
-- [ ] Remove undefined `main()` in `player_valuation.py`
-- [ ] Create `src/data_collection/__init__.py`
-- [ ] Fix f-string bug in `nflfastr_collector.py`
-- [ ] Move test files from `src/` to `tests/`
+- [x] Fix bare imports → absolute imports everywhere
+- [x] Remove undefined `main()` in `player_valuation.py`
+- [x] Create `src/data_collection/__init__.py`
+- [x] Fix f-string bug in the nflfastR collector
+- [x] Move test files from `src/` to `tests/`
 
 ### Data Collection
-- [ ] Complete `overthecap_scraper.py` for 49ers/NFC West
-- [ ] Build `roster_builder.py`
-- [ ] Create `collect_all_data.py`
-- [ ] Run full data collection pipeline
-- [ ] Validate merged data quality
+- [x] Complete `overthecap_scraper.py` for Broncos/AFC West
+- [x] Build `roster_builder.py`
+- [x] Create `collect_all_data.py`
+- [x] Run full data collection pipeline
+- [x] Validate merged data quality
 
 ### Core Models
-- [ ] `sb_template.py` - SB winner similarity scoring
-- [ ] `nfc_west_comparison.py` - Division comparison
-- [ ] `visualizations.py` - Plotly charts
+- [x] `sb_template.py` - SB winner similarity scoring
+- [x] `afc_west_comparison.py` - Division comparison
+- [x] `visualizations.py` - Plotly charts
 
 ### AI Layer
-- [ ] Claude API integration setup
-- [ ] Coordinator agent
-- [ ] Contract agent
-- [ ] Scouting report generator
-- [ ] Strategy agent
+- [x] Claude API integration setup
+- [x] Coordinator agent
+- [x] Contract agent
+- [x] Scouting report generator
+- [x] Strategy agent
 
 ### Dashboard
-- [ ] Streamlit app structure
-- [ ] Roster analysis page
-- [ ] NFC West comparison page
-- [ ] Evolution results page
-- [ ] SB template page
-- [ ] AI assistant page
+- [x] Streamlit app structure
+- [x] Roster analysis page
+- [x] AFC West comparison page
+- [x] Evolution results page
+- [x] SB template page
+- [x] AI assistant page
 
 ### Polish
-- [ ] README.md
-- [ ] Docstrings on all public methods
-- [ ] Unit tests for core modules
+- [x] README.md
+- [x] Docstrings on all public methods
+- [x] Unit tests for core modules
 - [ ] Demo video recording

@@ -1,6 +1,8 @@
 # NFL Roster Optimizer
 
-A football intelligence system that treats NFL roster construction as a constrained portfolio optimization problem. Each player is modeled as a financial asset with an expected return (performance), a risk profile (injury and age), and a cost (salary-cap hit). A genetic algorithm searches the roster space under a hard cap and positional constraints, and a multi-agent layer built on the Claude API answers natural-language roster questions grounded in the underlying data.
+A football intelligence system that treats NFL roster construction as a constrained portfolio optimization problem. Each player is modeled as a financial asset with an expected return (performance), a risk profile (injury and age), and a cost (salary-cap hit). A genetic algorithm searches the roster space under a hard cap and positional constraints, and a multi-agent layer built on the Claude API answers natural-language roster questions grounded in the underlying data. The demo analyzes the **Denver Broncos** against the rest of the AFC West and against structural templates from recent Super Bowl winners.
+
+The project is equal parts data engineering (a multi-source ETL pipeline), predictive modeling (valuation, risk, and efficiency scoring), and applied LLM work (a Claude-powered agent system) — roster construction is the domain the machinery is demonstrated on, not the limit of what it does.
 
 This project is in active development. The valuation model, analysis modules, data pipeline, AI agent layer, and dashboard are functional; the evolution engine and several refinements are still being tuned (see [Status](#status)).
 
@@ -21,6 +23,20 @@ The financial analogy borrows from portfolio theory and bond-style valuation: ex
 
 ---
 
+## How This Maps to an Analytics Engineer Role
+
+| Capability | Where it lives in this project |
+|---|---|
+| ETL pipelines & data integration | Multi-source pipeline: nflfastR performance data plus OverTheCap contract scraping, fuzzy-merged into model-ready datasets — staged, checkpointed, and validated (`collect_all_data.py`, `src/data_collection/`) |
+| Predictive / propensity / scoring models | Player valuation, risk scoring, and efficiency ratios — the same machinery as lead scoring or fan-propensity models, applied to roster assets instead of customers (`src/player_valuation.py`) |
+| Agentic workflows & LLM applications | Claude-powered multi-agent layer: a coordinator routes queries to contract, scouting, and strategy specialists, each grounded in pipeline data (`src/agents/`) |
+| Dashboards & data storytelling | Streamlit app that translates portfolio math into narratives a non-technical stakeholder can act on (`streamlit_app/`) |
+| Model monitoring & refinement | Genetic-algorithm optimizer with fitness tracked across generations and portfolio-level metrics for evaluating each candidate solution (`src/evolution_engine.py`) |
+
+Roster construction is the demo domain. The underlying patterns — scoring entities against cost and risk, segmenting a population, optimizing allocation under a hard budget — transfer directly to business problems like lead scoring, demand forecasting, and fan-propensity modeling.
+
+---
+
 ## Architecture
 
 ```
@@ -37,7 +53,7 @@ OverTheCap   ─┘   (fuzzy merge)    (per-player metrics)  │
                                    (genetic algorithm)
 
                                    SuperBowlTemplateAnalyzer
-                                   DivisionAnalyzer (NFC West)
+                                   DivisionAnalyzer (AFC West)
 ```
 
 The pipeline ingests two independent public sources that share no common player ID, fuzzy-merges them, engineers features, and produces a model-ready dataset. The analysis modules consume that dataset; the dashboard and AI layer consume the analysis modules.
@@ -52,11 +68,11 @@ The pipeline ingests two independent public sources that share no common player 
 
 **Evolution engine (`src/evolution_engine.py`).** A genetic algorithm that searches for high-fitness 53-man rosters under cap and positional constraints. Fitness is a weighted combination of portfolio efficiency (40%), inverted risk (25%), positional balance (20%), and cap utilization (15%). *In active development.*
 
-**How the genetic algorithm works.** Each chromosome represents one complete roster configuration; each gene is a player selection. The engine initialises a population of random valid rosters, then iterates: fitness is evaluated for every chromosome, the top individuals are carried forward unchanged (elitism), and the rest are produced by tournament selection, position-aware crossover (each position group is inherited wholesale from one parent or the other at random), and random mutation (swap, replace, or upgrade a single player). A repair step after crossover trims over-filled positions and fills under-filled ones to keep offspring valid. The fitness score is a real number between 0 and 1, where 1 is the theoretical maximum: a perfectly efficient, low-risk, positionally balanced roster at 90–95% cap utilisation. Invalid rosters — wrong size, missing positions, over cap — receive −1000, which eliminates them immediately from selection. For the demo the engine optimises within SF's current contracted player pool, which is an honest reflection of available data rather than a simulated free-agency market; cross-team acquisition modelling is planned future work.
+**How the genetic algorithm works.** Each chromosome represents one complete roster configuration; each gene is a player selection. The engine initialises a population of random valid rosters, then iterates: fitness is evaluated for every chromosome, the top individuals are carried forward unchanged (elitism), and the rest are produced by tournament selection, position-aware crossover (each position group is inherited wholesale from one parent or the other at random), and random mutation (swap, replace, or upgrade a single player). A repair step after crossover trims over-filled positions and fills under-filled ones to keep offspring valid. The fitness score is a real number between 0 and 1, where 1 is the theoretical maximum: a perfectly efficient, low-risk, positionally balanced roster at 90–95% cap utilisation. Invalid rosters — wrong size, missing positions, over cap — receive −1000, which eliminates them immediately from selection. For the demo the engine optimises within Denver's current contracted player pool, which is an honest reflection of available data rather than a simulated free-agency market; cross-team acquisition modelling is planned future work.
 
 **Super Bowl template matching (`src/sb_template.py`).** Scores a roster's structure — position-group cap allocation, age distribution, and star concentration — against averages from recent Super Bowl winners, and reports the largest structural gaps.
 
-**Division comparison (`src/nfc_west_comparison.py`).** Coordinates the above across the NFC West, producing comparative metrics, rankings, and figures, plus a strengths / weaknesses / opportunities read for a primary team.
+**Division comparison (`src/afc_west_comparison.py`).** Coordinates the above across the AFC West (Broncos, Chiefs, Chargers, Raiders), producing comparative metrics, rankings, and figures, plus a strengths / weaknesses / opportunities read for a primary team.
 
 **AI agent layer (`src/agents/`).** A multi-agent system on the Claude API. A coordinator routes each natural-language query to one of three specialists — contract (cap and valuation analysis), scouting (player assessments), or strategy (team-level roster construction). Each specialist answers using only data injected from the pipeline, with instructions never to invent figures. Stateless, one routing call plus one response call per query.
 
