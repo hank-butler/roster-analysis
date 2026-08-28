@@ -13,22 +13,24 @@ EPA (Expected Points Added) is normalised to a per-season average across availab
 
 ---
 
-## Key Insights — SF 49ers 2026 Roster
+## Key Insights — Denver Broncos 2026 Roster
 
-### ✅ Brock Purdy is legitimately undervalued
-At ~$23.7M cap hit, the model values him at ~$48M fair value (efficiency ≈ 2.1×). This is economically correct: elite young QBs on cost-controlled contracts routinely create $40–50M+ in market value. Purdy's 2023–24 EPA ranks him among the top QBs in the league.
+### ✅ Bo Nix is legitimately undervalued
+At a $5.1M cap hit (rookie-scale deal, age 26), the model puts his efficiency ratio at ~11.0×. This is economically correct: a starting-caliber QB producing at this level for rookie-scale money is one of the largest team-building advantages in the league while the deal lasts.
 
-### ✅ Skill-position depth is good value
-Young players on cheap deals (backup OL, developmental DL like Mykel Williams) show efficiency ratios of 1.7–1.9×. The model correctly identifies these as positive-value contract positions.
+### ✅ Marvin Mims shows strong positive value
+At age 24 with a $6.1M cap hit, Mims posts an efficiency ratio of ~3.1× — the second-best value on the roster behind Nix. This is a case where the model's EPA-based skill-position signal is meaningful: a young receiver still on a below-market deal.
 
-### ⚠️ Nick Bosa appears overvalued by the model — this is a known limitation
-The EPA metric doesn't capture elite pass-rushing value. DL/EDGE players who generate significant pressure and disruption beyond what shows up in scoring EPA will always look "overvalued" under this model. Frame Bosa's score as a cap concentration risk flag, not a performance quality judgement.
+### ⚠️ Zach Allen appears overvalued by the model — this is a known limitation
+At $16.5M cap hit (age 29), Allen's efficiency ratio comes in at ~0.6×. EPA doesn't capture elite pass-rushing/interior-disruption value, so DL/EDGE players who generate pressure beyond what shows up in scoring EPA will always look "overvalued" under this model. Treat this as a cap-concentration flag, not a performance verdict. (D.J. Jones, another interior DL at $14.6M, shows the same pattern at ~0.7×.)
 
-### ⚠️ George Kittle is borderline fair/overvalued due to age penalty
-At 31 years old (4 years past the model's TE peak age of 27), his risk score is elevated, pushing fair value below his $14.1M cap hit. This is a conservative read — his production remains elite, but the model correctly highlights succession planning risk.
+### ⚠️ Evan Engram is borderline fair/overvalued due to age penalty
+At 32 years old (5 years past the model's TE peak age of 27), his risk score is elevated (0.36), pushing fair value below his $14.1M cap hit (efficiency ~0.6×). This is a conservative read — it reflects succession-planning risk in the model, not a current-production judgement.
 
-### ⚠️ LB/OL valuations are directional, not precise
-Fred Warner ($17.9M) and Trent Williams ($20M) show as overvalued by the model because EPA is a weak signal for linebackers and offensive linemen. Use these scores for relative cap allocation analysis, not absolute player quality judgement.
+### ⚠️ LB valuations are directional, not precise — and OL/DB valuations are the least reliable numbers in the model
+Alex Singleton ($6.0M, efficiency ~1.4×) and Jonathon Cooper ($5.8M, efficiency ~1.4×) show positive value, while Nik Bonitto ($8.4M) is roughly breakeven (~1.0×) — EPA is a weak signal for off-ball/edge linebacker roles generally, so use these for relative cap allocation, not absolute quality reads.
+
+Separately, every offensive lineman (Mike McGlinchey, Quinn Meinerz, Ben Powers, Garett Bolles) and every player logged under the composite `DB` code (Patrick Surtain II, Talanoa Hufanga, Ja'Quan McMillian) clusters at efficiency ≈ 0.03–0.08 despite cap hits from $5.8M to $23.8M. This isn't a performance signal — `OL` and `DB` are fallback position codes the model uses when a player's specific position (e.g. LT vs. LG, or CB vs. S) isn't available, so these players get generic positional averages rather than position-specific valuation. **Do not use these numbers to compare O-line or DB talent** — they reflect a data-mapping gap, not roster evaluation.
 
 ---
 
@@ -39,7 +41,7 @@ Fred Warner ($17.9M) and Trent Williams ($20M) show as overvalued by the model b
 | EPA only — no PFF, tracking data, or snap grades | Non-skill positions are under-valued by the metric |
 | 2023–2024 data only (2025 stats not yet published) | Recent scheme changes or injuries may not be reflected |
 | OTC salary-cap page lacks `years_remaining` detail | All players default to 1 year remaining; NPV analysis is approximate |
-| ~32% of players lack position data | 2026 FA signings not in historical roster files; assigned positional averages |
+| ~32% of players lack position data | 2026 FA signings/trades not in historical roster files; assigned composite codes (`OL`, `DB`) that fall back to positional averages |
 | `total_contract_value` is $0 for all players | The OTC salary-cap HTML renders this in a multi-scenario format that doesn't parse cleanly; `cap_hit` and `guaranteed_money` are reliable |
 
 ---
@@ -47,5 +49,5 @@ Fred Warner ($17.9M) and Trent Williams ($20M) show as overvalued by the model b
 ## Recommended Use
 
 - **Best for:** Identifying relative value within a position group, cap concentration analysis, draft/FA target prioritisation
-- **Not for:** Absolute player quality rankings across positions, DL/OL/LB performance evaluation
+- **Not for:** Absolute player quality rankings across positions, DL/OL/DB/LB performance evaluation
 - **Strongest signal:** QB and skill-position (WR, TE, RB) comparisons where EPA is a meaningful performance proxy
