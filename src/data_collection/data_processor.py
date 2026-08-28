@@ -47,7 +47,7 @@ class DataProcessor:
         """Load a merged roster CSV produced by RosterBuilder.
 
         Args:
-            path: Path to nfc_west_rosters.csv or sb_winners_combined.csv.
+            path: Path to afc_west_rosters.csv or sb_winners_combined.csv.
 
         Returns:
             Loaded DataFrame.
@@ -186,7 +186,7 @@ class DataProcessor:
         """Full Stage 4: load merged data -> compute features -> enforce schema -> save.
 
         Args:
-            merged_path: Path to nfc_west_rosters.csv or sb_winners_combined.csv.
+            merged_path: Path to afc_west_rosters.csv or sb_winners_combined.csv.
 
         Returns:
             Schema-enforced DataFrame saved to data/processed/player_assets_ready.csv.

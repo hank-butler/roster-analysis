@@ -6,7 +6,7 @@ from src.player_valuation import PlayerAsset
 def test_load_players_from_csv_returns_valued_players(tmp_path):
     csv_path = tmp_path / "player_assets_ready.csv"
     pd.DataFrame([{
-        "player_id": "sf_qb_test", "name": "Test QB", "position": "QB",
+        "player_id": "den_qb_test", "name": "Test QB", "position": "QB",
         "team": "DEN", "age": 27, "cap_hit_2026": 23_700_000,
         "years_remaining": 3, "guaranteed_money": 10_000_000,
         "total_contract_value": 71_100_000, "epa_total": 45.0,
@@ -32,7 +32,7 @@ def test_load_players_from_csv_skips_bad_rows(tmp_path):
     csv_path = tmp_path / "player_assets_ready.csv"
     pd.DataFrame([
         {
-            "player_id": "sf_qb_good", "name": "Good QB", "position": "QB",
+            "player_id": "den_qb_good", "name": "Good QB", "position": "QB",
             "team": "DEN", "age": 27, "cap_hit_2026": 23_700_000,
             "years_remaining": 3, "guaranteed_money": 10_000_000,
             "total_contract_value": 71_100_000, "epa_total": 45.0,
