@@ -82,7 +82,7 @@ def _make_valued_player(
 def den_players():
     return [
         _make_valued_player("Bo Nix", "QB", 23_700_000, 27),
-        _make_valued_player("Nick Bosa", "DL", 22_990_000, 29),
+        _make_valued_player("Jonathon Cooper", "DL", 22_990_000, 29),
         _make_valued_player("Evan Engram", "TE", 14_100_000, 31),
     ]
 
@@ -171,8 +171,8 @@ def test_scouting_agent_caps_at_30_players():
 
 def test_scouting_agent_query_echoed(den_players):
     agent = ScoutingAgent(client=_mock_client("ok"))
-    result = agent.run("Is Bosa injury-prone?", den_players)
-    assert result["query"] == "Is Bosa injury-prone?"
+    result = agent.run("Is Cooper injury-prone?", den_players)
+    assert result["query"] == "Is Cooper injury-prone?"
 
 
 from src.agents.strategy_agent import StrategyAgent
@@ -350,5 +350,5 @@ def test_ask_returns_error_dict_on_api_error(den_players):
 
 def test_ask_echoes_query(den_players):
     system = _make_system_with_mock(den_players, "scouting", "response")
-    result = system.ask("Is Bosa healthy?")
-    assert result["query"] == "Is Bosa healthy?"
+    result = system.ask("Is Cooper healthy?")
+    assert result["query"] == "Is Cooper healthy?"

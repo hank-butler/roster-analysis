@@ -13,6 +13,8 @@ TEAM_COLORS = {
     "KC":  "#E31837",
     "LAC": "#0080C6",
     "LV":  "#000000",
+    "TB":  "#D50A0A",
+    "PHI": "#004C54",
 }
 _DEFAULT_COLOR = "#888888"
 

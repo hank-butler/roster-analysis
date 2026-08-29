@@ -3,7 +3,7 @@
 import re
 import logging
 from pathlib import Path
-from typing import List, Optional
+from typing import Dict, List, Optional, Tuple
 
 import numpy as np
 import pandas as pd
@@ -19,6 +19,36 @@ TEAM_NORMALIZER = {
     "LA": "LAR",
     "OAK": "LV",
 }
+
+# Position codes collapsed into coarse groups for cross-source consistency
+# checks. Different data sources (OTC scrapes, nfl_data_py rosters) use
+# heterogeneous position codes for the same role (e.g. "DB" vs "S"/"CB"),
+# so exact-string comparison would produce false conflicts. A fuzzy name
+# match is only trusted when its position group agrees with the group
+# implied by the full-roster position lookup for that (name, team).
+POSITION_GROUPS = {
+    "QB": "QB",
+    "RB": "RB", "FB": "RB", "HB": "RB",
+    "WR": "WR",
+    "TE": "TE",
+    "OL": "OL", "OT": "OL", "OG": "OL", "C": "OL", "G": "OL", "T": "OL",
+    "DL": "DL", "DE": "DL", "NT": "DL", "EDGE": "DL", "DT": "DL",
+    "LB": "LB", "ILB": "LB", "OLB": "LB", "MLB": "LB",
+    "DB": "DB", "CB": "DB", "S": "DB", "SAF": "DB", "NCB": "DB", "FS": "DB", "SS": "DB",
+    "K": "K",
+    "P": "P",
+    "LS": "LS",
+}
+
+
+def _position_group(position: Optional[str]) -> Optional[str]:
+    """Map a raw position code to its coarse group, or None if unknown/empty."""
+    if position is None:
+        return None
+    pos = str(position).strip().upper()
+    if not pos or pos == "NAN":
+        return None
+    return POSITION_GROUPS.get(pos)
 
 
 def _normalize_team(team: str) -> str:
@@ -241,7 +271,7 @@ class RosterBuilder:
         ].reset_index(drop=True)
         return combined
 
-    def _build_position_lookup(self) -> tuple:
+    def _build_position_lookup(self) -> Tuple[Dict[Tuple[str, str], str], Dict[str, str]]:
         """Build position lookups from full roster data.
 
         The roster CSV from nfl_data_py contains ALL players (including OL, DL, LB,
@@ -343,7 +373,19 @@ class RosterBuilder:
 
             row_dict = otc_row.drop(labels=["_norm_name", "_norm_team"]).to_dict()
 
-            if best_match is not None and best_score >= FUZZY_THRESHOLD:
+            accept_match = best_match is not None and best_score >= FUZZY_THRESHOLD
+            if accept_match:
+                lookup_group = _position_group(pos_lookup.get((otc_name, otc_team)))
+                match_group = _position_group(best_match.get("position"))
+                if lookup_group is not None and match_group is not None and lookup_group != match_group:
+                    logger.warning(
+                        f"Rejected fuzzy match: OTC '{otc_row['player_name']}' ({otc_team}, "
+                        f"lookup position group={lookup_group}) vs perf '{best_match['player_name']}' "
+                        f"({match_group}) — score={best_score}, position groups conflict"
+                    )
+                    accept_match = False
+
+            if accept_match:
                 for col in perf_cols:
                     row_dict[col] = best_match[col]
                 # Backfill position from nfl_data_py perf match if OTC position is null

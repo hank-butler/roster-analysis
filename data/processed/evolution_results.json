@@ -23,10 +23,10 @@
         "team": "DEN",
         "age": 29,
         "cap_hit": 16477000.0,
-        "expected_value": 10020549.09,
-        "efficiency_ratio": 0.6082,
+        "expected_value": 9975482.33,
+        "efficiency_ratio": 0.6054,
         "risk_score": 0.2547,
-        "fair_value": 7468256.29
+        "fair_value": 7434668.3
       },
       {
         "name": "D.J. Jones",
@@ -34,10 +34,10 @@
         "team": "DEN",
         "age": 31,
         "cap_hit": 14570000.0,
-        "expected_value": 10020549.09,
-        "efficiency_ratio": 0.6878,
+        "expected_value": 9975482.33,
+        "efficiency_ratio": 0.6847,
         "risk_score": 0.3347,
-        "fair_value": 6666612.36
+        "fair_value": 6636629.71
       },
       {
         "name": "Evan Engram",
@@ -62,26 +62,15 @@
         "fair_value": 16266824.17
       },
       {
-        "name": "Brandon Jones",
-        "position": "WR",
-        "team": "DEN",
-        "age": 28,
-        "cap_hit": 9243334.0,
-        "expected_value": 14076117.9,
-        "efficiency_ratio": 1.5228,
-        "risk_score": 0.2447,
-        "fair_value": 10631609.05
-      },
-      {
         "name": "Nik Bonitto",
         "position": "LB",
         "team": "DEN",
         "age": 27,
         "cap_hit": 8421200.0,
-        "expected_value": 8109081.29,
-        "efficiency_ratio": 0.9629,
+        "expected_value": 8069162.16,
+        "efficiency_ratio": 0.9582,
         "risk_score": 0.2047,
-        "fair_value": 6449104.65
+        "fair_value": 6417357.2
       },
       {
         "name": "Jarrett Stidham",
@@ -122,10 +111,10 @@
         "team": "DEN",
         "age": 33,
         "cap_hit": 5970000.0,
-        "expected_value": 8109081.29,
-        "efficiency_ratio": 1.3583,
+        "expected_value": 8069162.16,
+        "efficiency_ratio": 1.3516,
         "risk_score": 0.4047,
-        "fair_value": 4827288.39
+        "fair_value": 4803524.77
       },
       {
         "name": "Jonathon Cooper",
@@ -133,10 +122,10 @@
         "team": "DEN",
         "age": 28,
         "cap_hit": 5780000.0,
-        "expected_value": 8109081.29,
-        "efficiency_ratio": 1.403,
+        "expected_value": 8069162.16,
+        "efficiency_ratio": 1.396,
         "risk_score": 0.2447,
-        "fair_value": 6124741.4
+        "fair_value": 6094590.71
       },
       {
         "name": "Bo Nix",
@@ -155,10 +144,10 @@
         "team": "DEN",
         "age": 28,
         "cap_hit": 4878200.0,
-        "expected_value": 15902620.45,
-        "efficiency_ratio": 3.2599,
+        "expected_value": 16027283.05,
+        "efficiency_ratio": 3.2855,
         "risk_score": 0.1741,
-        "fair_value": 13133693.6
+        "fair_value": 13236650.23
       },
       {
         "name": "Adam Trautman",
@@ -177,10 +166,10 @@
         "team": "DEN",
         "age": 30,
         "cap_hit": 3286666.0,
-        "expected_value": 8109081.29,
-        "efficiency_ratio": 2.4673,
+        "expected_value": 8069162.16,
+        "efficiency_ratio": 2.4551,
         "risk_score": 0.3247,
-        "fair_value": 5476014.9
+        "fair_value": 5449057.74
       },
       {
         "name": "Malcolm Roach",
@@ -188,10 +177,10 @@
         "team": "DEN",
         "age": 28,
         "cap_hit": 3101333.0,
-        "expected_value": 10020549.09,
-        "efficiency_ratio": 3.231,
+        "expected_value": 9975482.33,
+        "efficiency_ratio": 3.2165,
         "risk_score": 0.2547,
-        "fair_value": 7468256.29
+        "fair_value": 7434668.3
       },
       {
         "name": "Wil Lutz",
@@ -199,10 +188,10 @@
         "team": "DEN",
         "age": 32,
         "cap_hit": 2498666.0,
-        "expected_value": 2117338.96,
-        "efficiency_ratio": 0.8474,
+        "expected_value": 2103600.83,
+        "efficiency_ratio": 0.8419,
         "risk_score": 0.2247,
-        "fair_value": 1641560.44
+        "fair_value": 1630909.35
       },
       {
         "name": "Sam Ehlinger",
@@ -221,10 +210,10 @@
         "team": "DEN",
         "age": 26,
         "cap_hit": 1824688.0,
-        "expected_value": 8109081.29,
-        "efficiency_ratio": 4.4441,
+        "expected_value": 8069162.16,
+        "efficiency_ratio": 4.4222,
         "risk_score": 0.2047,
-        "fair_value": 6449104.65
+        "fair_value": 6417357.2
       },
       {
         "name": "R.J. Harvey",
@@ -243,10 +232,10 @@
         "team": "DEN",
         "age": 23,
         "cap_hit": 1601104.0,
-        "expected_value": 8109081.29,
-        "efficiency_ratio": 5.0647,
+        "expected_value": 8069162.16,
+        "efficiency_ratio": 5.0397,
         "risk_score": 0.2047,
-        "fair_value": 6449104.65
+        "fair_value": 6417357.2
       },
       {
         "name": "Nate Adkins",
@@ -265,10 +254,10 @@
         "team": "DEN",
         "age": 24,
         "cap_hit": 1495700.0,
-        "expected_value": 15902620.45,
-        "efficiency_ratio": 10.6322,
+        "expected_value": 16027283.05,
+        "efficiency_ratio": 10.7156,
         "risk_score": 0.1341,
-        "fair_value": 13769798.42
+        "fair_value": 13877741.56
       },
       {
         "name": "Mitchell Fraboni",
@@ -276,10 +265,10 @@
         "team": "DEN",
         "age": 30,
         "cap_hit": 1415000.0,
-        "expected_value": 1084403.38,
-        "efficiency_ratio": 0.7664,
+        "expected_value": 1076460.5,
+        "efficiency_ratio": 0.7607,
         "risk_score": 0.1847,
-        "fair_value": 884107.69
+        "fair_value": 877631.91
       },
       {
         "name": "Sai'vion Jones",
@@ -287,10 +276,10 @@
         "team": "DEN",
         "age": 23,
         "cap_hit": 1400269.0,
-        "expected_value": 10020549.09,
-        "efficiency_ratio": 7.1562,
+        "expected_value": 9975482.33,
+        "efficiency_ratio": 7.124,
         "risk_score": 0.2147,
-        "fair_value": 7869078.25
+        "fair_value": 7833687.59
       },
       {
         "name": "Jaleel McLaughlin",
@@ -353,10 +342,10 @@
         "team": "DEN",
         "age": 25,
         "cap_hit": 1218564.0,
-        "expected_value": 8109081.29,
-        "efficiency_ratio": 6.6546,
+        "expected_value": 8069162.16,
+        "efficiency_ratio": 6.6219,
         "risk_score": 0.2047,
-        "fair_value": 6449104.65
+        "fair_value": 6417357.2
       },
       {
         "name": "Eyioma Uwazurike",
@@ -364,10 +353,10 @@
         "team": "DEN",
         "age": 28,
         "cap_hit": 1145000.0,
-        "expected_value": 10020549.09,
-        "efficiency_ratio": 8.7516,
+        "expected_value": 9975482.33,
+        "efficiency_ratio": 8.7122,
         "risk_score": 0.2547,
-        "fair_value": 7468256.29
+        "fair_value": 7434668.3
       },
       {
         "name": "Michael Bandy",
@@ -375,10 +364,10 @@
         "team": "DEN",
         "age": 29,
         "cap_hit": 1085000.0,
-        "expected_value": 15902620.45,
-        "efficiency_ratio": 14.6568,
+        "expected_value": 16027283.05,
+        "efficiency_ratio": 14.7717,
         "risk_score": 0.2541,
-        "fair_value": 11861483.96
+        "fair_value": 11954467.59
       },
       {
         "name": "Dondrea Tillman",
@@ -386,10 +375,10 @@
         "team": "DEN",
         "age": 28,
         "cap_hit": 1075000.0,
-        "expected_value": 8109081.29,
-        "efficiency_ratio": 7.5433,
+        "expected_value": 8069162.16,
+        "efficiency_ratio": 7.5062,
         "risk_score": 0.2447,
-        "fair_value": 6124741.4
+        "fair_value": 6094590.71
       },
       {
         "name": "Tyler Badie",
@@ -419,10 +408,10 @@
         "team": "DEN",
         "age": 28,
         "cap_hit": 1075000.0,
-        "expected_value": 10020549.09,
-        "efficiency_ratio": 9.3214,
+        "expected_value": 9975482.33,
+        "efficiency_ratio": 9.2795,
         "risk_score": 0.2547,
-        "fair_value": 7468256.29
+        "fair_value": 7434668.3
       },
       {
         "name": "Karene Reid",
@@ -430,10 +419,10 @@
         "team": "DEN",
         "age": 26,
         "cap_hit": 1010000.0,
-        "expected_value": 8109081.29,
-        "efficiency_ratio": 8.0288,
+        "expected_value": 8069162.16,
+        "efficiency_ratio": 7.9893,
         "risk_score": 0.2047,
-        "fair_value": 6449104.65
+        "fair_value": 6417357.2
       },
       {
         "name": "Jordan Turner",
@@ -441,10 +430,10 @@
         "team": "DEN",
         "age": 25,
         "cap_hit": 1005000.0,
-        "expected_value": 8109081.29,
-        "efficiency_ratio": 8.0687,
+        "expected_value": 8069162.16,
+        "efficiency_ratio": 8.029,
         "risk_score": 0.2047,
-        "fair_value": 6449104.65
+        "fair_value": 6417357.2
       },
       {
         "name": "Johnny Walker Jr.",
@@ -452,10 +441,10 @@
         "team": "DEN",
         "age": 25,
         "cap_hit": 891666.0,
-        "expected_value": 10020549.09,
-        "efficiency_ratio": 11.238,
+        "expected_value": 9975482.33,
+        "efficiency_ratio": 11.1875,
         "risk_score": 0.2147,
-        "fair_value": 7869078.25
+        "fair_value": 7833687.59
       },
       {
         "name": "Kyrese Rowan",
@@ -463,10 +452,10 @@
         "team": "DEN",
         "age": 25,
         "cap_hit": 885000.0,
-        "expected_value": 15902620.45,
-        "efficiency_ratio": 17.9691,
+        "expected_value": 16027283.05,
+        "efficiency_ratio": 18.1099,
         "risk_score": 0.1341,
-        "fair_value": 13769798.42
+        "fair_value": 13877741.56
       },
       {
         "name": "Jordan Miller",
@@ -474,10 +463,10 @@
         "team": "DEN",
         "age": 26,
         "cap_hit": 885000.0,
-        "expected_value": 10020549.09,
-        "efficiency_ratio": 11.3227,
+        "expected_value": 9975482.33,
+        "efficiency_ratio": 11.2717,
         "risk_score": 0.2147,
-        "fair_value": 7869078.25
+        "fair_value": 7833687.59
       },
       {
         "name": "Kristian Williams",
@@ -485,10 +474,10 @@
         "team": "DEN",
         "age": 26,
         "cap_hit": 885000.0,
-        "expected_value": 10020549.09,
-        "efficiency_ratio": 11.3227,
+        "expected_value": 9975482.33,
+        "efficiency_ratio": 11.2717,
         "risk_score": 0.2147,
-        "fair_value": 7869078.25
+        "fair_value": 7833687.59
       },
       {
         "name": "Ron Stone Jr.",
@@ -496,10 +485,10 @@
         "team": "DEN",
         "age": 26,
         "cap_hit": 885000.0,
-        "expected_value": 10020549.09,
-        "efficiency_ratio": 11.3227,
+        "expected_value": 9975482.33,
+        "efficiency_ratio": 11.2717,
         "risk_score": 0.2147,
-        "fair_value": 7869078.25
+        "fair_value": 7833687.59
       },
       {
         "name": "Caleb Lohner",
@@ -513,12 +502,12 @@
         "fair_value": 6986056.7
       }
     ],
-    "cap_used": 165430280,
-    "portfolio_efficiency": 2.9043,
-    "portfolio_risk": 0.2531
+    "cap_used": 156186946,
+    "portfolio_efficiency": 2.9836,
+    "portfolio_risk": 0.2536
   },
   "evolved_roster": {
-    "fitness": 0.8637,
+    "fitness": 0.8694,
     "players": [
       {
         "name": "Zach Allen",
@@ -526,10 +515,21 @@
         "team": "DEN",
         "age": 29,
         "cap_hit": 16477000.0,
-        "expected_value": 10020549.09,
-        "efficiency_ratio": 0.6082,
+        "expected_value": 9975482.33,
+        "efficiency_ratio": 0.6054,
         "risk_score": 0.2547,
-        "fair_value": 7468256.29
+        "fair_value": 7434668.3
+      },
+      {
+        "name": "D.J. Jones",
+        "position": "DL",
+        "team": "DEN",
+        "age": 31,
+        "cap_hit": 14570000.0,
+        "expected_value": 9975482.33,
+        "efficiency_ratio": 0.6847,
+        "risk_score": 0.3347,
+        "fair_value": 6636629.71
       },
       {
         "name": "Evan Engram",
@@ -554,26 +554,15 @@
         "fair_value": 16266824.17
       },
       {
-        "name": "Brandon Jones",
-        "position": "WR",
-        "team": "DEN",
-        "age": 28,
-        "cap_hit": 9243334.0,
-        "expected_value": 14076117.9,
-        "efficiency_ratio": 1.5228,
-        "risk_score": 0.2447,
-        "fair_value": 10631609.05
-      },
-      {
         "name": "Nik Bonitto",
         "position": "LB",
         "team": "DEN",
         "age": 27,
         "cap_hit": 8421200.0,
-        "expected_value": 8109081.29,
-        "efficiency_ratio": 0.9629,
+        "expected_value": 8069162.16,
+        "efficiency_ratio": 0.9582,
         "risk_score": 0.2047,
-        "fair_value": 6449104.65
+        "fair_value": 6417357.2
       },
       {
         "name": "Jarrett Stidham",
@@ -609,26 +598,15 @@
         "fair_value": 2045313.82
       },
       {
-        "name": "Alex Singleton",
-        "position": "LB",
-        "team": "DEN",
-        "age": 33,
-        "cap_hit": 5970000.0,
-        "expected_value": 8109081.29,
-        "efficiency_ratio": 1.3583,
-        "risk_score": 0.4047,
-        "fair_value": 4827288.39
-      },
-      {
         "name": "Jonathon Cooper",
         "position": "LB",
         "team": "DEN",
         "age": 28,
         "cap_hit": 5780000.0,
-        "expected_value": 8109081.29,
-        "efficiency_ratio": 1.403,
+        "expected_value": 8069162.16,
+        "efficiency_ratio": 1.396,
         "risk_score": 0.2447,
-        "fair_value": 6124741.4
+        "fair_value": 6094590.71
       },
       {
         "name": "Bo Nix",
@@ -647,10 +625,10 @@
         "team": "DEN",
         "age": 28,
         "cap_hit": 4878200.0,
-        "expected_value": 15902620.45,
-        "efficiency_ratio": 3.2599,
+        "expected_value": 16027283.05,
+        "efficiency_ratio": 3.2855,
         "risk_score": 0.1741,
-        "fair_value": 13133693.6
+        "fair_value": 13236650.23
       },
       {
         "name": "Adam Trautman",
@@ -669,10 +647,10 @@
         "team": "DEN",
         "age": 30,
         "cap_hit": 3286666.0,
-        "expected_value": 8109081.29,
-        "efficiency_ratio": 2.4673,
+        "expected_value": 8069162.16,
+        "efficiency_ratio": 2.4551,
         "risk_score": 0.3247,
-        "fair_value": 5476014.9
+        "fair_value": 5449057.74
       },
       {
         "name": "Malcolm Roach",
@@ -680,10 +658,10 @@
         "team": "DEN",
         "age": 28,
         "cap_hit": 3101333.0,
-        "expected_value": 10020549.09,
-        "efficiency_ratio": 3.231,
+        "expected_value": 9975482.33,
+        "efficiency_ratio": 3.2165,
         "risk_score": 0.2547,
-        "fair_value": 7468256.29
+        "fair_value": 7434668.3
       },
       {
         "name": "Wil Lutz",
@@ -691,10 +669,10 @@
         "team": "DEN",
         "age": 32,
         "cap_hit": 2498666.0,
-        "expected_value": 2117338.96,
-        "efficiency_ratio": 0.8474,
+        "expected_value": 2103600.83,
+        "efficiency_ratio": 0.8419,
         "risk_score": 0.2247,
-        "fair_value": 1641560.44
+        "fair_value": 1630909.35
       },
       {
         "name": "Sam Ehlinger",
@@ -713,10 +691,10 @@
         "team": "DEN",
         "age": 26,
         "cap_hit": 1824688.0,
-        "expected_value": 8109081.29,
-        "efficiency_ratio": 4.4441,
+        "expected_value": 8069162.16,
+        "efficiency_ratio": 4.4222,
         "risk_score": 0.2047,
-        "fair_value": 6449104.65
+        "fair_value": 6417357.2
       },
       {
         "name": "R.J. Harvey",
@@ -735,10 +713,10 @@
         "team": "DEN",
         "age": 23,
         "cap_hit": 1601104.0,
-        "expected_value": 8109081.29,
-        "efficiency_ratio": 5.0647,
+        "expected_value": 8069162.16,
+        "efficiency_ratio": 5.0397,
         "risk_score": 0.2047,
-        "fair_value": 6449104.65
+        "fair_value": 6417357.2
       },
       {
         "name": "Nate Adkins",
@@ -757,10 +735,10 @@
         "team": "DEN",
         "age": 24,
         "cap_hit": 1495700.0,
-        "expected_value": 15902620.45,
-        "efficiency_ratio": 10.6322,
+        "expected_value": 16027283.05,
+        "efficiency_ratio": 10.7156,
         "risk_score": 0.1341,
-        "fair_value": 13769798.42
+        "fair_value": 13877741.56
       },
       {
         "name": "Mitchell Fraboni",
@@ -768,10 +746,10 @@
         "team": "DEN",
         "age": 30,
         "cap_hit": 1415000.0,
-        "expected_value": 1084403.38,
-        "efficiency_ratio": 0.7664,
+        "expected_value": 1076460.5,
+        "efficiency_ratio": 0.7607,
         "risk_score": 0.1847,
-        "fair_value": 884107.69
+        "fair_value": 877631.91
       },
       {
         "name": "Sai'vion Jones",
@@ -779,10 +757,10 @@
         "team": "DEN",
         "age": 23,
         "cap_hit": 1400269.0,
-        "expected_value": 10020549.09,
-        "efficiency_ratio": 7.1562,
+        "expected_value": 9975482.33,
+        "efficiency_ratio": 7.124,
         "risk_score": 0.2147,
-        "fair_value": 7869078.25
+        "fair_value": 7833687.59
       },
       {
         "name": "Jaleel McLaughlin",
@@ -845,21 +823,10 @@
         "team": "DEN",
         "age": 25,
         "cap_hit": 1218564.0,
-        "expected_value": 8109081.29,
-        "efficiency_ratio": 6.6546,
+        "expected_value": 8069162.16,
+        "efficiency_ratio": 6.6219,
         "risk_score": 0.2047,
-        "fair_value": 6449104.65
-      },
-      {
-        "name": "Eyioma Uwazurike",
-        "position": "DL",
-        "team": "DEN",
-        "age": 28,
-        "cap_hit": 1145000.0,
-        "expected_value": 10020549.09,
-        "efficiency_ratio": 8.7516,
-        "risk_score": 0.2547,
-        "fair_value": 7468256.29
+        "fair_value": 6417357.2
       },
       {
         "name": "Michael Bandy",
@@ -867,21 +834,21 @@
         "team": "DEN",
         "age": 29,
         "cap_hit": 1085000.0,
-        "expected_value": 15902620.45,
-        "efficiency_ratio": 14.6568,
+        "expected_value": 16027283.05,
+        "efficiency_ratio": 14.7717,
         "risk_score": 0.2541,
-        "fair_value": 11861483.96
+        "fair_value": 11954467.59
       },
       {
-        "name": "Jordan Jackson",
-        "position": "DL",
+        "name": "Dondrea Tillman",
+        "position": "LB",
         "team": "DEN",
         "age": 28,
         "cap_hit": 1075000.0,
-        "expected_value": 10020549.09,
-        "efficiency_ratio": 9.3214,
-        "risk_score": 0.2547,
-        "fair_value": 7468256.29
+        "expected_value": 8069162.16,
+        "efficiency_ratio": 7.5062,
+        "risk_score": 0.2447,
+        "fair_value": 6094590.71
       },
       {
         "name": "Cody Schrader",
@@ -906,15 +873,26 @@
         "fair_value": 998095.58
       },
       {
+        "name": "Jordan Jackson",
+        "position": "DL",
+        "team": "DEN",
+        "age": 28,
+        "cap_hit": 1075000.0,
+        "expected_value": 9975482.33,
+        "efficiency_ratio": 9.2795,
+        "risk_score": 0.2547,
+        "fair_value": 7434668.3
+      },
+      {
         "name": "Karene Reid",
         "position": "LB",
         "team": "DEN",
         "age": 26,
         "cap_hit": 1010000.0,
-        "expected_value": 8109081.29,
-        "efficiency_ratio": 8.0288,
+        "expected_value": 8069162.16,
+        "efficiency_ratio": 7.9893,
         "risk_score": 0.2047,
-        "fair_value": 6449104.65
+        "fair_value": 6417357.2
       },
       {
         "name": "Jordan Turner",
@@ -922,10 +900,10 @@
         "team": "DEN",
         "age": 25,
         "cap_hit": 1005000.0,
-        "expected_value": 8109081.29,
-        "efficiency_ratio": 8.0687,
+        "expected_value": 8069162.16,
+        "efficiency_ratio": 8.029,
         "risk_score": 0.2047,
-        "fair_value": 6449104.65
+        "fair_value": 6417357.2
       },
       {
         "name": "Johnny Walker Jr.",
@@ -933,43 +911,10 @@
         "team": "DEN",
         "age": 25,
         "cap_hit": 891666.0,
-        "expected_value": 10020549.09,
-        "efficiency_ratio": 11.238,
+        "expected_value": 9975482.33,
+        "efficiency_ratio": 11.1875,
         "risk_score": 0.2147,
-        "fair_value": 7869078.25
-      },
-      {
-        "name": "Kristian Williams",
-        "position": "DL",
-        "team": "DEN",
-        "age": 26,
-        "cap_hit": 885000.0,
-        "expected_value": 10020549.09,
-        "efficiency_ratio": 11.3227,
-        "risk_score": 0.2147,
-        "fair_value": 7869078.25
-      },
-      {
-        "name": "Jordan Miller",
-        "position": "DL",
-        "team": "DEN",
-        "age": 26,
-        "cap_hit": 885000.0,
-        "expected_value": 10020549.09,
-        "efficiency_ratio": 11.3227,
-        "risk_score": 0.2147,
-        "fair_value": 7869078.25
-      },
-      {
-        "name": "Ron Stone Jr.",
-        "position": "DL",
-        "team": "DEN",
-        "age": 26,
-        "cap_hit": 885000.0,
-        "expected_value": 10020549.09,
-        "efficiency_ratio": 11.3227,
-        "risk_score": 0.2147,
-        "fair_value": 7869078.25
+        "fair_value": 7833687.59
       },
       {
         "name": "Kyrese Rowan",
@@ -977,10 +922,10 @@
         "team": "DEN",
         "age": 25,
         "cap_hit": 885000.0,
-        "expected_value": 15902620.45,
-        "efficiency_ratio": 17.9691,
+        "expected_value": 16027283.05,
+        "efficiency_ratio": 18.1099,
         "risk_score": 0.1341,
-        "fair_value": 13769798.42
+        "fair_value": 13877741.56
       },
       {
         "name": "Caleb Lohner",
@@ -992,280 +937,313 @@
         "efficiency_ratio": 9.3712,
         "risk_score": 0.1576,
         "fair_value": 6986056.7
+      },
+      {
+        "name": "Jordan Miller",
+        "position": "DL",
+        "team": "DEN",
+        "age": 26,
+        "cap_hit": 885000.0,
+        "expected_value": 9975482.33,
+        "efficiency_ratio": 11.2717,
+        "risk_score": 0.2147,
+        "fair_value": 7833687.59
+      },
+      {
+        "name": "Kristian Williams",
+        "position": "DL",
+        "team": "DEN",
+        "age": 26,
+        "cap_hit": 885000.0,
+        "expected_value": 9975482.33,
+        "efficiency_ratio": 11.2717,
+        "risk_score": 0.2147,
+        "fair_value": 7833687.59
+      },
+      {
+        "name": "Ron Stone Jr.",
+        "position": "DL",
+        "team": "DEN",
+        "age": 26,
+        "cap_hit": 885000.0,
+        "expected_value": 9975482.33,
+        "efficiency_ratio": 11.2717,
+        "risk_score": 0.2147,
+        "fair_value": 7833687.59
       }
     ],
-    "cap_used": 149785280,
-    "portfolio_efficiency": 3.0866,
-    "portfolio_risk": 0.2452
+    "cap_used": 149071946,
+    "portfolio_efficiency": 3.005,
+    "portfolio_risk": 0.2475
   },
   "changes": {
     "removed": [
       {
-        "name": "D.J. Jones",
-        "position": "DL",
-        "team": "DEN",
-        "age": 31,
-        "cap_hit": 14570000.0,
-        "expected_value": 10020549.09,
-        "efficiency_ratio": 0.6878,
-        "risk_score": 0.3347,
-        "fair_value": 6666612.36
-      },
-      {
-        "name": "Dondrea Tillman",
+        "name": "Alex Singleton",
         "position": "LB",
         "team": "DEN",
+        "age": 33,
+        "cap_hit": 5970000.0,
+        "expected_value": 8069162.16,
+        "efficiency_ratio": 1.3516,
+        "risk_score": 0.4047,
+        "fair_value": 4803524.77
+      },
+      {
+        "name": "Eyioma Uwazurike",
+        "position": "DL",
+        "team": "DEN",
         "age": 28,
-        "cap_hit": 1075000.0,
-        "expected_value": 8109081.29,
-        "efficiency_ratio": 7.5433,
-        "risk_score": 0.2447,
-        "fair_value": 6124741.4
+        "cap_hit": 1145000.0,
+        "expected_value": 9975482.33,
+        "efficiency_ratio": 8.7122,
+        "risk_score": 0.2547,
+        "fair_value": 7434668.3
       }
     ],
     "added": [],
-    "kept_count": 43
+    "kept_count": 42
   },
   "history": [
     {
       "generation": 0,
-      "best_fitness": 0.8636336140077322,
-      "avg_fitness": -15.822556868035115,
-      "diversity": 128.12898955819108
+      "best_fitness": 0.869371537924604,
+      "avg_fitness": -15.81572240698253,
+      "diversity": 128.12987937027265
     },
     {
       "generation": 1,
-      "best_fitness": 0.8636339539996032,
-      "avg_fitness": 0.8606384770319657,
-      "diversity": 0.002280234526032067
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.868230444292189,
+      "diversity": 0.0006272965816593473
     },
     {
       "generation": 2,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8626254562111699,
-      "diversity": 0.0017058455759164134
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.8690297263865351,
+      "diversity": 0.0007087310102149813
     },
     {
       "generation": 3,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8634607659878163,
-      "diversity": 0.0010583412063019076
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.8693510514817554,
+      "diversity": 0.00014450906879806357
     },
     {
       "generation": 4,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8633518465358312,
-      "diversity": 0.0014131446964758111
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.8691236946041148,
+      "diversity": 0.0018818489185323348
     },
     {
       "generation": 5,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8635570846022446,
-      "diversity": 0.0010529448835352858
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.8693702962072699,
+      "diversity": 1.1233566970498034e-05
     },
     {
       "generation": 6,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8634226802934077,
-      "diversity": 0.0014987452874495092
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.8693193154077543,
+      "diversity": 0.0002801554326851404
     },
     {
       "generation": 7,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8635871717999121,
-      "diversity": 0.0008601237573431205
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.8692762228278424,
+      "diversity": 0.0005613162581357304
     },
     {
       "generation": 8,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8636593892498144,
-      "diversity": 0.00026290810944158623
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.869345037500091,
+      "diversity": 0.00021003877071935505
     },
     {
       "generation": 9,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8636996022884205,
-      "diversity": 1.043991825737288e-05
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.8693458335227999,
+      "diversity": 0.0002039244042729512
     },
     {
       "generation": 10,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8636099545077355,
-      "diversity": 0.0005077924743031813
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.8693723822189146,
+      "diversity": 2.220446049250313e-16
     },
     {
       "generation": 11,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.863699844659169,
-      "diversity": 8.578233212692483e-06
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.8693535816355128,
+      "diversity": 0.00014441002125436533
     },
     {
       "generation": 12,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8637009614500091,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.8693723822189146,
+      "diversity": 2.220446049250313e-16
     },
     {
       "generation": 13,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8635593571869293,
-      "diversity": 0.001025546761712525
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.8693687732601473,
+      "diversity": 1.6010313556000687e-05
     },
     {
       "generation": 14,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8635794051226352,
-      "diversity": 0.0008613590667412977
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.8693723822189146,
+      "diversity": 2.220446049250313e-16
     },
     {
       "generation": 15,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8635889668345541,
-      "diversity": 0.0008602469642854747
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.8693723822189146,
+      "diversity": 2.220446049250313e-16
     },
     {
       "generation": 16,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8635889668345541,
-      "diversity": 0.0008602469642854746
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.869074034166736,
+      "diversity": 0.0018971415282221411
     },
     {
       "generation": 17,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8635598507296005,
-      "diversity": 0.0010838920100446484
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.8693494747240834,
+      "diversity": 0.00017595580651700722
     },
     {
       "generation": 18,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8637009614500091,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.8693469040355981,
+      "diversity": 0.00019570163944398455
     },
     {
       "generation": 19,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8635599504809964,
-      "diversity": 0.0010831258050337978
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.8693723822189146,
+      "diversity": 2.220446049250313e-16
     },
     {
       "generation": 20,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8636593892498144,
-      "diversity": 0.00026290810944158623
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.8693447373341885,
+      "diversity": 0.00021234438876434707
     },
     {
       "generation": 21,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8637009614500091,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.869318087676944,
+      "diversity": 0.00029243586592374266
     },
     {
       "generation": 22,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8635598507296005,
-      "diversity": 0.0010838920100446484
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.8693713361389991,
+      "diversity": 8.03509229486694e-06
     },
     {
       "generation": 23,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8632855377992347,
-      "diversity": 0.0018114291082091025
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.8693458335227999,
+      "diversity": 0.0002039244042729512
     },
     {
       "generation": 24,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8636991664153669,
-      "diversity": 1.3787922709019702e-05
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.8693723822189146,
+      "diversity": 2.220446049250313e-16
     },
     {
       "generation": 25,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8637009614500091,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.8691007781338554,
+      "diversity": 0.001889834765266039
     },
     {
       "generation": 26,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8635221122604918,
-      "diversity": 0.001090187376249432
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.8692772768311433,
+      "diversity": 0.0005614380072591647
     },
     {
       "generation": 27,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8637009614500091,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.8692975955576746,
+      "diversity": 0.0003208121307483475
     },
     {
       "generation": 28,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8636433241575997,
-      "diversity": 0.0004427204435090631
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.8693038321785131,
+      "diversity": 0.0005265428513461554
     },
     {
       "generation": 29,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8636675918001449,
-      "diversity": 0.00025631714416272743
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.8693453872366618,
+      "diversity": 0.00019585091569899652
     },
     {
       "generation": 30,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8635593571869296,
-      "diversity": 0.0010255467617125249
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.869345037500091,
+      "diversity": 0.00021003877071936922
     },
     {
       "generation": 31,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8636433241575997,
-      "diversity": 0.00044272044350906315
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.8693723822189146,
+      "diversity": 2.220446049250313e-16
     },
     {
       "generation": 32,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8637009614500091,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.8693038321785131,
+      "diversity": 0.0005265428513461554
     },
     {
       "generation": 33,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8637009614500091,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.8693723822189146,
+      "diversity": 2.220446049250313e-16
     },
     {
       "generation": 34,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8635264810797363,
-      "diversity": 0.0011095506915711926
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.8693723822189146,
+      "diversity": 2.220446049250313e-16
     },
     {
       "generation": 35,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8635637910138162,
-      "diversity": 0.001053626112695251
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.8693723822189146,
+      "diversity": 2.220446049250313e-16
     },
     {
       "generation": 36,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8637009614500091,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.8693723822189146,
+      "diversity": 2.220446049250313e-16
     },
     {
       "generation": 37,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8635598507296005,
-      "diversity": 0.0010838920100446484
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.8693535816355128,
+      "diversity": 0.00014441002125436533
     },
     {
       "generation": 38,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8634217487271136,
-      "diversity": 0.0014925220548446419
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.8692960787813656,
+      "diversity": 0.00033339788440282656
     },
     {
       "generation": 39,
-      "best_fitness": 0.8637009614500092,
-      "avg_fitness": 0.8637009614500091,
-      "diversity": 1.1102230246251565e-16
+      "best_fitness": 0.8693723822189148,
+      "avg_fitness": 0.8693703023554562,
+      "diversity": 1.1200407500001991e-05
     }
   ]
 }

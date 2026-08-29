@@ -269,6 +269,54 @@ def test_position_fallback_drops_ambiguous_name_across_teams(tmp_path):
     assert str(row["position"]).strip() in ("", "nan")
 
 
+def test_position_group_conflict_rejects_fuzzy_match(tmp_path):
+    """A fuzzy name match must be rejected when the position-lookup group for
+    the OTC (name, team) conflicts with the position group of the matched
+    perf row — e.g. Brandon Jones (a DB) must not fuzzy-match Brandon
+    Johnson's WR perf row just because the names are similar."""
+    rosters_df = pd.DataFrame([
+        {"player_id": "j001", "season": 2024, "player_name": "Brandon Jones",
+         "position": "DB", "team": "DEN", "birth_date": "1998-04-02"},
+        {"player_id": "j001", "season": 2025, "player_name": "Brandon Jones",
+         "position": "DB", "team": "DEN", "birth_date": "1998-04-02"},
+        {"player_id": "j002", "season": 2023, "player_name": "Brandon Johnson",
+         "position": "WR", "team": "DEN", "birth_date": "1998-07-26"},
+        {"player_id": "j002", "season": 2025, "player_name": "Brandon Johnson",
+         "position": "WR", "team": "DEN", "birth_date": "1998-07-26"},
+    ])
+    perf_dir = tmp_path / "perf"
+    perf_dir.mkdir()
+    rosters_df.to_csv(perf_dir / "rosters_2023_2025.csv", index=False)
+
+    # Only Brandon Johnson (WR) has stat rows -- DBs typically lack passing/
+    # rushing/receiving EPA in nfl_data_py's seasonal stats, which is exactly
+    # why the buggy fuzzy match only ever found Johnson as a same-team
+    # candidate for the Jones contract row.
+    stats_df = pd.DataFrame([
+        {"player_id": "j002", "season": 2023, "games": 16,
+         "passing_epa": 0.0, "rushing_epa": 0.0, "receiving_epa": 20.0, "offense_snaps": 650},
+        {"player_id": "j002", "season": 2025, "games": 17,
+         "passing_epa": 0.0, "rushing_epa": 0.0, "receiving_epa": 22.0, "offense_snaps": 700},
+    ])
+
+    builder = RosterBuilder(perf_dir=str(perf_dir), output_dir=str(tmp_path))
+    perf = builder._aggregate_performance(stats_df, rosters_df)
+
+    contracts = pd.DataFrame([
+        {"player_name": "Brandon Jones", "position": np.nan, "team": "DEN",
+         "cap_hit": 6_990_000.0, "guaranteed_money": 1_833_334.0,
+         "years_remaining": 1, "age": np.nan},
+    ])
+
+    merged = builder.merge(perf, contracts)
+    row = merged[merged["player_name"] == "Brandon Jones"].iloc[0]
+
+    # Position must come from the lookup (DB), not from the rejected WR match.
+    assert str(row["position"]).strip() == "DB"
+    # Performance fields must be NaN since the match was rejected.
+    assert pd.isna(row["epa_total"])
+
+
 def test_build_afc_west_writes_afc_west_rosters_csv(tmp_path, monkeypatch):
     builder = RosterBuilder(output_dir=str(tmp_path))
     perf_stub = pd.DataFrame([{

@@ -93,7 +93,10 @@ def test_plot_roster_efficiency_scatter_empty_dict():
 
 def test_afc_west_retarget_values(teams_data):
     # Assert TEAM_COLORS has expected AFC West values
-    assert TEAM_COLORS == {"DEN": "#FB4F14", "KC": "#E31837", "LAC": "#0080C6", "LV": "#000000"}
+    assert TEAM_COLORS == {
+        "DEN": "#FB4F14", "KC": "#E31837", "LAC": "#0080C6", "LV": "#000000",
+        "TB": "#D50A0A", "PHI": "#004C54",
+    }
 
     # Assert plot_roster_efficiency_scatter has correct title with em dash
     fig = plot_roster_efficiency_scatter(teams_data)
